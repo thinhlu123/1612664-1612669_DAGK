@@ -4,6 +4,8 @@
 	<title>News</title>
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link href='https://fonts.googleapis.com/css?family=Krona One' rel='stylesheet'>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<style type="text/css">
 		.btn {
   			padding: 0 20px;
@@ -16,18 +18,49 @@
   			background: transparent;
   			cursor: pointer;
 		}
-		#header-img{
-			width: 100%;
-  			height: 100%;
-  			max-width: 300px;
-  			margin-left: 20px;
+		#papername {
+			font-family: 'Krona One';
+			font-size: 25px;
+			color: white;
+			border-bottom-style: inset;
+			border-bottom-color: red;
+			border-bottom-width: 150%;
+		}
+		#papername:hover {
+			cursor: pointer;
 		}
 
-		.container {
+		#container {
  	 		max-width: 1000px;
-  			width: 100%;
-  			margin: 0 auto;
+  			width: 70%;
+  			margin: 100px auto;
+
 		}
+		#login{
+			position: fixed;
+			right: 0;
+			margin-right: 100px;
+		}
+		
+		#btnSearch {
+			background: transparent;
+			color: white;
+			border: none;
+			font-family: "Times New Roman";
+			font-size: 20px;
+		}
+		#btnSearch:hover {
+			color: red;
+		}
+
+		.nav-link {
+			color: white;
+			font-size: 20px;
+		}
+		.nav-link:hover {
+			color: red;
+		}
+
 		header {
   			position: fixed;
   			top: 0;
@@ -37,7 +70,7 @@
  			display: flex;
   			justify-content: space-around;
   			align-items: center;
-  			background-color: #eee;
+  			background-color: black;
 		}
 
 		nav ul{
@@ -46,7 +79,10 @@
   			display: flex;
   			flex-direction: row;
   			justify-content: space-around;
+  			padding-bottom: 2px;
 		}
+
+
 		#hero {
   			display: flex;
   			flex-direction: column;
@@ -82,34 +118,107 @@
 			width: 200px;
 			height: 100%;
 		}
+		#backtotop {
+			position: fixed;
+			right: 40px;
+			bottom: 40px;
+		}
+		#backtotopimg {
+			width: 40px;
+			height: 40px;
+		}
+		#backtotop:hover {
+			cursor: pointer;
+		}
 
-		@media (max-width: 600px) {
+		@media (max-width: 1000px) {
   			header {
     			flex-wrap: wrap;
   			}
+  			#login{
+  				display: none;
+  			}
 		}
+		
 		
 	</style>
 </head>
 <body>
  	<div>
-		<header id="header">
-			<div>
-				<img id="header-img" src="https://s3.amazonaws.com/freecodecamp/original_trombones.png" alt="original trombones logo"/>
-			</div>
-			<nav id="nav-bar">
-				<ul>
-					<li><a href="#mobile" class="nav-link">MOBILE</a></li>
-					<li><a href="#tin-ict" class="nav-link">TIN ICT</a></li>
-					<li><a href="#internet" class="nav-link">INTERNET</a></li>
-					<li><a href="#kham-pha" class="nav-link">KHÁM PHÁ</a></li>
-				</ul>
-			</nav>
-		</header><!-- /header -->
+ 		<header id="header">
+ 			<div class="container-fluid">
+	
+			<nav class="navbar navbar-expand-lg">
+	  
+	  			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+	    			<span class="navbar-toggler-icon"></span>
+	  			</button>
+				<div id="papername">dogenews</div>
+	  			<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+	  				&nbsp &nbsp &nbsp &nbsp
+	    			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+	      				<li class="nav-item active"><a class="nav-link" href="#">MOBILE <span class="sr-only">(current)</span></a></li>
+	      				<li class="nav-item"><a class="nav-link" href="#">TIN ICT</a></li>
+	      				<li class="nav-item"><a class="nav-link" href="#">INTERNET</a></li>
+	      				<li class="nav-item"><a class="nav-link" href="#">KHÁM PHÁ</a></li>      				
+	    			</ul>
+	    
+			    <form class="form-inline my-2 my-lg-0">
+			      	<input class="form-control mr-sm-2" type="search" placeholder="Search">
+			      	<button id="btnSearch" type="submit">Search &nbsp</button>
+			      	<a href="#" data-toggle="dropdown"><i class="fa fa-user-circle" style="font-size:36px"></i></a>
+			      	<ul class="dropdown-menu dropdown-lr" role="menu">
+            			<div class="col-lg-12"> 
+                				<form class="px-4 py-3">
+    								<div class="form-group">
+      									<label for="exampleDropdownFormEmail1">Email address</label>
+      									<input type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="email@example.com">
+    								</div>
+    								<div class="form-group">
+      									<label for="exampleDropdownFormPassword1">Password</label>
+      									<input type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Password">
+    								</div>
+    								<div class="form-check">
+     									<input type="checkbox" class="form-check-input" id="dropdownCheck">
+	      								<label class="form-check-label" for="dropdownCheck">Remember me</label>
+    								</div>
+	    							<button type="submit" class="btn-primary">Sign in</button>
+	  							</form>
+  							<div class="dropdown-divider"></div>
+  							<a class="dropdown-item" href="#">New around here? Sign up</a>
+  							<a class="dropdown-item" href="#">Forgot password?</a>
+            			</div>
+            		</ul>
+            	</form>
+            </div>
+        </nav>
+    </div>
+ </header><!-- /header -->
+		<!--
 		<div class="container">
 
 		</div>
-
+		<div id="login">
+  			<form class="px-4 py-3">
+    			<div class="form-group">
+      				<label for="exampleDropdownFormEmail1">Email address</label>
+      				<input type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="email@example.com">
+    			</div>
+    			<div class="form-group">
+      				<label for="exampleDropdownFormPassword1">Password</label>
+      				<input type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Password">
+    			</div>
+    			<div class="form-check">
+     				<input type="checkbox" class="form-check-input" id="dropdownCheck">
+	      			<label class="form-check-label" for="dropdownCheck">Remember me</label>
+    			</div>
+	    		<button type="submit" class="btn-primary">Sign in</button>
+	  		</form>
+  			<div class="dropdown-divider"></div>
+  			<a class="dropdown-item" href="#">New around here? Sign up</a>
+  			<a class="dropdown-item" href="#">Forgot password?</a>
+		</div>
+	-->
 		<div id="container">
 			<section id="bai-dang">
 				<div id="row">
@@ -179,10 +288,20 @@
 			</section>
 
 		</div>
-
+		<div id="backtotop">
+			<img id="backtotopimg" src="backtotop.png" onclick="backtotopFunc()">
+		</div>
 		
+		
+
 	</div>
 
+	<script type="text/javascript">
+		function backtotopFunc() {
+			document.body.scrollTop = 0;
+			document.documentElement.scrollTop = 0;
+		}
+	</script>
 
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
