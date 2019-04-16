@@ -7,6 +7,26 @@
 	<link href='https://fonts.googleapis.com/css?family=Krona One' rel='stylesheet'>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<style type="text/css">
+		header {
+  			position: fixed;
+  			top: 0;
+  			min-height: 75px;
+  			width: 100%;
+  			padding: 0px 100px;
+ 			display: flex;
+  			justify-content: space-around;
+  			align-items: center;
+  			background-color: black;
+		}
+
+		nav ul{
+			list-style: none;
+			width: 35vw;
+  			display: flex;
+  			flex-direction: row;
+  			justify-content: space-around;
+  			padding-bottom: 2px;
+		}
 		.btn {
   			padding: 0 20px;
   			height: 40px;
@@ -18,6 +38,34 @@
   			background: transparent;
   			cursor: pointer;
 		}
+
+		.nav-link {
+			color: white;
+			font-size: 15px;
+		}
+		.nav-link:hover {
+			color: red;
+		}
+		.title{
+			font-size: 12px;
+		}
+		.img-title{
+			max-width: 200px;
+			max-height: 200px;
+		}
+		.img-noi-bat{
+			max-width: 110px;
+			max-height: 80px;
+		}
+
+		.img-noi-bat-mid{
+			max-width: 700px;
+
+		}
+		.img-noi-bat-right{
+			max-width: 250px;
+		}
+
 		#papername {
 			font-family: 'Krona One';
 			font-size: 25px;
@@ -31,9 +79,9 @@
 		}
 
 		#container {
- 	 		max-width: 1000px;
-  			margin-top: 100px;
-  			margin-left: 50px;
+ 	 		max-width: 1300px;
+  			width: 100%;
+  			margin: 0px auto;
 		}
 		#login{
 			position: fixed;
@@ -51,46 +99,6 @@
 		#btnSearch:hover {
 			color: red;
 		}
-
-		.nav-link {
-			color: white;
-			font-size: 20px;
-		}
-		.nav-link:hover {
-			color: red;
-		}
-		.btn-primary {
-			width: 200px;
-			margin-left: 85px;
-			background-color: red;
-			border: none;
-		}
-		.btn-primary:hover {
-			background-color: #7c0000;
-		}
-
-		header {
-  			position: fixed;
-  			top: 0;
-  			min-height: 75px;
-  			width: 100%;
-  			padding: 0px 20px;
- 			display: flex;
-  			justify-content: space-around;
-  			align-items: center;
-  			background-color: black;
-  			z-index: 50;
-		}
-
-		nav ul{
-			list-style: none;
-			width: 35vw;
-  			display: flex;
-  			flex-direction: row;
-  			justify-content: space-around;
-  			padding-bottom: 2px;
-		}
-
 		#hero {
   			display: flex;
   			flex-direction: column;
@@ -101,9 +109,9 @@
   			margin-top: 50px;
 		}
 		#bai-dang{
-			margin-top: 100px;
 			border-bottom: 5px solid red;
 		}
+		
 		#row{
 			display: flex;
 			flex-direction: row;
@@ -117,15 +125,9 @@
 		}
 		#noi-bat{
 			height: auto;
-			width: 100%;
+			width: 800px;
 		}
-		.title{
-			font-size: 12px;
-		}
-		.img-title{
-			width: 200px;
-			height: 100%;
-		}
+		
 		#backtotop {
 			position: fixed;
 			right: 40px;
@@ -138,8 +140,23 @@
 		#backtotop:hover {
 			cursor: pointer;
 		}
-		.h5 {
-			background-color: #4C000000;
+		#bai-moi{
+			display: flex;
+			flex-direction: row;
+			margin-top: 100px;
+		}
+		#left-row{
+
+			max-width: 280px;
+			margin-right: 20px;
+		}
+		#row-mid{
+			margin-right: 20px;
+			max-width: 680px;
+		}
+		
+		#right-row{
+			max-width: 300px;
 		}
 
 		@media (max-width: 1000px) {
@@ -148,70 +165,179 @@
   			}
 		}
 		
+
+		
 	</style>
 </head>
 <body>
  	<div>
  		<header id="header">
- 			<div class="container-fluid">
+ 			<div id="container">
 	
-			<nav class="navbar navbar-expand-lg">
-	  
-	  			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-	    			<span class="navbar-toggler-icon"></span>
-	  			</button>
-				<div id="papername">dogenews</div>
-	  			<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-	  				&nbsp &nbsp &nbsp &nbsp
-	    			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-	      				<li class="nav-item active"><a class="nav-link" href="#">MOBILE <span class="sr-only">(current)</span></a></li>
-	      				<li class="nav-item"><a class="nav-link" href="#">TIN ICT</a></li>
-	      				<li class="nav-item"><a class="nav-link" href="#">INTERNET</a></li>
-	      				<li class="nav-item"><a class="nav-link" href="#">KHÁM PHÁ</a></li>      				
-	    			</ul>
-	    
-				    <form class="form-inline my-2 my-lg-0">
-				      	<input class="form-control mr-sm-2" type="search" placeholder="Search">
-				      	<button id="btnSearch" type="submit">Search &nbsp</button>
+				<nav class="navbar navbar-expand-lg">
+		  
+		  			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+		    			<span class="navbar-toggler-icon"></span>
+		  			</button>
+					<div id="papername">dogenews</div>
+		  			<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+		  				&nbsp &nbsp &nbsp &nbsp
+		    			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+		      				<li class="nav-item active"><a class="nav-link" href="#">MOBILE <span class="sr-only">(current)</span></a></li>
+		      				<li class="nav-item"><a class="nav-link" href="#">TIN ICT</a></li>
+		      				<li class="nav-item"><a class="nav-link" href="#">INTERNET</a></li>
+		      				<li class="nav-item"><a class="nav-link" href="#">KHÁM PHÁ</a></li>      				
+		    			</ul>
+		    
+					    <form class="form-inline my-2 my-lg-0">
+					      	<input class="form-control mr-sm-2" type="search" placeholder="Search">
+					      	<button id="btnSearch" type="submit">Search &nbsp</button>
 
-	            	</form>
-	            	<div>
-	            		<a href="#" data-toggle="dropdown"><i class="fa fa-user-circle" style="font-size:36px"></i></a>
-	            		<ul class="dropdown-menu dropdown-menu-right" role="menu">
-	            			<div class="col-lg-12"> 
-	                			<form class="px-4 py-3">
-	    							<div class="form-group">
-	      								<label for="exampleDropdownFormEmail1">Email address</label>
-	      								<input type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="email@example.com">
-	    							</div>
-	    							<div class="form-group">
-	      								<label for="exampleDropdownFormPassword1">Password</label>
-	      								<input type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Password">
-	    							</div>
-	    							<div class="form-check">
-	     								<input type="checkbox" class="form-check-input" id="dropdownCheck">
-		      							<label class="form-check-label" for="dropdownCheck">Remember me</label>
-		      							<button type="submit" class="btn-primary">Sign in</button>
-	    							</div>	
-		  						</form>
-	  							<div class="dropdown-divider"></div>
-	  							<a class="dropdown-item" href="#">New around here? Sign up</a>
-	  							<a class="dropdown-item" href="#">Forgot password?</a>
-	            			</div>
-	            		</ul>		
-            		</div>
-            		
-            	</div>
-        	</nav>
-    	</div>
- 	</header><!-- /header -->
+		            	</form>
+		            	<div>
+		            		<a href="#" data-toggle="dropdown"><i class="fa fa-user-circle" style="font-size:36px"></i></a>
+		            		<ul class="dropdown-menu dropdown-menu-right" role="menu">
+		            			<div class="col-lg-12"> 
+		                			<form class="px-4 py-3">
+		    							<div class="form-group">
+		      								<label for="exampleDropdownFormEmail1">Email address</label>
+		      								<input type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="email@example.com">
+		    							</div>
+		    							<div class="form-group">
+		      								<label for="exampleDropdownFormPassword1">Password</label>
+		      								<input type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Password">
+		    							</div>
+		    							<div class="form-check">
+		     								<input type="checkbox" class="form-check-input" id="dropdownCheck">
+			      							<label class="form-check-label" for="dropdownCheck">Remember me</label>
+		    							</div>
+			    						<button type="submit" class="btn-primary">Sign in</button>
+			  						</form>
+		  							<div class="dropdown-divider"></div>
+		  							<a class="dropdown-item" href="#">New around here? Sign up</a>
+		  							<a class="dropdown-item" href="#">Forgot password?</a>
+		            			</div>
+		            		</ul>		
+	            		</div>
+	            		
+	            	</div>
+	        	</nav>
+	    	</div>
+ 		</header><!-- /header -->
 
 		<div id="container">
+			<section id="bai-moi">
+				<div id="left-row">
+					<div id="row">
+						<img src="xiaomi.jpg" class="img-noi-bat">
+						<div>
+							Xiaomi trì hoãn phát hành máy giặt readmi 1A
+							
+						</div>
+					</div>
+					<div id="row">
+						<img src="xiaomi.jpg" class="img-noi-bat">
+						<div>
+							Xiaomi trì hoãn phát hành máy giặt readmi 1A
+							
+						</div>
+					</div>
+					<div id="row">
+						<img src="xiaomi.jpg" class="img-noi-bat">
+						<div>
+							Xiaomi trì hoãn phát hành máy giặt readmi 1A
+							
+						</div>
+					</div>
+					<div id="row">
+						<img src="xiaomi.jpg" class="img-noi-bat">
+						<div>
+							Xiaomi trì hoãn phát hành máy giặt readmi 1A
+							
+						</div>
+					</div>
+					<div id="row">
+						<img src="xiaomi.jpg" class="img-noi-bat">
+						<div class="text-left">
+							Xiaomi trì hoãn phát hành máy giặt readmi 1A
+							
+						</div>
+					</div>
+					<div id="row">
+						<img src="xiaomi.jpg" class="img-noi-bat">
+						<div class="text-left">
+							Xiaomi trì hoãn phát hành máy giặt readmi 1A
+							
+						</div>
+					</div>
+				</div>
+				<div>
+					<div id="row-mid">
+						<img src="xiaomi.jpg" class="img-noi-bat-mid">
+						<div id="text">
+							<h2>Xiaomi trì hoãn phát hành máy giặt readmi 1A</h2>
+							<p class="title">Đồ chơi số</p>
+							<p>Theo số liệu mới nhất từ CIPA (Hiệp hội các sản phẩm máy ảnh và hình ảnh), doanh số máy ảnh kỹ thuật số...</p>
+						</div>
+					</div>
+				</div>
+				<div id="right-row">
+					<div>
+						<img src="xiaomi.jpg" class="img-noi-bat-right">
+						<div>
+							Xiaomi trì hoãn phát hành máy giặt readmi 1A
+							
+						</div>
+					</div>
+					<div>
+						<img src="xiaomi.jpg" class="img-noi-bat-right">
+						<div>
+							Xiaomi trì hoãn phát hành máy giặt readmi 1A
+							
+						</div>
+					</div>
+					<div>
+						<img src="xiaomi.jpg" class="img-noi-bat-right">
+						<div>
+							Xiaomi trì hoãn phát hành máy giặt readmi 1A
+							
+						</div>
+					</div>
+				</div>
+			</section>
+			<section id="bai-dang">
+				<div id="row">
+					<img src="xiaomi.jpg" class="img-title">
+					<div id="text">
+						<h2>Xiaomi trì hoãn phát hành máy giặt readmi 1A</h2>
+						<p class="title">Đồ chơi số</p>
+						<p>Xiaomi chưa nói rõ bao giờ thì Redmi 1A sẽ được phát hành chính thức.</p>
+					</div>
+				</div>
+				<div id="row">
+					<img src="hack.jpg" class="img-title">
+					<div id="text">
+						<h2>Con người có thể "hack" tuổi thọ để trở thành bất tử hay không?</h2>
+						<p class="title">Tin ICT</p>
+						<p>Khi giới công nghệ mới chỉ vừa tiếp cận khái niệm 8K không lâu thì Sony đã lại khiến chúng ta phải ngỡ...</p>
+					</div>
+				</div>
+				<div id="row">
+					<img src="mayanh.jpg" class="img-title">
+					<div id="text">
+						<h2>Doanh số máy ảnh toàn cầu giảm xuống dưới 1 triệu thiết bị trong năm 2019</h2>
+						<p class="title">Đồ chơi số</p>
+						<p>Theo số liệu mới nhất từ CIPA (Hiệp hội các sản phẩm máy ảnh và hình ảnh), doanh số máy ảnh kỹ thuật số...</p>
+					</div>
+				</div>
+			</section>
+
 			<section id="noi-bat">
+				<p style="font-size: 20px;">ĐÁNG CHÚ Ý</p>
 				<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
   					<ol class="carousel-indicators">
     					<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-    					<li data-target="#carouselExampleIndicators" data-slide-to="1"></mli>
+    					<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
    			 			<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
   					</ol>
   					<div class="carousel-inner">
@@ -245,33 +371,6 @@
  					 </a>
 				</div>
 			</section>
-			<section id="bai-dang">
-				<div id="row">
-					<img src="xiaomi.jpg" class="img-title">
-					<div id="text">
-						<h2>Xiaomi trì hoãn phát hành máy giặt readmi 1A</h2>
-						<p class="title">Đồ chơi số</p>
-						<p>Xiaomi chưa nói rõ bao giờ thì Redmi 1A sẽ được phát hành chính thức.</p>
-					</div>
-				</div>
-				<div id="row">
-					<img src="hack.jpg" class="img-title">
-					<div id="text">
-						<h2>Con người có thể "hack" tuổi thọ để trở thành bất tử hay không?</h2>
-						<p class="title">Tin ICT</p>
-						<p>Khi giới công nghệ mới chỉ vừa tiếp cận khái niệm 8K không lâu thì Sony đã lại khiến chúng ta phải ngỡ...</p>
-					</div>
-				</div>
-				<div id="row">
-					<img src="mayanh.jpg" class="img-title">
-					<div id="text">
-						<h2>Doanh số máy ảnh toàn cầu giảm xuống dưới 1 triệu thiết bị trong năm 2019</h2>
-						<p class="title">Đồ chơi số</p>
-						<p>Theo số liệu mới nhất từ CIPA (Hiệp hội các sản phẩm máy ảnh và hình ảnh), doanh số máy ảnh kỹ thuật số...</p>
-					</div>
-				</div>
-			</section>
-
 
 		</div>
 		<div id="backtotop">
