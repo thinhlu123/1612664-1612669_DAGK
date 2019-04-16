@@ -32,9 +32,8 @@
 
 		#container {
  	 		max-width: 1000px;
-  			width: 70%;
-  			margin: 100px auto;
-
+  			margin-top: 100px;
+  			margin-left: 50px;
 		}
 		#login{
 			position: fixed;
@@ -60,6 +59,15 @@
 		.nav-link:hover {
 			color: red;
 		}
+		.btn-primary {
+			width: 200px;
+			margin-left: 85px;
+			background-color: red;
+			border: none;
+		}
+		.btn-primary:hover {
+			background-color: #7c0000;
+		}
 
 		header {
   			position: fixed;
@@ -71,6 +79,7 @@
   			justify-content: space-around;
   			align-items: center;
   			background-color: black;
+  			z-index: 50;
 		}
 
 		nav ul{
@@ -81,7 +90,6 @@
   			justify-content: space-around;
   			padding-bottom: 2px;
 		}
-
 
 		#hero {
   			display: flex;
@@ -109,7 +117,7 @@
 		}
 		#noi-bat{
 			height: auto;
-			width: 800px;
+			width: 100%;
 		}
 		.title{
 			font-size: 12px;
@@ -130,13 +138,15 @@
 		#backtotop:hover {
 			cursor: pointer;
 		}
+		.h5 {
+			background-color: #4C000000;
+		}
 
 		@media (max-width: 1000px) {
   			header {
     			flex-wrap: wrap;
   			}
 		}
-		
 		
 	</style>
 </head>
@@ -181,8 +191,8 @@
 	    							<div class="form-check">
 	     								<input type="checkbox" class="form-check-input" id="dropdownCheck">
 		      							<label class="form-check-label" for="dropdownCheck">Remember me</label>
-	    							</div>
-		    						<button type="submit" class="btn-primary">Sign in</button>
+		      							<button type="submit" class="btn-primary">Sign in</button>
+	    							</div>	
 		  						</form>
 	  							<div class="dropdown-divider"></div>
 	  							<a class="dropdown-item" href="#">New around here? Sign up</a>
@@ -197,39 +207,11 @@
  	</header><!-- /header -->
 
 		<div id="container">
-			<section id="bai-dang">
-				<div id="row">
-					<img src="xiaomi.jpg" class="img-title">
-					<div id="text">
-						<h2>Xiaomi trì hoãn phát hành máy giặt readmi 1A</h2>
-						<p class="title">Đồ chơi số</p>
-						<p>Xiaomi chưa nói rõ bao giờ thì Redmi 1A sẽ được phát hành chính thức.</p>
-					</div>
-				</div>
-				<div id="row">
-					<img src="hack.jpg" class="img-title">
-					<div id="text">
-						<h2>Con người có thể "hack" tuổi thọ để trở thành bất tử hay không?</h2>
-						<p class="title">Tin ICT</p>
-						<p>Khi giới công nghệ mới chỉ vừa tiếp cận khái niệm 8K không lâu thì Sony đã lại khiến chúng ta phải ngỡ...</p>
-					</div>
-				</div>
-				<div id="row">
-					<img src="mayanh.jpg" class="img-title">
-					<div id="text">
-						<h2>Doanh số máy ảnh toàn cầu giảm xuống dưới 1 triệu thiết bị trong năm 2019</h2>
-						<p class="title">Đồ chơi số</p>
-						<p>Theo số liệu mới nhất từ CIPA (Hiệp hội các sản phẩm máy ảnh và hình ảnh), doanh số máy ảnh kỹ thuật số...</p>
-					</div>
-				</div>
-			</section>
-
 			<section id="noi-bat">
-				<p style="font-size: 20px;">ĐÁNG CHÚ Ý</p>
 				<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
   					<ol class="carousel-indicators">
     					<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-    					<li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    					<li data-target="#carouselExampleIndicators" data-slide-to="1"></mli>
    			 			<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
   					</ol>
   					<div class="carousel-inner">
@@ -263,6 +245,33 @@
  					 </a>
 				</div>
 			</section>
+			<section id="bai-dang">
+				<div id="row">
+					<img src="xiaomi.jpg" class="img-title">
+					<div id="text">
+						<h2>Xiaomi trì hoãn phát hành máy giặt readmi 1A</h2>
+						<p class="title">Đồ chơi số</p>
+						<p>Xiaomi chưa nói rõ bao giờ thì Redmi 1A sẽ được phát hành chính thức.</p>
+					</div>
+				</div>
+				<div id="row">
+					<img src="hack.jpg" class="img-title">
+					<div id="text">
+						<h2>Con người có thể "hack" tuổi thọ để trở thành bất tử hay không?</h2>
+						<p class="title">Tin ICT</p>
+						<p>Khi giới công nghệ mới chỉ vừa tiếp cận khái niệm 8K không lâu thì Sony đã lại khiến chúng ta phải ngỡ...</p>
+					</div>
+				</div>
+				<div id="row">
+					<img src="mayanh.jpg" class="img-title">
+					<div id="text">
+						<h2>Doanh số máy ảnh toàn cầu giảm xuống dưới 1 triệu thiết bị trong năm 2019</h2>
+						<p class="title">Đồ chơi số</p>
+						<p>Theo số liệu mới nhất từ CIPA (Hiệp hội các sản phẩm máy ảnh và hình ảnh), doanh số máy ảnh kỹ thuật số...</p>
+					</div>
+				</div>
+			</section>
+
 
 		</div>
 		<div id="backtotop">
