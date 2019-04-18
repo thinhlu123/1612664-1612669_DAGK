@@ -51,20 +51,31 @@
 			font-size: 12px;
 		}
 		.img-title{
-			max-width: 400px;
+			width: 350px;
+			height: 200px;
+			margin-top: 20px;
 		}
 		.img-noi-bat{
 			max-width: 110px;
 			max-height: 80px;
+		}
+		.img-noi-bat:hover {
+			cursor: pointer;
 		}
 
 		.img-noi-bat-mid{
 			max-width: 700px;
 
 		}
+		.img-noi-bat-mid:hover {
+			cursor: pointer;
+		}
 		.img-noi-bat-right{
 			max-width: 250px;
-			max-height: 145px;
+			max-height: 140px;
+		}
+		.img-noi-bat-right{
+			cursor: pointer;
 		}
 		.chuyen-muc-title {
 			font-family: monospace;
@@ -146,19 +157,20 @@
   			margin-top: 50px;
 		}
 		#bai-dang{
+			margin-top: 20px;
 			border-bottom: 5px solid red;
 		}
 		
 		#row{
 			display: flex;
 			flex-direction: row;
-			border-bottom: 3px solid gray;
-			margin-top: 10px;
 		}
 		#text{
 			display: flex;
 			flex-direction: column;
+			max-width: 700px;
 			margin-left: 10px;
+			margin-top: 10px;
 		}
 		#noi-bat{
 			height: auto;
@@ -183,13 +195,13 @@
 			margin-top: 100px;
 		}
 		#left-row{
-
 			max-width: 280px;
 			margin-right: 20px;
 		}
 		#row-mid{
 			margin-right: 20px;
 			max-width: 680px;
+			max-height: 500px;
 		}
 		
 		#right-row{
@@ -229,7 +241,52 @@
 			width: 30px;
 			height: 30px;
 		}
-
+		#left-title {
+			margin-left: 5px; 
+			font-size: 16px; 
+			max-width: 280px; 
+			text-align: justify;
+			color: gray;
+		}
+		#left-title:hover {
+			text-decoration: none;
+			color: black;
+		}
+		#date {
+			font-size: 12px;
+			color: gray;
+		}
+		#tag {
+			margin-left: 5px;
+			font-size: 12px;
+			color: black;
+		}
+		#tag:hover {
+			text-decoration: none;
+		}
+		#right-title {
+			font-size: 16px;
+			max-width: 250px;
+			text-align: justify;
+			color: gray;
+		}
+		#right-title:hover {
+			text-decoration: none;
+			color: black;
+		}
+		#right-column {
+			display: flex;
+			flex-direction: column;
+		}
+		#bai-dang-text {
+			font-size: 35px;
+			font-weight: bold;
+			color: black;
+		}
+		#bai-dang-text:hover {
+			text-decoration: none;
+			color: #2d2d2d;
+		}
 		@media (max-width: 1000px) {
   			header {
     			flex-wrap: wrap;
@@ -260,7 +317,7 @@
 		      				<li class="nav-item"><a class="nav-link" href="#">Kinh doanh</a></li>      	
 		      				<li class="nav-item"><a class="nav-link" href="#">Công nghệ</a></li>
 		      				<li class="nav-item"><a class="nav-link" href="#">Thể thao</a></li>
-		      				<li class="nav-item"><a class="nav-link" href="#" data-toggle="dropdown">...</a>
+		      				<li class="nav-item"><a class="nav-link" href="#" data-toggle="dropdown" style="font-weight: bolder;">...</a>
         						<div class="dropdown-menu w-100" style="background: #f1f1f1; margin-top: 4px;">
         							<div class="dropdown-content">
         								<section id="categoryf">
@@ -349,45 +406,44 @@
 				<div id="left-row">
 					<div id="row">
 						<img src="xiaomi.jpg" class="img-noi-bat">
-						<div>
+						<a href="#" id="left-title">
 							Xiaomi trì hoãn phát hành máy giặt readmi 1A
-							
-						</div>
+						</a>
 					</div>
+					<div class="dropdown-divider" style="border-width: 3px; border-color: gray;"></div>
 					<div id="row">
 						<img src="xiaomi.jpg" class="img-noi-bat">
-						<div>
-							Xiaomi trì hoãn phát hành máy giặt readmi 1A
-							
-						</div>
+						<a href="#" id="left-title">
+							Xiaomi trì hoãn phát hành máy giặt readmi 1A							
+						</a>
 					</div>
+					<div class="dropdown-divider" style="border-width: 3px; border-color: gray;"></div>
 					<div id="row">
 						<img src="xiaomi.jpg" class="img-noi-bat">
-						<div>
-							Xiaomi trì hoãn phát hành máy giặt readmi 1A
-							
-						</div>
+						<a href="#" id="left-title">
+							Xiaomi trì hoãn phát hành máy giặt readmi 1A							
+						</a>
 					</div>
+					<div class="dropdown-divider" style="border-width: 3px; border-color: gray;"></div>
 					<div id="row">
 						<img src="xiaomi.jpg" class="img-noi-bat">
-						<div>
-							Xiaomi trì hoãn phát hành máy giặt readmi 1A
-							
-						</div>
+						<a href="#" id="left-title">
+							Xiaomi trì hoãn phát hành máy giặt readmi 1A							
+						</a>
 					</div>
+					<div class="dropdown-divider" style="border-width: 3px; border-color: gray;"></div>
 					<div id="row">
 						<img src="xiaomi.jpg" class="img-noi-bat">
-						<div class="text-left">
-							Xiaomi trì hoãn phát hành máy giặt readmi 1A
-							
-						</div>
+						<a href="#" id="left-title">
+							Xiaomi trì hoãn phát hành máy giặt readmi 1A							
+						</a>
 					</div>
+					<div class="dropdown-divider" style="border-width: 3px; border-color: gray;"></div>
 					<div id="row">
 						<img src="xiaomi.jpg" class="img-noi-bat">
-						<div class="text-left">
-							Xiaomi trì hoãn phát hành máy giặt readmi 1A
-							
-						</div>
+						<a href="#" id="left-title">
+							Xiaomi trì hoãn phát hành máy giặt readmi 1A							
+						</a>
 					</div>
 				</div>
 				<div>
@@ -395,32 +451,31 @@
 						<img src="xiaomi.jpg" class="img-noi-bat-mid">
 						<div id="text">
 							<h2>Xiaomi trì hoãn phát hành máy giặt readmi 1A</h2>
-							<p class="title">Đồ chơi số</p>
+							<div style="display: inline-block;">
+								<div id="date">18/04/2019<a href="#" id="tag">Đồ chơi số</a></div>
+							</div>
 							<p>Theo số liệu mới nhất từ CIPA (Hiệp hội các sản phẩm máy ảnh và hình ảnh), doanh số máy ảnh kỹ thuật số...</p>
 						</div>
 					</div>
 				</div>
 				<div id="right-row">
-					<div>
+					<div id="right-column">
 						<img src="xiaomi.jpg" class="img-noi-bat-right">
-						<div>
-							Xiaomi trì hoãn phát hành máy giặt readmi 1A
-							
-						</div>
+						<a href="#" id="right-title">
+							Xiaomi trì hoãn phát hành máy giặt readmi 1A							
+						</a>
 					</div>
-					<div>
+					<div id="right-column">
 						<img src="xiaomi.jpg" class="img-noi-bat-right">
-						<div>
-							Xiaomi trì hoãn phát hành máy giặt readmi 1A
-							
-						</div>
+						<a href="#" id="right-title">
+							Xiaomi trì hoãn phát hành máy giặt readmi 1A							
+						</a>
 					</div>
-					<div>
+					<div id="right-column">
 						<img src="xiaomi.jpg" class="img-noi-bat-right">
-						<div>
-							Xiaomi trì hoãn phát hành máy giặt readmi 1A
-							
-						</div>
+						<a href="#" id="right-title">
+							Xiaomi trì hoãn phát hành máy giặt readmi 1A							
+						</a>
 					</div>
 				</div>
 			</section>
@@ -428,24 +483,24 @@
 				<div id="row">
 					<img src="xiaomi.jpg" class="img-title">
 					<div id="text">
-						<h2>Xiaomi trì hoãn phát hành máy giặt readmi 1A</h2>
-						<p class="title">Đồ chơi số</p>
-						<p>Xiaomi chưa nói rõ bao giờ thì Redmi 1A sẽ được phát hành chính thức.</p>
+						<a href="#" id="bai-dang-text">Xiaomi trì hoãn phát hành máy giặt readmi 1A</a>
+						<div id="date">18/04/2019<a href="#" id="tag">Đồ chơi số</a></div>
+						<p>Xiaomi chưa nói rõ bao giờ thì Redmi 1A sẽ được phát hành chính thức...</p>
 					</div>
 				</div>
 				<div id="row">
 					<img src="hack.jpg" class="img-title">
 					<div id="text">
-						<h2>Con người có thể "hack" tuổi thọ để trở thành bất tử hay không?</h2>
-						<p class="title">Tin ICT</p>
+						<a href="#" id="bai-dang-text">Con người có thể "hack" tuổi thọ để trở thành bất tử hay không?</a>
+						<div id="date">18/04/2019<a href="#" id="tag">Tin ICT</a></div>
 						<p>Khi giới công nghệ mới chỉ vừa tiếp cận khái niệm 8K không lâu thì Sony đã lại khiến chúng ta phải ngỡ...</p>
 					</div>
 				</div>
 				<div id="row">
 					<img src="mayanh.jpg" class="img-title">
 					<div id="text">
-						<h2>Doanh số máy ảnh toàn cầu giảm xuống dưới 1 triệu thiết bị trong năm 2019</h2>
-						<p class="title">Đồ chơi số</p>
+						<a href="#" id="bai-dang-text">Doanh số máy ảnh toàn cầu giảm xuống dưới 1 triệu thiết bị trong năm 2019</a>
+						<div id="date">18/04/2019<a href="#" id="tag">Đồ chơi số</a></div>
 						<p>Theo số liệu mới nhất từ CIPA (Hiệp hội các sản phẩm máy ảnh và hình ảnh), doanh số máy ảnh kỹ thuật số...</p>
 					</div>
 				</div>
