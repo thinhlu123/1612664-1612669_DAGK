@@ -51,8 +51,7 @@
 			font-size: 12px;
 		}
 		.img-title{
-			max-width: 200px;
-			max-height: 200px;
+			max-width: 400px;
 		}
 		.img-noi-bat{
 			max-width: 110px;
@@ -65,6 +64,7 @@
 		}
 		.img-noi-bat-right{
 			max-width: 250px;
+			max-height: 145px;
 		}
 		.chuyen-muc-title {
 			font-family: monospace;
@@ -97,6 +97,10 @@
 		a.txttitle:hover {
 			text-decoration: none;
 			color: #7c0000;
+		}
+		.btn-primary {
+			width: 100px;
+			margin-left: 180px;
 		}
 
 		#papername {
@@ -203,7 +207,29 @@
 			display: flex;
 			flex-direction: row;
 		}
-		
+		#menutitle {
+			color: black;
+		}
+		#menutitle:hover {
+			text-decoration: none;
+			color: #7c0000;
+		}
+		#category {
+			color: gray;
+		}
+		#category:hover {
+			text-decoration: none;
+			color: #7c0000;
+		}
+		#categoryf {
+			display: flex;
+			justify-content: space-around;
+		}
+		#menuicon {
+			width: 30px;
+			height: 30px;
+		}
+
 		@media (max-width: 1000px) {
   			header {
     			flex-wrap: wrap;
@@ -228,12 +254,60 @@
 		  			<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
 		  				&nbsp &nbsp &nbsp &nbsp
 		    			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-		      				<li class="nav-item active"><a class="nav-link" href="#">MOBILE <span class="sr-only">(current)</span></a></li>
-		      				<li class="nav-item"><a class="nav-link" href="#">TIN ICT</a></li>
-		      				<li class="nav-item"><a class="nav-link" href="#">INTERNET</a></li>
-		      				<li class="nav-item"><a class="nav-link" href="#">KHÁM PHÁ</a></li>      				
+		      				<li class="nav-item active"><a class="nav-link" href="#">Thời sự <span class="sr-only">(current)</span></a></li>
+		      				<li class="nav-item"><a class="nav-link" href="#">Pháp luật</a></li>
+		      				<li class="nav-item"><a class="nav-link" href="#">Thế giới</a></li>
+		      				<li class="nav-item"><a class="nav-link" href="#">Kinh doanh</a></li>      	
+		      				<li class="nav-item"><a class="nav-link" href="#">Công nghệ</a></li>
+		      				<li class="nav-item"><a class="nav-link" href="#">Thể thao</a></li>
+		      				<li class="nav-item"><a class="nav-link" href="#" data-toggle="dropdown">...</a>
+        						<div class="dropdown-menu w-100" style="background: #f1f1f1; margin-top: 4px;">
+        							<div class="dropdown-content">
+        								<section id="categoryf">
+     									<div class="row">
+        									<div class="column">
+          										<a href="#" id="menutitle">Thời sự</a>
+          											<div class="dropdown-divider" style="border-color: gray; border-width: 2px; width: 220px;"></div>
+          											<a href="#" id="category">Chính trị</a>
+          											<a href="#" id="category">Giao thông</a>
+          											<a href="#" id="category">Đô thị</a>
+       										</div>
+       										<div class="column">
+          										<a href="#" id="menutitle">Pháp luật</a>
+          											<div class="dropdown-divider" style="border-color: gray; border-width: 2px; width: 220px;"></div>
+          											<a href="#" id="category">Pháp đình</a>
+          											<a href="#" id="category">Vụ án</a>
+       										</div>
+       										<div class="column">
+          										<a href="#" id="menutitle">Thế giới</a>
+          											<div class="dropdown-divider" style="border-color: gray; border-width: 2px; width: 220px;"></div>
+          											<a href="#" id="category">Quân sự</a>
+          											<a href="#" id="category">Tư liệu</a>
+          											<a href="#" id="category">Phân tích</a>
+       										</div>
+       										<div class="column">
+          										<a href="#" id="menutitle">Kinh doanh</a>
+          											<div class="dropdown-divider" style="border-color: gray; border-width: 2px; width: 220px;"></div>
+          											<a href="#" id="category">Bất động sản</a>
+          											<a href="#" id="category">Hàng không</a>
+          											<a href="#" id="category">Tài chính</a>
+          											<a href="#" id="category">Tiêu dùng</a>
+          											<a href="#" id="category">Doanh nhân</a>
+       										</div>
+       										<div class="column">
+          										<a href="#" id="menutitle">Công nghệ</a>
+          											<div class="dropdown-divider" style="border-color: gray; border-width: 2px; width: 220px;"></div>
+          											<a href="#" id="category">Mobile</a>
+          											<a href="#" id="category">AI</a>
+          											<a href="#" id="category">SmartHome</a>
+          											<a href="#" id="category">Startup</a>
+       										</div>
+     									</div>
+    								</div>
+       							</div>
+       						</section>
+      						</li>
 		    			</ul>
-		    
 					    <form class="form-inline my-2 my-lg-0">
 					      	<input class="form-control mr-sm-2" type="search" placeholder="Search">
 					      	<button id="btnSearch" type="submit">Search &nbsp</button>
@@ -255,10 +329,10 @@
 		    							<div class="form-check">
 		     								<input type="checkbox" class="form-check-input" id="dropdownCheck">
 			      							<label class="form-check-label" for="dropdownCheck">Remember me</label>
+			      							<button type="submit" class="btn-primary">Sign in</button>
 		    							</div>
-			    						<button type="submit" class="btn-primary">Sign in</button>
 			  						</form>
-		  							<div class="dropdown-divider"></div>
+			  						<div class="dropdown-divider"></div>
 		  							<a class="dropdown-item" href="#">New around here? Sign up</a>
 		  							<a class="dropdown-item" href="#">Forgot password?</a>
 		            			</div>
