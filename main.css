@@ -87,6 +87,7 @@
 			display: flex;
 			flex-direction: column;
 			margin-left: 20px;
+			margin-top: 10px;
 		}
 		a.txttitle {
 			display: inline-block;
@@ -220,7 +221,6 @@
 		}
 		#menutitle:hover {
 			text-decoration: none;
-			color: #7c0000;
 		}
 		#category {
 			color: gray;
@@ -239,7 +239,7 @@
 		}
 		#left-title {
 			margin-left: 5px; 
-			font-size: 16px; 
+			font-size: 15px; 
 			max-width: 280px; 
 			text-align: justify;
 			color: gray;
@@ -247,6 +247,15 @@
 		#left-title:hover {
 			text-decoration: none;
 			color: black;
+		}
+		#row-mid-title {
+			font-size: 32px;
+			color: black;
+			font-weight: bold;
+			text-align: justify;
+		}
+		#row-mid-title:hover {
+			text-decoration: none;
 		}
 		#date {
 			font-size: 12px;
