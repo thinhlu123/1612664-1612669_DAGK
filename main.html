@@ -3,304 +3,11 @@
 <head>
 	<title>News</title>
 	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<link href='https://fonts.googleapis.com/css?family=Krona One' rel='stylesheet'>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<style type="text/css">
-		header {
-  			position: fixed;
-  			top: 0;
-  			min-height: 75px;
-  			width: 100%;
-  			padding: 0px 100px;
- 			display: flex;
-  			justify-content: space-around;
-  			align-items: center;
-  			background-color: black;
-  			z-index: 50;
-		}
-
-		nav ul{
-			list-style: none;
-			width: 35vw;
-  			display: flex;
-  			flex-direction: row;
-  			justify-content: space-around;
-  			padding-bottom: 2px;
-		}
-		.btn {
-  			padding: 0 20px;
-  			height: 40px;
-  			font-size: 1em;
-  			font-weight: 900;
-  			text-transform: uppercase;
-  			border: 3px black solid;
-  			border-radius: 2px;
-  			background: transparent;
-  			cursor: pointer;
-		}
-
-		.nav-link {
-			color: white;
-			font-size: 15px;
-		}
-		.nav-link:hover {
-			color: red;
-		}
-		.title{
-			font-size: 12px;
-		}
-		.img-title{
-			width: 350px;
-			height: 200px;
-			margin-top: 20px;
-		}
-		.img-noi-bat{
-			max-width: 110px;
-			max-height: 80px;
-		}
-		.img-noi-bat:hover {
-			cursor: pointer;
-		}
-
-		.img-noi-bat-mid{
-			width: 680px;
-			height: 400px;
-		}
-		.img-noi-bat-mid:hover {
-			cursor: pointer;
-		}
-		.img-noi-bat-right{
-			max-width: 250px;
-			max-height: 140px;
-		}
-		.img-noi-bat-right{
-			cursor: pointer;
-		}
-		.chuyen-muc-title {
-			font-family: monospace;
-			font-size: 35px;
-			color: black;
-			margin-left: 10px;
-		}
-		.chuyen-muc-title:hover {
-			text-decoration: none;
-			color: black;
-		}
-		.mark{
-			font-size: 35px;
-			font-weight: bolder;
-			color: #7c0000;
-		}
-		.column{
-			display: flex;
-			flex-direction: column;
-			margin-left: 20px;
-		}
-		a.txttitle {
-			display: inline-block;
-			font-size: 20;
-			font-family: "Times New Roman";
-			color: gray;
-			max-width: 300px;
-			text-align: justify;
-		}
-		a.txttitle:hover {
-			text-decoration: none;
-			color: #7c0000;
-		}
-		.btn-primary {
-			width: 100px;
-			margin-left: 180px;
-		}
-		.d-block {
-			width: 800px;
-			height: 600px;
-		}
-
-		#papername {
-			font-family: 'Krona One';
-			font-size: 25px;
-			color: white;
-			border-bottom-style: inset;
-			border-bottom-color: red;
-			border-bottom-width: 150%;
-		}
-		#papername:hover {
-			cursor: pointer;
-		}
-
-		#container {
- 	 		max-width: 1300px;
-  			width: 100%;
-  			margin: 0px auto;
-		}
-		#login{
-			position: fixed;
-			right: 0;
-			margin-right: 100px;
-		}
-		
-		#btnSearch {
-			background: transparent;
-			color: white;
-			border: none;
-			font-family: "Times New Roman";
-			font-size: 20px;
-		}
-		#btnSearch:hover {
-			color: red;
-		}
-		#hero {
-  			display: flex;
-  			flex-direction: column;
-  			align-items: center;
-  			justify-content: center;
-  			text-align: center;
-  			height: 200px;
-  			margin-top: 50px;
-		}
-		#bai-dang{
-			margin-top: 20px;
-			border-bottom: 5px solid red;
-		}
-		
-		#row{
-			display: flex;
-			flex-direction: row;
-		}
-		#text{
-			display: flex;
-			flex-direction: column;
-			max-width: 700px;
-			margin-left: 10px;
-			margin-top: 10px;
-		}
-		#noi-bat{
-			height: auto;
-			width: 800px;
-		}
-		
-		#backtotop {
-			position: fixed;
-			right: 40px;
-			bottom: 40px;
-		}
-		#backtotopimg {
-			width: 40px;
-			height: 40px;
-		}
-		#backtotop:hover {
-			cursor: pointer;
-		}
-		#bai-moi{
-			display: flex;
-			flex-direction: row;
-			margin-top: 100px;
-		}
-		#left-row{
-			max-width: 280px;
-			margin-right: 20px;
-		}
-		#row-mid{
-			margin-right: 20px;
-			max-width: 680px;
-			max-height: 500px;
-		}
-		
-		#right-row{
-			max-width: 300px;
-		}
-		#img-category {
-			width: 300px;
-			height: 200px;
-			margin-top: 10px;
-		}
-		#img-category {
-			cursor: pointer;
-		}
-		
-		#chuyen-muc{
-			display: flex;
-			flex-direction: row;
-		}
-		#menutitle {
-			color: black;
-		}
-		#menutitle:hover {
-			text-decoration: none;
-			color: #7c0000;
-		}
-		#category {
-			color: gray;
-		}
-		#category:hover {
-			text-decoration: none;
-			color: #7c0000;
-		}
-		#categoryf {
-			display: flex;
-			justify-content: space-around;
-		}
-		#menuicon {
-			width: 30px;
-			height: 30px;
-		}
-		#left-title {
-			margin-left: 5px; 
-			font-size: 16px; 
-			max-width: 280px; 
-			text-align: justify;
-			color: gray;
-		}
-		#left-title:hover {
-			text-decoration: none;
-			color: black;
-		}
-		#date {
-			font-size: 12px;
-			color: gray;
-		}
-		#tag {
-			margin-left: 5px;
-			font-size: 12px;
-			color: black;
-		}
-		#tag:hover {
-			text-decoration: none;
-		}
-		#right-title {
-			font-size: 16px;
-			max-width: 250px;
-			text-align: justify;
-			color: gray;
-		}
-		#right-title:hover {
-			text-decoration: none;
-			color: black;
-		}
-		#right-column {
-			display: flex;
-			flex-direction: column;
-		}
-		#bai-dang-text {
-			font-size: 35px;
-			font-weight: bold;
-			color: black;
-		}
-		#bai-dang-text:hover {
-			text-decoration: none;
-			color: #2d2d2d;
-		}
-		@media (max-width: 1000px) {
-  			header {
-    			flex-wrap: wrap;
-  			}
-		}
-		
-
-		
-	</style>
+	<link rel="stylesheet" type="text/css" href="main.css">
 </head>
 <body>
  	<div>
@@ -407,62 +114,116 @@
  		</header><!-- /header -->
 
 		<div id="container">
-			<section id="bai-moi">
-				<div id="left-row">
-					<div id="row">
-						<img src="newest1.jpg" class="img-noi-bat">
-						<a href="#" id="left-title">
-							Việt Nam khiếu nại vì bị xếp vào nhóm ‘đội sổ’ ở SEA Games
-						</a>
-					</div>
-					<div class="dropdown-divider" style="border-width: 3px; border-color: gray;"></div>
-					<div id="row">
-						<img src="newest2.jpg" class="img-noi-bat">
-						<a href="#" id="left-title">
-							'Quái vật thể hình' Hàn Quốc xuất hiện tại Việt Nam						
-						</a>
-					</div>
-					<div class="dropdown-divider" style="border-width: 3px; border-color: gray;"></div>
-					<div id="row">
-						<img src="newest3.jpg" class="img-noi-bat">
-						<a href="#" id="left-title">
-							Bao nhiêu startup đã nhận được tiền từ Shark Tank?							
-						</a>
-					</div>
-					<div class="dropdown-divider" style="border-width: 3px; border-color: gray;"></div>
-					<div id="row">
-						<img src="newest4.jpg" class="img-noi-bat">
-						<a href="#" id="left-title">
-							Góp gần 1 tỷ USD cho Nhà thờ Đức Bà, các đại gia đối mặt chỉ trích						
-						</a>
-					</div>
-					<div class="dropdown-divider" style="border-width: 3px; border-color: gray;"></div>
-					<div id="row">
-						<img src="newest5.jpg" class="img-noi-bat">
-						<a href="#" id="left-title">
-							Ronaldo muốn sớm 'đánh bài chuồn' khỏi Juventus						
-						</a>
-					</div>
-					<div class="dropdown-divider" style="border-width: 3px; border-color: gray;"></div>
-					<div id="row">
-						<img src="newest6.jpg" class="img-noi-bat">
-						<a href="#" id="left-title">
-							Cầu thủ Đỗ Hùng Dũng tung ảnh cưới lãng mạn, thông báo ngày kết hôn						
-						</a>
-					</div>
+			<div id="bai-moi">
+				<div class="mycol-3">
+					<ul>
+						<li id="row"><img src="newest1.jpg" class="img-noi-bat">
+							<a href="#" id="left-title">
+								Việt Nam khiếu nại vì bị xếp vào nhóm ‘đội sổ’ ở SEA Games
+							</a></li>
+						<li id="row"><img src="newest2.jpg" class="img-noi-bat">
+							<a href="#" id="left-title">
+								'Quái vật thể hình' Hàn Quốc xuất hiện tại Việt Nam						
+							</a></li>
+						<li id="row"><img src="newest3.jpg" class="img-noi-bat">
+							<a href="#" id="left-title">
+								Bao nhiêu startup đã nhận được tiền từ Shark Tank?							
+							</a></li>
+						<li id="row"><img src="newest4.jpg" class="img-noi-bat">
+							<a href="#" id="left-title">
+								Góp gần 1 tỷ USD cho Nhà thờ Đức Bà, các đại gia đối mặt chỉ trích						
+							</a></li>
+						<li id="row"><img src="newest5.jpg" class="img-noi-bat">
+							<a href="#" id="left-title">
+								Ronaldo muốn sớm 'đánh bài chuồn' khỏi Juventus</a></li>
+						<li id="row"><img src="newest6.jpg" class="img-noi-bat">
+							<a href="#" id="left-title">
+								Cầu thủ Đỗ Hùng Dũng tung ảnh cưới lãng mạn, thông báo ngày kết hôn						
+							</a></li>
+					</ul>
 				</div>
-				<div>
-					<div id="row-mid">
-						<img src="newest7.jpg" class="img-noi-bat-mid">
-						<div id="text">
-							<h2>Chánh văn phòng Sở GD&ĐT Sơn La: 'Tôi không biết danh sách nào cả'</h2>
-							<div style="display: inline-block;">
-								<div id="date">18/04/2019<a href="#" id="tag">TUYỂN SINH 2019</a></div>
+				<div class="mycol-6">
+					<img src="newest7.jpg" class="img-noi-bat-mid">
+							<div id="text">
+								<h2>Chánh văn phòng Sở GD&ĐT Sơn La: 'Tôi không biết danh sách nào cả'</h2>
+								<div style="display: inline-block;">
+									<div id="date">18/04/2019<a href="#" id="tag">TUYỂN SINH 2019</a></div>
+								</div>
+								<p>Chánh văn phòng Sở GD&ĐT Sơn La nói ông chỉ đọc thông tin về danh sách phụ huynh liên quan nâng điểm cho con trên báo chí, chứ không được nhận danh sách nào cả.</p>
 							</div>
-							<p>Chánh văn phòng Sở GD&ĐT Sơn La nói ông chỉ đọc thông tin về danh sách phụ huynh liên quan nâng điểm cho con trên báo chí, chứ không được nhận danh sách nào cả.</p>
+				</div>
+				<div class="mycol-3 right">
+					<ul>
+						<li id="right-column"><img src="newest8.jpg" class="img-noi-bat-right">
+						<a href="#" id="right-title">
+							Tổng bí thư, Chủ tịch nước gửi điện mừng lãnh đạo Triều Tiên							
+						</a></li>
+						<li id="right-column"><img src="newest9.jpg" class="img-noi-bat-right">
+						<a href="#" id="right-title">
+							2 bộ Giáo dục, Công an giải trình kín về gian lận điểm thi						
+						</a></li>
+						<li id="right-column"><img src="newest10.jpg" class="img-noi-bat-right">
+						<a href="#" id="right-title">
+							Thị trấn ‘dát’ 72.000 tấn kim cương ở Đức							
+						</a></li>
+					</ul>
+				</div>
+				<!--	<div id="left-row">
+						<div id="row">
+							<img src="newest1.jpg" class="img-noi-bat">
+							<a href="#" id="left-title">
+								Việt Nam khiếu nại vì bị xếp vào nhóm ‘đội sổ’ ở SEA Games
+							</a>
+						</div>
+						<div class="dropdown-divider" style="border-width: 3px; border-color: gray;"></div>
+						<div id="row">
+							<img src="newest2.jpg" class="img-noi-bat">
+							<a href="#" id="left-title">
+								'Quái vật thể hình' Hàn Quốc xuất hiện tại Việt Nam						
+							</a>
+						</div>
+						<div class="dropdown-divider" style="border-width: 3px; border-color: gray;"></div>
+						<div id="row">
+							<img src="newest3.jpg" class="img-noi-bat">
+							<a href="#" id="left-title">
+								Bao nhiêu startup đã nhận được tiền từ Shark Tank?							
+							</a>
+						</div>
+						<div class="dropdown-divider" style="border-width: 3px; border-color: gray;"></div>
+						<div id="row">
+							<img src="newest4.jpg" class="img-noi-bat">
+							<a href="#" id="left-title">
+								Góp gần 1 tỷ USD cho Nhà thờ Đức Bà, các đại gia đối mặt chỉ trích						
+							</a>
+						</div>
+						<div class="dropdown-divider" style="border-width: 3px; border-color: gray;"></div>
+						<div id="row">
+							<img src="newest5.jpg" class="img-noi-bat">
+							<a href="#" id="left-title">
+								Ronaldo muốn sớm 'đánh bài chuồn' khỏi Juventus						
+							</a>
+						</div>
+						<div class="dropdown-divider" style="border-width: 3px; border-color: gray;"></div>
+						<div id="row">
+							<img src="newest6.jpg" class="img-noi-bat">
+							<a href="#" id="left-title">
+								Cầu thủ Đỗ Hùng Dũng tung ảnh cưới lãng mạn, thông báo ngày kết hôn						
+							</a>
 						</div>
 					</div>
-				</div>
+					
+						<div id="row-mid">
+							<img src="newest7.jpg" class="img-noi-bat-mid">
+							<div id="text">
+								<h2>Chánh văn phòng Sở GD&ĐT Sơn La: 'Tôi không biết danh sách nào cả'</h2>
+								<div style="display: inline-block;">
+									<div id="date">18/04/2019<a href="#" id="tag">TUYỂN SINH 2019</a></div>
+								</div>
+								<p>Chánh văn phòng Sở GD&ĐT Sơn La nói ông chỉ đọc thông tin về danh sách phụ huynh liên quan nâng điểm cho con trên báo chí, chứ không được nhận danh sách nào cả.</p>
+							</div>
+						</div>
+					
+			
 				<div id="right-row">
 					<div id="right-column">
 						<img src="newest8.jpg" class="img-noi-bat-right">
@@ -483,7 +244,9 @@
 						</a>
 					</div>
 				</div>
-			</section>
+			-->
+			</div>
+
 			<section id="bai-dang">
 				<div id="row">
 					<img src="xiaomi.jpg" class="img-title">
