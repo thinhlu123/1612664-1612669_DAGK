@@ -291,7 +291,30 @@
 			text-decoration: none;
 			color: #2d2d2d;
 		}
+.center{
+	text-align: center;
+}
+.pagination {
+  display: inline-block;
+}
 
+.pagination a {
+  color: red;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color .3s;
+  border: 1px solid #ddd;
+  margin: 0 4px;
+}
+
+.pagination a.active {
+  background-color: red;
+  color: white;
+  border: 1px solid #4CAF50;
+}
+
+.pagination a:hover:not(.active) {background-color: #ddd;}
 * {
   box-sizing: border-box;
 }
