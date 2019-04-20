@@ -83,6 +83,7 @@
 			font-size: 35px;
 			font-weight: bolder;
 			color: #7c0000;
+			background: transparent;
 		}
 		.column{
 			display: flex;
@@ -110,6 +111,37 @@
 			width: 800px;
 			height: 600px;
 		}
+		h4 {
+			display: inline-block;
+			margin-left: 10px;
+		}
+		.center{
+	text-align: center;
+}
+.pagination {
+  display: inline-block;
+}
+
+.pagination a {
+  color: red;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color .3s;
+  border: 1px solid #ddd;
+  margin: 0 4px;
+}
+
+.pagination a.active {
+  background-color: red;
+  color: white;
+  border: 1px solid #4CAF50;
+}
+
+.pagination a:hover:not(.active) {background-color: #ddd;}
+* {
+  box-sizing: border-box;
+}
 
 		#papername {
 			font-family: 'Krona One';
@@ -155,7 +187,6 @@
 		}
 		#bai-dang{
 			margin-top: 20px;
-			border-bottom: 5px solid red;
 		}
 		
 		#row{
@@ -229,8 +260,8 @@
 			color: #7c0000;
 		}
 		#categoryf {
-			display: flex;
-			justify-content: space-around;
+			margin-left: 50px;
+			margin-right: 50px;
 		}
 		#menuicon {
 			width: 30px;
@@ -291,30 +322,7 @@
 			text-decoration: none;
 			color: #2d2d2d;
 		}
-.center{
-	text-align: center;
-}
-.pagination {
-  display: inline-block;
-}
 
-.pagination a {
-  color: red;
-  float: left;
-  padding: 8px 16px;
-  text-decoration: none;
-  transition: background-color .3s;
-  border: 1px solid #ddd;
-  margin: 0 4px;
-}
-
-.pagination a.active {
-  background-color: red;
-  color: white;
-  border: 1px solid #4CAF50;
-}
-
-.pagination a:hover:not(.active) {background-color: #ddd;}
 * {
   box-sizing: border-box;
 }
