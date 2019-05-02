@@ -72,3 +72,7 @@ add-prd a{
 #title-admin{
 	margin-top: 100px;
 }
+.btn-action{
+	border-radius: 5px;
+	margin-left: 5px;
+}

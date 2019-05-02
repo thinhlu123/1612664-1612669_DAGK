@@ -9,6 +9,7 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="main.css">
 	<link rel="stylesheet" type="text/css" href="add-post.css">
+	<script src="ckeditor/ckeditor.js"></script>
 </head>
 <body>
 	<div>
@@ -24,98 +25,8 @@
 		  			<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
 		  				&nbsp &nbsp &nbsp &nbsp
 		    			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-		      				<li class="nav-item active"><a class="nav-link" href="#">Thời sự <span class="sr-only">(current)</span></a></li>
-		      				<li class="nav-item"><a class="nav-link" href="#">Pháp luật</a></li>
-		      				<li class="nav-item"><a class="nav-link" href="#">Thế giới</a></li>
-		      				<li class="nav-item"><a class="nav-link" href="#">Kinh doanh</a></li>      	
-		      				<li class="nav-item"><a class="nav-link" href="#">Công nghệ</a></li>
-		      				<li class="nav-item"><a class="nav-link" href="#">Thể thao</a></li>
-		      				<li class="nav-item"><a class="nav-link" href="#" data-toggle="dropdown" style="font-weight: bolder;">...</a>
-        						<div class="dropdown-menu w-100" style="background: #f1f1f1; margin-top: 4px;">
-        							<div class="dropdown-content">
-        								<section id="categoryf">
-     									<div class="row">
-        									<div class="column">
-          										<a href="#" id="menutitle">Thời sự</a>
-          											<div class="dropdown-divider" style="border-color: gray; border-width: 3px; width: 220px;"></div>
-          											<a href="#" id="category">Chính trị</a>
-          											<a href="#" id="category">Giao thông</a>
-          											<a href="#" id="category">Đô thị</a>
-       										</div>
-       										<div class="column">
-          										<a href="#" id="menutitle">Pháp luật</a>
-          											<div class="dropdown-divider" style="border-color: gray; border-width: 3px; width: 220px;"></div>
-          											<a href="#" id="category">Pháp đình</a>
-          											<a href="#" id="category">Vụ án</a>
-       										</div>
-       										<div class="column">
-          										<a href="#" id="menutitle">Thế giới</a>
-          											<div class="dropdown-divider" style="border-color: gray; border-width: 3px; width: 220px;"></div>
-          											<a href="#" id="category">Quân sự</a>
-          											<a href="#" id="category">Tư liệu</a>
-          											<a href="#" id="category">Phân tích</a>
-       										</div>
-       										<div class="column">
-          										<a href="#" id="menutitle">Kinh doanh</a>
-          											<div class="dropdown-divider" style="border-color: gray; border-width: 3px; width: 220px;"></div>
-          											<a href="#" id="category">Bất động sản</a>
-          											<a href="#" id="category">Hàng không</a>
-          											<a href="#" id="category">Tài chính</a>
-          											<a href="#" id="category">Tiêu dùng</a>
-          											<a href="#" id="category">Doanh nhân</a>
-       										</div>
-       										<div class="column">
-          										<a href="#" id="menutitle">Công nghệ</a>
-          											<div class="dropdown-divider" style="border-color: gray; border-width: 3px; width: 220px;"></div>
-          											<a href="#" id="category">Mobile</a>
-          											<a href="#" id="category">AI</a>
-          											<a href="#" id="category">SmartHome</a>
-          											<a href="#" id="category">Startup</a>
-       										</div>
-       										<div class="column">
-          										<a href="#" id="menutitle">Thể thao</a>
-          											<div class="dropdown-divider" style="border-color: gray; border-width: 3px; width: 220px;"></div>
-          											<a href="#" id="category">Thể thao Việt Nam</a>
-          											<a href="#" id="category">Cúp Châu âu</a>
-          											<a href="#" id="category">Thế thao Thế giới</a>
-          											<a href="#" id="category">Bóng đá Anh</a>
-          											<a href="#" id="category">Bóng đá Việt Nam</a>
-          											<a href="#" id="category">Hậu trường thể thao</a>
-       										</div>
-       										<div class="column">
-          										<a href="#" id="menutitle">Sống trẻ</a>
-          											<div class="dropdown-divider" style="border-color: gray; border-width: 3px; width: 220px;"></div>
-          											<a href="#" id="category">Gương mặt trẻ</a>
-          											<a href="#" id="category">Cộng đồng mạng</a>
-          											<a href="#" id="category">Sự kiện</a>
-       										</div>
-       										<div class="column">
-          										<a href="#" id="menutitle">Giáo dục</a>
-          											<div class="dropdown-divider" style="border-color: gray; border-width: 3px; width: 220px;"></div>
-          											<a href="#" id="category">Tuyển sinh 2019</a>
-          											<a href="#" id="category">Tư vấn</a>
-          											<a href="#" id="category">Du học</a>
-          											<a href="#" id="category">Học tiếng anh</a>
-       										</div>
-       										<div class="column">
-          										<a href="#" id="menutitle">Sức khỏe</a>
-          											<div class="dropdown-divider" style="border-color: gray; border-width: 3px; width: 220px;"></div>
-          											<a href="#" id="category">Khỏe đẹp</a>
-          											<a href="#" id="category">Dinh dưỡng</a>
-          											<a href="#" id="category">Mẹ và Bé</a>
-          											<a href="#" id="category">Bệnh thường gặp</a>
-       										</div>
-       										<div class="column">
-          										<a href="#" id="menutitle">Ẩm thực</a>
-          											<div class="dropdown-divider" style="border-color: gray; border-width: 3px; width: 220px;"></div>
-          											<a href="#" id="category">Địa điểm ăn uống</a>
-          											<a href="#" id="category">Món ngon</a>
-       										</div>
-     									</div>
-     									</section>
-    								</div>
-       							</div>
-      						</li>
+		      				<li class="nav-item active"><a class="nav-link" href="#"><h2>Post</h2> <span class="sr-only">(current)</span></a></li>
+
 		    			</ul>
 					    <form class="form-inline my-2 my-lg-0">
 					      	<input class="form-control mr-sm-2" type="search" placeholder="Search">
@@ -142,41 +53,91 @@
  		</header>
 
 			
-		<div id="container">
+		<div id="container" align="center">
 			<div id="title-add">
-				<h2>Thêm bài viết mới</h2>
+				<h2 align="center">Thêm bài viết mới</h2>
 			</div>
         	<form method="post" enctype="multipart/form-data">
-        	<table id="add-prd" border="0" cellpadding="0" cellspacing="0">
+        	<table id="add-prd" border="0" cellpadding="0" cellspacing="0" width="70%">
             	<tr>
-                	<td><label>Tên bài viết</label><br /><input type="text" name="ten_bv" /></td>
+                	<td><label>Tên bài viết</label><br /><input type="text" name="ten_bv" autofocus /></td>
                 </tr>
                 <tr>
-                	<td><label>Ảnh mô tả</label><br /><input type="file" name="anh_bv" /></td>
+                	<td><label>Ảnh mô tả<br /><input type="file" name="anh_bv" /></label></td>
                 </tr>
                 <tr>
                 	<td><label>Danh mục</label><br />
-                    	<select name="id_dm">
-                        	<option value="unselect" selected="selected">Lựa chọn danh mục bài viết</option>
-                            <option value=1>Thời sự</option>
-                            <option value=2>Pháp luật</option>
-                            <option value=3>Thế giới</option>
-                            <option value=4>Kinh doanh</option>
-                            <option value=5>Công nghê</option>
-                            <option value=6>Thể thao</option>
-                            <option value=7>Sống trẻ</option>
-                            <option value=8>Giáo dục</option>
-                            <option value=9>Sức khỏe</option>
-                            <option value=10>Ẩm thực</option>
-                        </select>	
+                        <select class="selectpicker" style="width:50%">
+                          <optgroup label="Thời sự">
+                            <option>Chính trị</option>
+                            <option>Giao thông</option>
+                            <option>Đô thị</option>
+                          </optgroup>
+                          <optgroup label="Pháp luật">
+                            <option>Pháp đình</option>
+                            <option>Vụ án</option>
+                          </optgroup>
+                          <optgroup label="Thế giới">
+                            <option>Quân sự</option>
+                            <option>Tư liệu</option>
+                            <option>Phân tích</option>
+                          </optgroup>
+                          <optgroup label="Kinh doanh">
+                            <option>Bất động sản</option>
+                            <option>Hàng không</option>
+                            <option>Tài chính</option>
+                            <option>Tiêu dùng</option>
+                          </optgroup>
+                          <optgroup label="Thời sự">
+                            <option>Chính trị</option>
+                            <option>Giao thông</option>
+                            <option>Đô thị</option>
+                          </optgroup>
+                          <optgroup label="Công nghệ">
+                            <option>Mobile</option>
+                            <option>AI</option>
+                            <option>SmartHome</option>
+                            <option>Startup</option>
+                          </optgroup>
+                          <optgroup label="Thể thao">
+                            <option>Thể thao Việt Nam</option>
+                            <option>Cúp Châu Âu</option>
+                            <option>Thể thao thế giới</option>
+                            <option>Bóng đá Anh</option>
+                            <option>Bóng đá Việt Nam</option>
+                            <option>Hậu trường thể thao</option>
+                          </optgroup>
+                          <optgroup label="Sống trẻ">
+                            <option>Gương mặt trẻ</option>
+                            <option>Cộng đồng mạng</option>
+                            <option>Sự kiện</option>
+                          </optgroup>
+                          <optgroup label="Giáo dục">
+                            <option>Tuyển sinh 2019</option>
+                            <option>Tư vấn</option>
+                            <option>Du học</option>
+                            <option>Học tiếng Anh</option>
+                          </optgroup>
+                          <optgroup label="Sức khỏe">
+                            <option>Khỏe đẹp</option>
+                            <option>Dinh dưỡng</option>
+                            <option>Mẹ và bé</option>
+                            <option>Bệnh thường gặp</option>
+                          </optgroup>
+                          <optgroup label="Ẩm thực">
+                            <option>Địa điểm ăn uống</option>
+                            <option>Món ngon</option>
+                          </optgroup>
+                        </select>
+
                     </td>
                 </tr>
                 
                 <tr>
-                	<td><label>Chi tiết bài đăng</label><br /><textarea cols="60" rows="12" name="chi_tiet_sp"></textarea></td>
+                	<td><label>Chi tiết bài đăng</label><br /><textarea cols="60" rows="12" name="chi_tiet_bd" id="chi_tiet_bd"></textarea></td>
                 </tr>
                 <tr>
-                	<td><label>Tags: <input type="text" name="tags"></label></td>
+                	<td><label>Tags:<input type="text" name="tags"></label> </td>
                 </tr>
                 <tr>
                 	<td><input type="submit" name="submit" value="Thêm mới" /> <input type="reset" name="reset" value="Làm mới" /></td>
@@ -186,5 +147,11 @@
     	</div>
 		</div>
 	</div>
+	<script>
+            CKEDITOR.replace( 'chi_tiet_bd' );
+    </script>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
 </html>
