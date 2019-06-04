@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <title>Express App</title>
+	<title>Quản lý bài viết</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link href='https://fonts.googleapis.com/css?family=Krona One' rel='stylesheet'>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="/css/main.css">
+	<link rel="stylesheet" type="text/css" href="/css/editor.css">
 </head>
 <body>
-	<header id="header">
- 			<div id="container">	
-				<nav class="navbar navbar-expand-lg">	  
+	<div>
+		<header id="header">
+ 			<div id="container">
+				<nav class="navbar navbar-expand-lg">
+		  
 		  			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
 		    			<span class="navbar-toggler-icon"></span>
 		  			</button>
@@ -121,23 +125,11 @@
 		            		<ul class="dropdown-menu dropdown-menu-right" role="menu">
 		            			<div class="col-lg-12"> 
 		                			<form class="px-4 py-3">
-		    							<div class="form-group">
-		      								<label for="exampleDropdownFormEmail1">Email address</label>
-		      								<input type="email" class="form-control" id="exampleDropdownFormEmail1" placeholder="email@example.com">
-		    							</div>
-		    							<div class="form-group">
-		      								<label for="exampleDropdownFormPassword1">Password</label>
-		      								<input type="password" class="form-control" id="exampleDropdownFormPassword1" placeholder="Password">
-		    							</div>
-		    							<div class="form-check">
-		     								<input type="checkbox" class="form-check-input" id="dropdownCheck">
-			      							<label class="form-check-label" for="dropdownCheck">Remember me</label>
-			      							<button type="submit" class="btn-primary">Sign in</button>
-		    							</div>
+		    							Editor
+										<a href="#">Đăng xuất</a>
 			  						</form>
 			  						<div class="dropdown-divider"></div>
-		  							<a class="dropdown-item" href="#">New around here? Sign up</a>
-		  							<a class="dropdown-item" href="#">Forgot password?</a>
+		  							
 		            			</div>
 		            		</ul>		
 	            		</div>
@@ -146,11 +138,100 @@
 	        	</nav>
 	    	</div>
  		</header>
-    {{{body}}}
-	
- 
- 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+ 		<div id="container">
+ 			<div id="e-qlbv"><h2>Quản lý bài viết</h2></div>
+      <br>
+ 				<table id="e-table">
+ 					<tr>
+              <td width="5%">
+                <img id="e-picture" src="img-main/newest1.jpg">
+              </td>
+              <td width="60%">
+                <div id="e-text">
+                  <div>
+                    <a id="e-title" href="baidang/left-row-1.html">Việt Nam khiếu nại vì bị xếp vào nhóm ‘đội sổ’ ở SEA Games</a>
+                  </div>
+                  <div id="e-info">
+                    by Vũ Đức Thịnh
+                  </div>
+                  <div id="e-info">
+                  30/04/2019
+                  </div>
+                </div>
+                <div class="text-center">
+                  <button type="button" id="e-button" data-toggle="modal" data-target="#myModalAgree">Agree</button>
+                  <button type="button" id="e-button" data-toggle="modal" data-target="#myModalDisagree">Disagree</button>
+                </div>
+              </td>
+          </tr>
+        </table>
+        <table id="e-table">
+          <tr>
+              <td width="5%">
+                <img id="e-picture" src="img-main/newest8.jpg">
+              </td>
+              <td width="60%">
+                <div id="e-text">
+                  <a id="e-title" href="baidang/right-row-1.html">
+                    Tổng bí thư, Chủ tịch nước gửi điện mừng lãnh đạo Triều Tiên              
+                  </a>
+                  <div id="e-info">
+                    by La Thoại
+                  </div>
+                  <div id="e-info">
+                  01/05/2019
+                  </div>
+                </div>
+                <div class="text-center">
+                  <button type="button" id="e-button" data-toggle="modal" data-target="#myModalAgree">Agree</button>
+                  <button type="button" id="e-button" data-toggle="modal" data-target="#myModalDisagree">Disagree</button>
+                </div>
+              </td>
+          </tr>
+        </table>
+        <!-- Modal -->
+        <div class="modal fade" id="myModalDisagree" role="dialog">
+          <div class="modal-dialog">
+        <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title">Disagree</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+              </div>
+              <div class="modal-body">
+                <textarea placeholder="Nhập lý do từ chối..." style="width: 100%;"></textarea>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default">Send</button>
+              </div>
+            </div> 
+          </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="myModalAgree" role="dialog">
+          <div class="modal-dialog">
+        <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title">Agree</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+              </div>
+              <div class="modal-body">
+                <div> Chuyên mục: <input type="text" value="Category" style="width: 100%;"></div> <br>
+                <div> Thẻ tag: <input type="text" value="tag1 tag2 tag3" style="width: 100%;"></div> <br>
+                <div> Thời điểm xuất bản: <input type="text" placeholder="Nhập thời điểm xuất bản..." style="width: 100%;"></div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default">Send</button>
+              </div>
+            </div> 
+          </div>
+        </div>
+ 		</div>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
-</html>
+</html>/

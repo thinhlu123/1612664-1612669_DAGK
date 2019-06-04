@@ -1,0 +1,407 @@
+header {
+    position: fixed;
+    top: 0;
+    min-height: 75px;
+    width: 100%;
+    padding: 0px 100px;
+   display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: black;
+    z-index: 50;
+}
+
+nav ul{
+  list-style: none;
+  width: 35vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding-bottom: 2px;
+}
+
+.btn {
+    padding: 0 20px;
+    height: 40px;
+    font-size: 1em;
+    font-weight: 900;
+    text-transform: uppercase;
+    border: 3px black solid;
+    border-radius: 2px;
+    background: transparent;
+    cursor: pointer;
+}
+
+.nav-link {
+  color: white;
+  font-size: 15px;
+  transition: all 0.5s;
+}
+.nav-link:hover {
+  color: red;
+}
+.title{
+  font-size: 12px;
+}
+.img-title{
+  width: 350px;
+  height: 200px;
+  margin-top: 20px;
+}
+.img-noi-bat{
+  width: 110px;
+  height: 80px;
+}
+.img-noi-bat:hover {
+  cursor: pointer;
+}
+
+.img-noi-bat-mid{
+  width: 680px;
+  height: 400px;
+}
+.img-noi-bat-mid:hover {
+  cursor: pointer;
+}
+.img-noi-bat-right{
+  max-width: 250px;
+  max-height: 140px;
+}
+.img-noi-bat-right{
+  cursor: pointer;
+}
+.chuyen-muc-title {
+  font-family: monospace;
+  font-size: 35px;
+  color: black;
+  margin-left: 10px;
+}
+.chuyen-muc-title:hover {
+  text-decoration: none;
+  color: black;
+}
+.mark{
+  font-size: 35px;
+  font-weight: bolder;
+  color: #7c0000;
+  background: transparent;
+}
+.column{
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+  margin-top: 10px;
+}
+a.txttitle {
+  display: inline-block;
+  font-size: 20;
+  font-family: "Times New Roman";
+  color: gray;
+  max-width: 300px;
+  text-align: justify;
+  transition: all 0.5s;
+}
+a.txttitle:hover {
+  text-decoration: none;
+  color: #7c0000;
+}
+.btn-primary {
+  width: 100px;
+  margin-left: 180px;
+}
+.d-block {
+  width: 800px;
+  height: 600px;
+}
+h4 {
+  display: inline-block;
+  margin-left: 10px;
+}
+.center{
+text-align: center;
+}
+.pagination {
+display: inline-block;
+}
+
+.pagination a {
+color: red;
+float: left;
+padding: 8px 16px;
+text-decoration: none;
+transition: background-color .3s;
+border: 1px solid #ddd;
+margin: 0 4px;
+}
+
+.pagination a.active {
+background-color: red;
+color: white;
+border: 1px solid #4CAF50;
+}
+
+.pagination a:hover:not(.active) {background-color: #ddd;}
+* {
+box-sizing: border-box;
+}
+
+#papername {
+  font-family: 'Krona One';
+  font-size: 25px;
+  color: white;
+  border-bottom-style: inset;
+  border-bottom-color: red;
+  border-bottom-width: 150%;
+}
+#papername:hover {
+  cursor: pointer;
+}
+
+#container {
+    max-width: 1300px;
+    width: 100vw;
+    margin: 0px auto;
+}
+#login{
+  position: fixed;
+  right: 0;
+  margin-right: 100px;
+}
+
+#btnSearch {
+  background: transparent;
+  color: white;
+  border: none;
+  font-family: "Times New Roman";
+  font-size: 20px;
+}
+#btnSearch:hover {
+  color: red;
+}
+#hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 200px;
+    margin-top: 50px;
+}
+#bai-dang{
+  margin-top: 20px;
+}
+
+#row{
+  display: flex;
+  flex-direction: row;
+}
+#text{
+  display: flex;
+  flex-direction: column;
+  max-width: 700px;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+#noi-bat{
+  height: auto;
+  width: 800px;
+}
+
+#backtotop {
+  position: fixed;
+  right: 40px;
+  bottom: 40px;
+}
+#backtotopimg {
+  width: 40px;
+  height: 40px;
+}
+#backtotop:hover {
+  cursor: pointer;
+}
+#bai-moi{
+  margin-top: 100px;
+}
+#left-row{
+  max-width: 280px;
+  margin-right: 20px;
+}
+#row-mid{
+  margin-right: 20px;
+  max-width: 680px;
+  max-height: 500px;
+}
+
+#right-row{
+  max-width: 300px;
+}
+#img-category {
+  width: 300px;
+  height: 200px;
+  margin-top: 10px;
+}
+#img-category {
+  cursor: pointer;
+}
+
+#chuyen-muc{
+  display: flex;
+  flex-direction: row;
+}
+#menutitle {
+  color: black;
+}
+#menutitle:hover {
+  text-decoration: none;
+}
+#category {
+  color: gray;
+}
+#category:hover {
+  text-decoration: none;
+  color: #7c0000;
+}
+#categoryf {
+  margin-left: 50px;
+  margin-right: 50px;
+}
+#menuicon {
+  width: 30px;
+  height: 30px;
+}
+#left-title {
+  margin-left: 5px; 
+  font-size: 15px; 
+  max-width: 280px; 
+  text-align: justify;
+  color: gray;
+}
+#left-title:hover {
+  text-decoration: none;
+  color: black;
+}
+#row-mid-title {
+  font-size: 32px;
+  color: black;
+  font-weight: bold;
+  text-align: justify;
+}
+#row-mid-title:hover {
+  text-decoration: none;
+}
+#date {
+  font-size: 12px;
+  color: gray;
+}
+#tag {
+  margin-left: 5px;
+  font-size: 12px;
+  color: black;
+}
+#tag:hover {
+  text-decoration: none;
+}
+#right-title {
+  font-size: 16px;
+  max-width: 250px;
+  text-align: justify;
+  color: gray;
+}
+#right-title:hover {
+  text-decoration: none;
+  color: black;
+}
+#right-column {
+  display: flex;
+  flex-direction: column;
+}
+#bai-dang-text {
+  font-size: 35px;
+  font-weight: bold;
+  color: black;
+}
+#bai-dang-text:hover {
+  text-decoration: none;
+  color: #2d2d2d;
+}
+
+* {
+box-sizing: border-box;
+}
+#bai-moi::after {
+content: "";
+clear: both;
+display: block;
+}
+[class*="mycol-"] {
+float: left;
+padding: 10px;
+}
+
+.mycol-3 {width: 25%;}
+.mycol-4 {width: 25%;}
+.mycol-6 {width: 50%;}
+
+@media only screen and (max-width: 1024px){
+.mycol-3{
+width: 45vw;
+}
+.mycol-4{
+width: 50vw;
+}
+#right-column{
+display: flex;
+flex-direction: row;
+}
+.img-noi-bat,.img-noi-bat-right{
+width: 30vw;
+height: 15vw;
+}
+.img-noi-bat-mid{
+width: 49vw;
+height: 29vw;
+}
+#container{
+width: 95vw;
+}
+}
+
+@media only screen and (max-width: 768px) {
+/* For mobile phones: */
+[class*="mycol-"] {
+width: 93vw;
+}
+#bai-moi{
+display: block;
+}
+#right-column{
+display: flex;
+flex-direction: row;
+}
+.img-noi-bat, .img-noi-bat-right, .img-title{
+width: 30vw;
+height: 20vw;
+}
+
+#bai-dang-text{
+font-size: 15px;
+}
+.img-noi-bat-mid, .d-block{
+width: 93vw;
+height: 60vw;
+}
+#chuyen-muc{
+flex-direction: column;
+}
+#noi-bat{
+width: 93vw;
+}
+#container{
+width: 95vw;
+}
+}
+
+
+
+
+
