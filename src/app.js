@@ -21,7 +21,19 @@ app.set('view engine', 'hbs');
 app.get('/', (req, res) => {
     res.render('home');
 });
- 
+
+app.use((req, res, next) => {
+    res.render('404', { layout: false });
+  })
+  
+  app.use((error, req, res, next) => {
+    res.render('error', {
+      layout: false,
+      message: error.message,
+      error
+    })
+  })
+  
 app.listen(3000, () => {
     console.log('Web server is running at http://localhost:3000');
 });
