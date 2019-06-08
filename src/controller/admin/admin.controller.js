@@ -1,5 +1,3 @@
-
-
 module.exports.addPost = function(req, res) {
     res.render('admin/add-post');
 }

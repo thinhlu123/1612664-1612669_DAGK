@@ -57,33 +57,27 @@
 			</div>
         	<table id="prds" border="0" cellpadding="0" cellspacing="0" width="100%">
             	<tr id="prd-bar">
-                	<td width="5%">ID</td>
-                    <td width="20%">Username</td>
-                    <td width="20%">Loại tài khoản</td>
-                    <td width="40%">Tình trạng</td>
-                    <td width="15%">Action</td>
+                    <td width="10%">Username</td>
+					<td width="10%">Password</td>
+					<td width="10%">Họ tên</td>
+					<td width="10%">Biệt danh</td>
+					<td width="15%">Email</td>
+					<td width="15%">Ngày sinh</td>
+					<td width="10%">Chức vụ</td>
+					<td width="10%">Hạn Premium</td>
                 </tr>
-                <tr>
-                	<td><span>1</span></td>
-                    <td class="l5">thinhlu123</td>
-                    <td class="l5">Editor</td>
-                    <td>Hoạt động tại chuyên mục pháp luật</td>
-                    <td><button class="btn-info btn-action">Chỉnh sửa</button><button class="btn-danger btn-action">Xóa</button></td>
-                </tr>
-                <tr>
-                	<td><span>2</span></td>
-                    <td class="l5">lathoai123</td>
-                    <td class="l5">Writter</td>
-                    <td>Writter chuyện mục sức khỏe</td>
-                    <td><button class="btn-info btn-action">Chỉnh sửa</button><button class="btn-danger btn-action">Xóa</button></td>
-                </tr>
-                <tr>
-                  <td><span>3</span></td>
-                    <td class="l5">abcd</td>
-                    <td class="l5">Subscriber</td>
-                    <td>Còn 6 ngày</td>
-                    <td><button class="btn-info btn-action">Chỉnh sửa</button><button class="btn-danger btn-action">Xóa</button></td>
-                </tr>
+				{{#each this.accounts}}
+					<tr>
+						<td width="10%">{{username}}</td>
+						<td width="10%">{{password}}</td>
+						<td width="10%">{{fullname}}</td>
+						<td width="10%">{{nickname}}</td>
+						<td width="15%">{{email}}</td>
+						<td width="15%">{{birthday}}</td>
+						<td width="10%">{{type}}</td>
+						<td width="10%">{{premiumdate}}</td>
+					</tr>
+				{{/each}}
                    
             </table>
 		</div>

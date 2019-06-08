@@ -61,34 +61,18 @@
         	<table id="prds" border="0" cellpadding="0" cellspacing="0" width="100%">
             	<tr id="prd-bar">
                 	<td width="5%">ID</td>
-                    <td width="20%">Category</td>
-                    <td width="10%">Trạng thái</td>
-                    <td width="15%">Action</td>
-                </tr>
+                  <td width="20%">Group</td>
+                  <td width="20%">Category</td>
+                  <td width="15%">Action</td>
+              </tr>
+              {{#each this.categories}}
                 <tr>
-                	<td><span>1</span></td>
-                    <td class="l5">Thời sự</td>
-                    <td><span>Hoạt động</span></td>
+                	<td><span>{{ID}}</span></td>
+                    <td><span>{{group}}</span></td>
+                    <td><span>{{category}}</span></td>
                     <td><span><button class="btn-success btn-action">Thêm</button><button class="btn-info btn-action">Chỉnh sửa</button><button class="btn-danger btn-action">Xóa</button></span></td>
                 </tr>
-                 <tr>
-                	<td><span>2</span></td>
-                    <td class="l5">Pháp luật</td>
-                    <td><span>Hoạt động</span></td>
-                    <td><span><button class="btn-success btn-action">Thêm</button><button class="btn-info btn-action">Chỉnh sửa</button><button class="btn-danger btn-action">Xóa</button></span></td>
-                </tr>
-                   <tr>
-                	<td><span>3</span></td>
-                    <td class="l5">Thế giới</td>
-                    <td><span>Hoạt động</span></td>
-                    <td><span><button class="btn-success btn-action">Thêm</button><button class="btn-info btn-action">Chỉnh sửa</button><button class="btn-danger btn-action">Xóa</button></span></td>
-                </tr>
-                <tr>
-                	<td><span>4</span></td>
-                    <td class="l5">Kinh doanh</td>
-                    <td><span>Hoạt động</span></td>
-                    <td><span><button class="btn-success btn-action">Thêm</button><button class="btn-info btn-action">Chỉnh sửa</button><button class="btn-danger btn-action">Xóa</button></span></td>
-                </tr>
+                {{/each}}
             </table>
 		</div>
 

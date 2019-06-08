@@ -2,7 +2,7 @@ var db = require('../utils/db');
 
 module.exports = {
   all: () => {
-    return db.load('select * from category');
+    return db.load('select c.ID, g.group, c.category from category c, groupcategory g where c.IDGroup = g.ID');
   },
 
   allWithDetails: () => {

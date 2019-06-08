@@ -1,10 +1,13 @@
 var express = require('express');
+var router = express.Router();
 var exphbs  = require('express-handlebars');
 var adminRouter = require('./router/admin/admin.router');
 var authRouter = require('./router/auth/auth.router');
 var editorRouter = require('./router/editor/editor.router');
 var postRouter = require('./router/post/post.router');
 var app = express();
+var groupCategoryModel = require('./models/groupcategory.model');
+var categoryModel = require('./models/category.model');
  
 app.engine('hbs', exphbs({
     defaultLayout: 'main.hbs',
@@ -19,7 +22,22 @@ app.use('/post', postRouter);
 app.set('view engine', 'hbs');
 
 app.get('/', (req, res) => {
-    res.render('home');
+    var p = groupCategoryModel.get6();
+    p.then(rows => {
+      res.render('home', {
+        groups: rows
+      })
+    }).catch(err => {
+      console.log(err);
+    })
+    var q = categoryModel.all();
+    q.then(rows => {
+      res.render('home', {
+        categories: rows
+      })
+    }).catch(err => {
+      console.log(err);
+    })
 });
 
 app.use((req, res, next) => {
