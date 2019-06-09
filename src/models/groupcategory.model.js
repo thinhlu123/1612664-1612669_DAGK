@@ -4,6 +4,9 @@ module.exports = {
   all: () => {
     return db.load('select * from groupcategory');
   },
+  get6: () => {
+    return db.load('select * from groupcategory limit 6');
+  },
 
   single: id => {
     return db.load(`select * from groupcategory where ID = ${id}`);
