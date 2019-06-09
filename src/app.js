@@ -1,5 +1,6 @@
 var express = require('express');
 var exphbs  = require('express-handlebars');
+var morgan = require('morgan');
 var adminRouter = require('./router/admin/admin.router');
 var authRouter = require('./router/auth/auth.router');
 var editorRouter = require('./router/editor/editor.router');
@@ -12,11 +13,13 @@ app.engine('hbs', exphbs({
 }));
 
 app.use(express.static(__dirname + '/public'));
+app.use(morgan('dev'));
 app.use('/admin', adminRouter);
 app.use('/auth', authRouter);
 app.use('/editor', editorRouter);
 app.use('/post', postRouter);
 app.set('view engine', 'hbs');
+
 
 app.get('/', (req, res) => {
     res.render('home');
