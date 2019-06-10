@@ -20,29 +20,28 @@ app.use('/editor', require('./router/editor/editor.router'));
 app.use('/post', require('./router/post/post.router'));
 
 app.engine('hbs', exphbs({
-    defaultLayout: 'main.hbs',
-    layoutsDir: 'views/layouts'
+  defaultLayout: 'main.hbs',
+  layoutsDir: 'views/layouts',
+  helpers: {
+    ifEquals: function(arg1, arg2, options) {
+      return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
+    }
+  }
 }));
 
 app.set('view engine', 'hbs');
 
+
 app.get('/', (req, res) => {
-    var p = groupCategoryModel.get6();
-    p.then(rows => {
-      res.render('home', {
-        groups: rows
-      })
-    }).catch(err => {
-      console.log(err);
+  Promise.all([groupCategoryModel.get6(), groupCategoryModel.all(), categoryModel.loadAll()]).then(([get6, groups, categories]) => {
+    res.render('home',{
+       get6: get6,
+       groups: groups,
+       categories: categories
     })
-    var q = categoryModel.all();
-    q.then(rows => {
-      res.render('home', {
-        categories: rows
-      })
-    }).catch(err => {
-      console.log(err);
-    })
+  }).catch(err => {
+    console.log(err);
+  });
 });
 
 app.use((req, res, next) => {

@@ -17,9 +17,7 @@ module.exports = {
   },
 
   update: entity => {
-    var id = entity.ID;
-    delete entity.ID;
-    return db.update('groupcategory', 'ID', entity, id);
+    return db.update('groupcategory', 'ID', entity);
   },
 
   delete: id => {

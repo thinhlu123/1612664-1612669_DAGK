@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Tag Management</title>
+	<title>Quản lý Tag</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -12,18 +12,21 @@
 <body>
 	<div>
 		<header id="header">
-      <div id="container">  
-        <nav class="navbar navbar-expand-lg">  
+      <div id="container">
+  
+        <nav class="navbar navbar-expand-lg">
+      
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
           <div id="papername">dogenews</div>
           <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+              &nbsp &nbsp &nbsp &nbsp
               <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                  <li class="nav-item ml-5"><a class="nav-link" href="admin_quanly_baiviet.html">Bài đăng <span class="sr-only"></span></a></li>
+                  <li class="nav-item active"><a class="nav-link" href="admin_quanly_baiviet.html">Bài đăng <span class="sr-only">(current)</span></a></li>
                   <li class="nav-item"><a class="nav-link" href="admin_quanly_nguoidung.html">Tài khoản</a></li>
                   <li class="nav-item"><a class="nav-link" href="admin_quanly_category.html">Category</a></li>
-                  <li class="nav-item active"><a class="nav-link" href="admin_quanly_tag.html">Tag</a></li>       
+                  <li class="nav-item"><a class="nav-link" href="admin_quanly_tag.html">Tag</a></li>       
                 </ul>
               </div>
                   <div>
@@ -48,49 +51,45 @@
         </div>
     </header>
 		
-		<div id="container">
-			<div id="title-admin">
-				<h2>Quản lý tag</h2>
-			</div>
+		<div id="container" class="card shadow">
+			<h4 class="card-header">
+        Tags
+      </h4>
 			<br>
-			<input type="text" id="add-input"> <button type="button" id="add-button">Add tag</button>
-			<br>
-			<br>
-        	<table id="prds" border="0" cellpadding="0" cellspacing="0" width="100%">
-            	  <tr id="prd-bar">
-                	<td width="5%">ID</td>
-                  <td width="40%">Tag</td>
-                  <td width="15%">Cập nhật</td>
-                </tr>
-                {{#each this.tags}}
-                <tr>
-                  <td><span>{{ID}}</span></td>
-                  <td class="l5">{{tagname}}</td>
-                  <td><button class="btn-info btn-action">Chỉnh sửa</button><button class="btn-danger btn-action">Xóa</button></td>
-                </tr>
-                {{/each}}
-            </table>
-		</div>
+		
+      <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col" class="text-center">#</th>
+        <th scope="col">Tag</th>
+        <th scope="col" class="text-right">
+          <a class="btn btn-outline-success" href="/admin/add-tag" role="button">
+            <i class="fa fa-plus" aria-hidden="true"></i>
+            Add Tag
+          </a>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each this.tags}}
+      <tr>
+        <th scope="row" class="text-center">{{ID}}</th>
+        <td>{{tagname}}</td>
+        <td class="text-right">
+          <a class="btn btn-primary btn-sm" href="/admin/edit-tag/{{ID}}" role="button">
+            <i class="fa fa-pencil" aria-hidden="true"></i>
+          </a>
+        </td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+	</div>
 
 	</div>
 
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-	<script>
-		    jQuery(function(){
-    		var counter = $("#prds").find("tr").length
-    		jQuery('#add-button').click(function(event){
-        		event.preventDefault();
-       			var newRow = jQuery('<tr><td><span>' + counter + '</span></td><td class="l5">' + $('#add-input').val() + '</td><td><button class="btn-info btn-action">Chỉnh sửa</button><button class="btn-danger btn-action">Xóa</button></td></tr>');
-        jQuery('#prds').append(newRow);
-        counter++;
-        document.getElementById("add-input").value = "";
-    });
-});
-	</script>
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
 </html>

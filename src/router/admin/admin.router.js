@@ -107,6 +107,51 @@ router.get('/manage-category', (req,res) => {
         console.log(err);
     });
 });
+router.get('/manage-groupcategory', (req,res) => {
+    var p = groupCategoryModel.all();
+    p.then(rows => {
+        res.render('admin/manage-groupcategory', {
+            groups: rows
+        })
+    }).catch(err => {
+        console.log(err);
+    });
+});
+router.get('/add-groupcategory', (req,res) => {
+    res.render('admin/add-groupcategory')
+});
+router.post('/add-groupcategory', (req,res,next) => {
+    var entity = {
+        group: req.body.group
+    }
+    groupCategoryModel.add(entity).then(id => {
+        res.render('admin/add-groupcategory');
+    }).catch(err => {
+        res.end('error occured');
+    })
+});
+router.get('/edit-groupcategory/:id', (req, res) => {
+    var id = req.params.id;
+    if (isNaN(id)) {
+        res.render('admin/edit-groupcategory', {
+            error: true
+        });
+    }
+    groupCategoryModel.single(id).then(rows => {
+        if (rows.length > 0) {
+            res.render('admin/edit-groupcategory', {
+                error: false,
+                group: rows[0]
+            });
+        } else {
+            res.render('admin/edit-groupcategory', {
+                error: true
+            });
+        }
+    }).catch(err => {
+        res.end('error occured');
+    })
+})
 router.get('/manage-post', (req,res) => {
     var p = postModel.all();
     p.then(rows => {
@@ -117,6 +162,25 @@ router.get('/manage-post', (req,res) => {
         console.log(err);
     });
 });
+router.post('/update-groupcategory', (req, res) => {  
+    var entity = {
+        ID: req.body.GroupID,
+        group: req.body.GroupName
+    }
+    groupCategoryModel.update(entity).then(n => {
+      res.redirect('/admin/manage-groupcategory');
+    }).catch(err => {
+      res.end('error occured.')
+    });
+  });
+
+router.post('/delete-groupcategory', (req, res) => {
+    groupCategoryModel.delete(req.body.GroupID).then(n => {
+      res.redirect('/admin/manage-groupcategory');
+    }).catch(err => {
+      res.end('error occured.')
+    });
+})
 router.get('/manage-tag', (req,res) => {
     var p = tagModel.all();
     p.then(rows => {
@@ -127,16 +191,70 @@ router.get('/manage-tag', (req,res) => {
         console.log(err);
     });
 });
-router.get('/add-tag', (req,res) => {
-    var p = tagModel.all();
-    p.then(rows => {
-        res.render('admin/add-tag', {
-            tags: rows
-        })
+router.get('/add-tag', (req, res) => {
+        res.render('admin/add-tag')
+})
+
+router.get('/edit-tag/:id', (req, res) => {
+    var id = req.params.id;
+    if (isNaN(id)) {
+        res.render('admin/edit-tag', {
+            error: true
+        });
+    }
+
+    tagModel.single(id).then(rows => {
+        if (rows.length > 0) {
+            res.render('admin/edit-tag', {
+                error: false,
+                tag: rows[0]
+            });
+        } else {
+            res.render('admin/edit-tag', {
+                error: true
+            });
+        }
     }).catch(err => {
         console.log(err);
+        res.end('error occured');
     });
-});
+})
+  
+router.post('/add-tag', (req, res, next) => {
+    var entity = {
+        tagname: req.body.tag
+    }
+    console.log(entity);
+    tagModel.add(entity).then(id => {
+        console.log(id);
+        res.render('admin/add-tag');
+    }).catch(err => {
+        console.log(err);
+        res.end('error occured.')
+    });
+})
+
+router.post('/update-tag', (req, res) => {  
+    var entity = {
+        ID: req.body.TagID,
+        tagname: req.body.TagName
+    }
+    tagModel.update(entity).then(n => {
+      res.redirect('/admin/manage-tag');
+    }).catch(err => {
+      console.log(err);
+      res.end('error occured.')
+    });
+  })
+
+  router.post('/delete-tag', (req, res) => {
+    tagModel.delete(req.body.TagID).then(n => {
+      res.redirect('/admin/manage-tag');
+    }).catch(err => {
+      console.log(err);
+      res.end('error occured.')
+    });
+  })
 router.get('/manage-user', (req,res) => {
     var p = accountModel.all();
     p.then(rows => {

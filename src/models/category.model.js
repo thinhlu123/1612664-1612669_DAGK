@@ -4,7 +4,9 @@ module.exports = {
   all: () => {
     return db.load('select c.ID, g.group, c.category from category c, groupcategory g where c.IDGroup = g.ID');
   },
-
+  loadAll: () => {
+    return db.load('select * from category');
+  },
   allWithDetails: () => {
     return db.load(`
       select c.ID, c.category, count(p.ID) as num_of_products
