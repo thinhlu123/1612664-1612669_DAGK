@@ -9,9 +9,14 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="/css/main.css">
 	<link rel="stylesheet" type="text/css" href="/css/add-post.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.1/js/fileinput.min.js"></script>
 	<script src="/ckeditor/ckeditor.js"></script>
+
 </head>
 <body>
+
+
+
 	<div>
 		<header id="header">
  			<div id="container">
@@ -52,83 +57,43 @@
 	    	</div>
  		</header>
 
-			
-		<div id="container" align="center">
-			<div id="title-add">
-				<h2 align="center">Thêm bài viết mới</h2>
-			</div>
-        	<form method="post" enctype="multipart/form-data">
+    <div id="container" class="card shadow">
+			<h4 class="card-header">
+        Add Post
+      </h4>
+			<br>
+			<div class="card-body">
+				<form method="POST" action="" enctype="multipart/form-data" id="postForm">
         	<table id="add-prd" border="0" cellpadding="0" cellspacing="0" width="70%">
             	<tr>
-                	<td><label>Tên bài viết</label><br /><input type="text" name="ten_bv" autofocus /></td>
+                	<td><label>Tên bài viết</label><br /><input type="text" name="title" autofocus /></td>
                 </tr>
                 <tr>
-                	<td><label>Ảnh mô tả<br /><input type="file" name="anh_bv" /></label></td>
+                	<td>
+	
+      						<div class="form-group">
+        						<label for="fuMain">Photo</label>
+        						<div class="file-loading">
+          							<input id="fuMain" name="fuMain" type="file" class="file" multiple>
+        						</div>
+      						</div>
+      						
+					</td>
                 </tr>
                 <tr>
-                	<td><label>Danh mục</label><br />
-                        <select class="selectpicker" style="width:50%">
-                          <optgroup label="Thời sự">
-                            <option>Chính trị</option>
-                            <option>Giao thông</option>
-                            <option>Đô thị</option>
-                          </optgroup>
-                          <optgroup label="Pháp luật">
-                            <option>Pháp đình</option>
-                            <option>Vụ án</option>
-                          </optgroup>
-                          <optgroup label="Thế giới">
-                            <option>Quân sự</option>
-                            <option>Tư liệu</option>
-                            <option>Phân tích</option>
-                          </optgroup>
-                          <optgroup label="Kinh doanh">
-                            <option>Bất động sản</option>
-                            <option>Hàng không</option>
-                            <option>Tài chính</option>
-                            <option>Tiêu dùng</option>
-                          </optgroup>
-                          <optgroup label="Thời sự">
-                            <option>Chính trị</option>
-                            <option>Giao thông</option>
-                            <option>Đô thị</option>
-                          </optgroup>
-                          <optgroup label="Công nghệ">
-                            <option>Mobile</option>
-                            <option>AI</option>
-                            <option>SmartHome</option>
-                            <option>Startup</option>
-                          </optgroup>
-                          <optgroup label="Thể thao">
-                            <option>Thể thao Việt Nam</option>
-                            <option>Cúp Châu Âu</option>
-                            <option>Thể thao thế giới</option>
-                            <option>Bóng đá Anh</option>
-                            <option>Bóng đá Việt Nam</option>
-                            <option>Hậu trường thể thao</option>
-                          </optgroup>
-                          <optgroup label="Sống trẻ">
-                            <option>Gương mặt trẻ</option>
-                            <option>Cộng đồng mạng</option>
-                            <option>Sự kiện</option>
-                          </optgroup>
-                          <optgroup label="Giáo dục">
-                            <option>Tuyển sinh 2019</option>
-                            <option>Tư vấn</option>
-                            <option>Du học</option>
-                            <option>Học tiếng Anh</option>
-                          </optgroup>
-                          <optgroup label="Sức khỏe">
-                            <option>Khỏe đẹp</option>
-                            <option>Dinh dưỡng</option>
-                            <option>Mẹ và bé</option>
-                            <option>Bệnh thường gặp</option>
-                          </optgroup>
-                          <optgroup label="Ẩm thực">
-                            <option>Địa điểm ăn uống</option>
-                            <option>Món ngon</option>
-                          </optgroup>
-                        </select>
+                	<td>
+                    <label>Danh mục</label><br />
+                        <select class="selectpicker" style="width:50%" name="category">
+                          {{#each this.groups}}
+	                          <optgroup label="{{group}}">
+	                            {{#each ../this.categories}} 
+		                            {{#ifEquals ../ID IDGroup}}
+			                            <option value="{{ID}}">{{category}}</option>											  
+		                            {{/ifEquals}}
+                            	{{/each}}
+                              </optgroup>
+                            {{/each}}
+                          </select>
 
                     </td>
                 </tr>
@@ -140,16 +105,31 @@
                 	<td><label>Tags:<input type="text" name="tags"></label> </td>
                 </tr>
                 <tr>
-                	<td><input type="submit" name="submit" value="Thêm mới" /> <input type="reset" name="reset" value="Làm mới" /></td>
+                	<td><button type="submit" class="btn-success submitButton">
+        						<i class="fa fa-check" aria-hidden="true"></i>
+       							 Save
+      						</button> <input type="reset" name="reset" value="Làm mới" /></td>
                 </tr>
             </table>
             </form>
-    	</div>
-		</div>
+  			</div>
+			
+	</div>
+			
+	
 	</div>
 	<script>
-            CKEDITOR.replace( 'chi_tiet_bd' );
+  $("#fuMain").fileinput();
+</script>
+
+		
+	<script>
+            CKEDITOR.replace( 'chi_tiet_bd', {
+	    		"extraPlugins" : 'imagebrowser',
+				"imageBrowser_listUrl" : "/files"
+	  		});
     </script>
+
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
