@@ -2,7 +2,7 @@ var multer = require('multer');
 
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, '/image/');
+    cb(null, './public/image/');
   },
   filename: function (req, file, cb) {
     cb(null, file.originalname);
@@ -12,7 +12,7 @@ var storage = multer.diskStorage({
 var upload = multer({ storage: storage });
 
 module.exports = function (app) {
-  app.post('/upload', (req, res, next) => {
+  app.post('/add-post', (req, res, next) => {
     upload.array('fuMain')(req, res, err => {
       if (err) {
         return res.json({
