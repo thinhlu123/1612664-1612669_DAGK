@@ -9,9 +9,25 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="/css/main.css">
 	<link rel="stylesheet" type="text/css" href="/css/add-post.css">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.3/css/fileinput.min.css" media="all"
+  rel="stylesheet" type="text/css" />
 	<script src="/ckeditor/ckeditor.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.3/js/fileinput.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.3/themes/fa/theme.min.js"></script>
+<script>
+  $(function () {
+    $('#fuMain').fileinput({
+      theme: 'fa',
+      dropZoneEnabled: false,
+      allowedFileExtensions: ['png', 'jpg', 'gif'],
+      uploadUrl: '/upload',
+      uploadAsync: false,
+    });
+  })
+</script>
 </head>
 <body>
+	
 	<div>
 		<header id="header">
  			<div id="container">
@@ -52,83 +68,47 @@
 	    	</div>
  		</header>
 
-			
-		<div id="container" align="center">
-			<div id="title-add">
-				<h2 align="center">Thêm bài viết mới</h2>
-			</div>
-        	<form method="post" enctype="multipart/form-data">
+    <div id="container" class="card shadow">
+			<h4 class="card-header">
+        Add Post
+      </h4>
+			<br>
+			<div class="card-body">
+				<form method="POST" action="">
         	<table id="add-prd" border="0" cellpadding="0" cellspacing="0" width="70%">
             	<tr>
-                	<td><label>Tên bài viết</label><br /><input type="text" name="ten_bv" autofocus /></td>
+                	<td><label>Tên bài viết</label><br /><input type="text" name="title" autofocus /></td>
                 </tr>
                 <tr>
-                	<td><label>Ảnh mô tả<br /><input type="file" name="anh_bv" /></label></td>
+                	<td>
+						<form method="POST" action="/upload">
+      						<div class="form-group">
+        						<label for="fuMain">Photo</label>
+        						<div class="file-loading">
+          							<input id="fuMain" name="fuMain" type="file" multiple>
+        						</div>
+      						</div>
+      						<button type="submit" class="btn-success">
+        						<i class="fa fa-check" aria-hidden="true"></i>
+       							 Save
+      						</button>
+    					</form>
+					</td>
                 </tr>
                 <tr>
-                	<td><label>Danh mục</label><br />
-                        <select class="selectpicker" style="width:50%">
-                          <optgroup label="Thời sự">
-                            <option>Chính trị</option>
-                            <option>Giao thông</option>
-                            <option>Đô thị</option>
-                          </optgroup>
-                          <optgroup label="Pháp luật">
-                            <option>Pháp đình</option>
-                            <option>Vụ án</option>
-                          </optgroup>
-                          <optgroup label="Thế giới">
-                            <option>Quân sự</option>
-                            <option>Tư liệu</option>
-                            <option>Phân tích</option>
-                          </optgroup>
-                          <optgroup label="Kinh doanh">
-                            <option>Bất động sản</option>
-                            <option>Hàng không</option>
-                            <option>Tài chính</option>
-                            <option>Tiêu dùng</option>
-                          </optgroup>
-                          <optgroup label="Thời sự">
-                            <option>Chính trị</option>
-                            <option>Giao thông</option>
-                            <option>Đô thị</option>
-                          </optgroup>
-                          <optgroup label="Công nghệ">
-                            <option>Mobile</option>
-                            <option>AI</option>
-                            <option>SmartHome</option>
-                            <option>Startup</option>
-                          </optgroup>
-                          <optgroup label="Thể thao">
-                            <option>Thể thao Việt Nam</option>
-                            <option>Cúp Châu Âu</option>
-                            <option>Thể thao thế giới</option>
-                            <option>Bóng đá Anh</option>
-                            <option>Bóng đá Việt Nam</option>
-                            <option>Hậu trường thể thao</option>
-                          </optgroup>
-                          <optgroup label="Sống trẻ">
-                            <option>Gương mặt trẻ</option>
-                            <option>Cộng đồng mạng</option>
-                            <option>Sự kiện</option>
-                          </optgroup>
-                          <optgroup label="Giáo dục">
-                            <option>Tuyển sinh 2019</option>
-                            <option>Tư vấn</option>
-                            <option>Du học</option>
-                            <option>Học tiếng Anh</option>
-                          </optgroup>
-                          <optgroup label="Sức khỏe">
-                            <option>Khỏe đẹp</option>
-                            <option>Dinh dưỡng</option>
-                            <option>Mẹ và bé</option>
-                            <option>Bệnh thường gặp</option>
-                          </optgroup>
-                          <optgroup label="Ẩm thực">
-                            <option>Địa điểm ăn uống</option>
-                            <option>Món ngon</option>
-                          </optgroup>
-                        </select>
+                	<td>
+                    <label>Danh mục</label><br />
+                        <select class="selectpicker" style="width:50%" name="category">
+                          {{#each this.groups}}
+	                          <optgroup label="{{group}}">
+	                            {{#each ../this.categories}} 
+		                            {{#ifEquals ../ID IDGroup}}
+			                            <option value="{{ID}}">{{category}}</option>											  
+		                            {{/ifEquals}}
+                            	{{/each}}
+                              </optgroup>
+                            {{/each}}
+                          </select>
 
                     </td>
                 </tr>
@@ -144,8 +124,11 @@
                 </tr>
             </table>
             </form>
-    	</div>
-		</div>
+  			</div>
+			
+	</div>
+			
+	
 	</div>
 	<script>
             CKEDITOR.replace( 'chi_tiet_bd' );

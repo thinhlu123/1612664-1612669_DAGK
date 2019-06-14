@@ -9,6 +9,10 @@ module.exports = {
     return db.load(`select * from post where category = ${category}`);
   },
 
+  allWithStatus: status =>{
+    return db.load(`select * from post where status = ${status}`)
+  },
+
   pageByCat: (category, limit, offset) => {
     return db.load(`select * from post where category = ${category} limit ${limit} offset ${offset}`);
   },

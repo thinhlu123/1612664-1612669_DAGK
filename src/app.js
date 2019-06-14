@@ -8,6 +8,7 @@ var groupCategoryModel = require('./models/groupcategory.model');
 var categoryModel = require('./models/category.model');
 
 var bodyparser = require('body-parser');
+require('./middlewares/upload')(app);
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({extended:false}));
  

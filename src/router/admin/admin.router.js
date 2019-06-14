@@ -35,23 +35,20 @@ router.get('/edit-category/:id', (req, res) => {
             error: true
         });
     }
-    groupCategoryModel.all().then(grrows => {
-        categoryModel.single(id).then(rows => {
-            if (rows.length > 0) {
-                res.render('admin/edit-category', {
-                    error: false,
-                    category: rows[0],
-                    groupCategories: grrows
-                });
-            } else {
-                res.render('admin/edit-category', {
+    Promise.all([groupCategoryModel.all(), categoryModel.single(id)]).then(([grrows, rows]) =>{
+        if (rows.length > 0){
+            res.render('admin/edit-category', {
+                error: false,
+                category: rows[0],
+                groupCategories: grrows
+            });
+        }
+        else{
+            res.render('admin/edit-category', {
                 error: true
-                });
-            }   
-        }).catch(err => {
-            console.log(err);
-            res.end('error occured.')
-        });
+            });
+        }
+        
     }).catch(err => {
         console.log(err);
         res.end('error occured.')
@@ -96,7 +93,7 @@ router.post('/update-category', (req, res) => {
     });
   })
 
-router.get('/add-post', adminController.addPost);
+
 router.get('/manage-category', (req,res) => {
     var p = categoryModel.all();
     p.then(rows => {
@@ -152,8 +149,9 @@ router.get('/edit-groupcategory/:id', (req, res) => {
         res.end('error occured');
     })
 })
+
 router.get('/manage-post', (req,res) => {
-    var p = postModel.all();
+    var p = postModel.allWithStatus(1);
     p.then(rows => {
         res.render('admin/manage-post', {
             posts: rows
@@ -162,6 +160,50 @@ router.get('/manage-post', (req,res) => {
         console.log(err);
     });
 });
+router.get('/add-post', (req,res)=>{
+    Promise.all([groupCategoryModel.all(), categoryModel.loadAll()]).then(([groups, categories]) => {
+        res.render('admin/add-post',{
+           groups: groups,
+           categories: categories
+        })
+      }).catch(err => {
+        console.log(err);
+      });
+})
+router.post('/add-post', (req, res) =>{
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0');
+    var yyyy = today.getFullYear();
+
+    today = yyyy + '/' + mm + '/' + dd;
+    
+    var catModel = categoryModel.single(req.body.category).then(n =>{
+        
+        var entity = {
+            group: n[0].IDGroup,
+            category: parseInt(req.body.category),
+            title: req.body.title,
+            avatar: "",
+            date: today,
+            author: "thinhlu123",
+            content: req.body.chi_tiet_bd,
+            status: 0,
+            views: 0,
+            reason: ""
+        }
+        console.log(entity);
+        postModel.add(entity).then(id => {
+            res.render('admin/add-post');
+        }).catch(err => {
+            console.log(err);
+        })
+    }).catch(err=>{
+        console.log(err);
+    })
+    
+})
+
 router.post('/update-groupcategory', (req, res) => {  
     var entity = {
         ID: req.body.GroupID,

@@ -1,0 +1,39 @@
+{{#section 'css'}}
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.3/css/fileinput.min.css" media="all"
+  rel="stylesheet" type="text/css" />
+{{/section}}
+
+{{#section 'js'}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.3/js/fileinput.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.3/themes/fa/theme.min.js"></script>
+<script>
+  $(function () {
+    $('#fuMain').fileinput({
+      theme: 'fa',
+      dropZoneEnabled: false,
+      allowedFileExtensions: ['png', 'jpg', 'gif'],
+      uploadUrl: '/upload',
+      uploadAsync: false,
+    });
+  })
+</script>
+{{/section}}
+<div class="card shadow">
+  <h4 class="card-header">
+    Upload with Bootstrap FileInput
+  </h4>
+  <div class="card-body">
+    <form method="POST">
+      <div class="form-group">
+        <label for="fuMain">Photo</label>
+        <div class="file-loading">
+          <input id="fuMain" name="fuMain" type="file" multiple>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-success">
+        <i class="fa fa-check" aria-hidden="true"></i>
+        Save
+      </button>
+    </form>
+  </div>
+</div>
