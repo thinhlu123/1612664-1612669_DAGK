@@ -36,4 +36,7 @@ module.exports = {
   delete: id => {
     return db.delete('post', 'ID', id);
   },
+  allWithStatus: status => {
+    return db.load(`select * from post where status = ${status}`);
+  }
 };

@@ -184,7 +184,7 @@ router.post('/add-post', (req, res) =>{
 
     today = yyyy + '/' + mm + '/' + dd;
 
-    var catModel = categoryModel.single(req.body.category).then(n =>{
+    var catModel = categoryModel.single(parseInt(req.body.category)).then(n =>{
         
         var entity = {
             group: n[0].IDGroup,
