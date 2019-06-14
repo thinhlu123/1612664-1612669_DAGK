@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -153,47 +154,130 @@
     </header><!-- /header -->
  		<div id="container">
  			<div class="text-center" style="margin-top: 100px;"><h2>Đăng ký tài khoản</h2></div>
-        <form id="signup-form">
-          <table class="signup-table">
-            <tr>
-              <td> <div class="signup-label">Tên tài khoản: </div> </td>
-              <td> <input type="text" placeholder="Tên tài khoản..." class="signup-input"> </td>
-            </tr>
-            <tr>
-              <td> <div class="signup-label"><br>Mật khẩu: </div> </td>
-              <td> <br><input type="text" placeholder="Mật khẩu..." class="signup-input"> </td>
-            </tr>
-            <tr>
-              <td> <div class="signup-label"><br>Họ tên: </div> </td>
-              <td> <br><input type="text" placeholder="Họ tên..." class="signup-input"> </td>
-            </tr>
-            <tr>
-              <td> <div class="signup-label"><br>Email: </div> </td>
-              <td> <br><input type="text" placeholder="Email..." class="signup-input"> </td>
-            </tr>
-            <tr>
-              <td> <div class="signup-label"><br>Ngày sinh: </div> </td>
-              <td> <br><input type="date" class="signup-input"> </td>
-            </tr>
-            <tr>
-              <td> <div class="signup-label"><br>Thanh toán: </div> </td>
-              <td> <br><select name="payment" class="signup-input">
-                          <option value="unselect" selected="selected">Lựa chọn hình thức thanh toán</option>
-                            <option value=1>Thẻ ngân hàng</option>
-                            <option value=2>Thẻ ghi nợ/VISA</option>
-                            <option value=3>Paypal</option>
-                            <option value=4>Skrill</option>
-                        </select> </td>
-            </tr>
-          </table>
-        </form>
-        <div class="text-center">
-          <button type="button" class="signup-button">Đăng ký</button>
-        </div>
+        <form novalidate action="" method="POST" id="registerForm">
+  <div class="card shadow">
+    <h5 class="card-header">
+      Register
+    </h5>
+    <div class="card-body">
+      <h5 class="mb-3">Account</h5>
+      <div class="form-group">
+        <label for="txtUsername">Username</label>
+        <input type="text" class="form-control" id="txtUsername" name="username" autofocus>
+      </div>
+      <div class="form-group">
+        <label for="txtPassword">Password</label>
+        <input type="password" class="form-control" id="txtPassword" name="password">
+      </div>
+      <div class="form-group">
+        <label for="txtConfirm">Confirm</label>
+        <input type="password" class="form-control" id="txtConfirm" name="confirm">
+      </div>
+
+      <hr class="mb-4">
+      <h5 class="mb-3">Information</h5>
+      <div class="form-group">
+        <label for="txtName">Name</label>
+        <input type="text" class="form-control" id="txtName" name="name">
+      </div>
+      <div class="form-group">
+        <label for="txtNickName">Name</label>
+        <input type="text" class="form-control" id="txtNickName" name="nickname">
+      </div>
+      <div class="form-group">
+        <label for="txtEmail">Email</label>
+        <input type="text" class="form-control" id="txtEmail" name="email">
+      </div>
+      <div class="form-group">
+        <label for="txtDOB">Date of birth</label>
+        <input type="text" class="form-control" id="txtDOB" name="dob">
+      </div>
+    </div>
+    <div class="card-footer text-right">
+      <button type="submit" class="btn btn-lg btn-success btn-block">
+        <i class="fa fa-check" aria-hidden="true"></i>
+        Sign up
+      </button>
+    </div>
+  </div>
+</form>
  		 </div>
 	</div>
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"></script>
+    <script>
+  $(function () {
+
+    $('#txtDOB').datetimepicker({
+      format: 'd/m/Y',
+      timepicker: false,
+      mask: true,
+    });
+
+    $('#registerForm').validate({
+      rules: {
+        username: {
+          required: true,
+          remote: {
+            url: '/auth/is-available'
+          }
+        },
+        password: {
+          required: true,
+          minlength: 6
+        },
+        confirm: {
+          required: true,
+          equalTo: $('[name="password"]')
+        },
+        name: {
+          required: true,
+        },
+        email: {
+          required: true,
+          email: true
+        },
+        dob: {
+          required: true
+        },
+      },
+      messages: {
+        username: {
+          required: 'Your username is required.',
+          remote: 'Your username has been taken, please take another.'
+        },
+        password: {
+          required: 'Your password is required.',
+          minlength: 'Your password must have at least 6 characters.'
+        },
+        confirm: {
+          required: 'Your password does not match.',
+          equalTo: 'Your password does not match.'
+        },
+        name: {
+          required: 'Valid full name is required.',
+        },
+        email: {
+          required: 'Please enter a valid email address.',
+          email: 'Please enter a valid email address.'
+        },
+        dob: {
+          required: 'Valid date of birth is required.',
+        },
+      },
+      errorElement: 'small',
+      errorClass: 'help-block text-danger',
+      highlight: function (e) {
+        $(e).removeClass('is-valid').addClass('is-invalid');
+      },
+      unhighlight: function (e) {
+        $(e).removeClass('is-invalid').addClass('is-valid');
+      }
+    });
+  })
+</script>
 </body>
 </html>

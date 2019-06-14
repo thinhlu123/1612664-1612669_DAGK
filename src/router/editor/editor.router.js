@@ -1,6 +1,17 @@
 var express = require('express');
-var editorController = require('../../controller/editor/editor.controller');
-
 var router = express.Router();
-router.get('/editor', editorController.editor);
+var editorController = require('../../controller/editor/editor.controller');
+var editorModel = require('../../models/editor.model');
+
+router.get('/editor', (req,res) => {
+    var p = editorModel.all();
+    p.then(rows => {
+        res.render('editor/editor', {
+            posts: rows
+        })
+    }).catch(err => {
+        console.log(err);
+        res.end('error occured');
+    });
+});
 module.exports = router;

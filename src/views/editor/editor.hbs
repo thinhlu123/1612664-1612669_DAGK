@@ -141,21 +141,22 @@
  		<div id="container">
  			<div id="e-qlbv"><h2>Quản lý bài viết</h2></div>
       <br>
+	  {{#each this.posts}}
  				<table id="e-table">
  					<tr>
               <td width="5%">
-                <img id="e-picture" src="img-main/newest1.jpg">
+                <img id="e-picture" src={{avatar}}>
               </td>
               <td width="60%">
                 <div id="e-text">
                   <div>
-                    <a id="e-title" href="baidang/left-row-1.html">Việt Nam khiếu nại vì bị xếp vào nhóm ‘đội sổ’ ở SEA Games</a>
+                    <a id="e-title" href="#">{{title}}</a>
                   </div>
                   <div id="e-info">
-                    by Vũ Đức Thịnh
+                    by {{authorname}}
                   </div>
                   <div id="e-info">
-                  30/04/2019
+                  {{formatDate date}}
                   </div>
                 </div>
                 <div class="text-center">
@@ -165,30 +166,7 @@
               </td>
           </tr>
         </table>
-        <table id="e-table">
-          <tr>
-              <td width="5%">
-                <img id="e-picture" src="img-main/newest8.jpg">
-              </td>
-              <td width="60%">
-                <div id="e-text">
-                  <a id="e-title" href="baidang/right-row-1.html">
-                    Tổng bí thư, Chủ tịch nước gửi điện mừng lãnh đạo Triều Tiên              
-                  </a>
-                  <div id="e-info">
-                    by La Thoại
-                  </div>
-                  <div id="e-info">
-                  01/05/2019
-                  </div>
-                </div>
-                <div class="text-center">
-                  <button type="button" id="e-button" data-toggle="modal" data-target="#myModalAgree">Agree</button>
-                  <button type="button" id="e-button" data-toggle="modal" data-target="#myModalDisagree">Disagree</button>
-                </div>
-              </td>
-          </tr>
-        </table>
+		{{/each}}
         <!-- Modal -->
         <div class="modal fade" id="myModalDisagree" role="dialog">
           <div class="modal-dialog">

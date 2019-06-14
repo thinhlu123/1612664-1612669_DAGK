@@ -1,14 +1,14 @@
 var express = require('express');
 var router = express.Router();
-var exphbs  = require('express-handlebars');
+
 var morgan = require('morgan');
+var moment = require('moment');
 
 var app = express();
 var groupCategoryModel = require('./models/groupcategory.model');
 var categoryModel = require('./models/category.model');
 
 var bodyparser = require('body-parser');
-require('./middlewares/upload')(app);
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({extended:false}));
  
@@ -20,15 +20,9 @@ app.use('/auth', require('./router/auth/auth.router'));
 app.use('/editor', require('./router/editor/editor.router'));
 app.use('/post', require('./router/post/post.router'));
 
-app.engine('hbs', exphbs({
-  defaultLayout: 'main.hbs',
-  layoutsDir: 'views/layouts',
-  helpers: {
-    ifEquals: function(arg1, arg2, options) {
-      return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
-    }
-  }
-}));
+require('./middlewares/view-engine')(app);
+require('./middlewares/session')(app);
+require('./middlewares/passport')(app);
 
 app.set('view engine', 'hbs');
 

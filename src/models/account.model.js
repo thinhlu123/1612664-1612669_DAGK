@@ -5,12 +5,8 @@ module.exports = {
     return db.load('select * from account');
   },
 
-  single: id => {
-    return db.load(`select * from account where f_ID = ${id}`);
-  },
-
   singleByUserName: username => {
-    return db.load(`select * from account where f_Username = '${username}'`);
+    return db.load(`select * from account where username = '${username}'`);
   },
 
   add: entity => {
