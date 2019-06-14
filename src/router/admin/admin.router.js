@@ -1,8 +1,6 @@
 var express = require('express')
 var router = express.Router();
 
-var adminController = require("../../controller/admin/admin.controller");
-
 var categoryModel = require('../../models/category.model');
 var groupCategoryModel = require('../../models/groupcategory.model');
 
@@ -17,7 +15,7 @@ var router = express.Router();
 var categoryModel = require('../../models/category.model');
 var groupCategoryModel = require('../../models/groupcategory.model');
 
-var up = require('../../middlewares/upload');
+
 
 router.get('/add-category', (req, res) => {
     groupCategoryModel.all()
@@ -163,7 +161,7 @@ router.get('/manage-post', (req,res) => {
         console.log(err);
     });
 });
-router.get('/add-post', (req,res)=>{
+router.get('/add-post', (req,res,next)=>{
     Promise.all([groupCategoryModel.all(), categoryModel.loadAll()]).then(([groups, categories]) => {
         res.render('admin/add-post',{
            groups: groups,
@@ -175,7 +173,6 @@ router.get('/add-post', (req,res)=>{
 })
 
 
-
 router.post('/add-post', (req, res) =>{
     var today = new Date();
     var dd = String(today.getDate()).padStart(2, '0');
@@ -184,11 +181,11 @@ router.post('/add-post', (req, res) =>{
 
     today = yyyy + '/' + mm + '/' + dd;
 
-    var catModel = categoryModel.single(parseInt(req.body.category)).then(n =>{
+    var catModel = categoryModel.single(req.body.IDCat).then(n =>{
         
         var entity = {
             group: n[0].IDGroup,
-            category: parseInt(req.body.category),
+            category: parseInt(req.body.IDCat),
             title: req.body.title,
             avatar: "",
             date: today,
@@ -198,7 +195,7 @@ router.post('/add-post', (req, res) =>{
             views: 0,
             reason: ""
         }
-        console.log(entity);
+
         postModel.add(entity).then(id => {
             res.render('admin/add-post');
         }).catch(err => {

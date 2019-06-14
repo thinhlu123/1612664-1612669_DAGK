@@ -1,23 +1,29 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Thêm bài viết</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-	<link href='https://fonts.googleapis.com/css?family=Krona One' rel='stylesheet'>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="/css/main.css">
-	<link rel="stylesheet" type="text/css" href="/css/add-post.css">
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.1/js/fileinput.min.js"></script>
+
+{{#section 'css'}}
+	<link rel="stylesheet" type="text/css" href="main.css">
+	<link rel="stylesheet" type="text/css" href="add-post.css">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.3/css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />
 	<script src="/ckeditor/ckeditor.js"></script>
-
-</head>
-<body>
-
-
-
-	<div>
+{{/section}}
+{{#section 'js'}}
+	<script>
+		CKEDITOR.replace('chi_tiet_bd');
+	</script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.3/js/fileinput.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.3/themes/fa/theme.min.js"></script>
+<script>
+  $(function () {
+    $('#fuMain').fileinput({
+      theme: 'fa',
+      dropZoneEnabled: false,
+      allowedFileExtensions: ['png', 'jpg', 'gif'],
+      uploadUrl: '/upload',
+      uploadAsync: false,
+    });
+  })
+</script>
+{{/section}}
+<div>
 		<header id="header">
  			<div id="container">
 	
@@ -63,27 +69,26 @@
       </h4>
 			<br>
 			<div class="card-body">
-				<form method="POST" action="" enctype="multipart/form-data" id="postForm">
+				<form method="POST" action="">
         	<table id="add-prd" border="0" cellpadding="0" cellspacing="0" width="70%">
             	<tr>
                 	<td><label>Tên bài viết</label><br /><input type="text" name="title" autofocus /></td>
                 </tr>
                 <tr>
                 	<td>
-	
-      						<div class="form-group">
-        						<label for="fuMain">Photo</label>
-        						<div class="file-loading">
-          							<input id="fuMain" name="fuMain" type="file" class="file" multiple>
-        						</div>
-      						</div>
+      					<div class="form-group">
+        					<label for="fuMain">Photo</label>
+        					<div class="file-loading">
+          						<input id="fuMain" name="fuMain" type="file">
+        					</div>
+      					</div>
       						
 					</td>
                 </tr>
                 <tr>
                 	<td>
                     <label>Danh mục</label><br />
-                        <select class="selectpicker" style="width:50%" name="category">
+                        <select class="selectpicker" name="IDCat">
                           {{#each this.groups}}
 	                          <optgroup label="{{group}}">
 	                            {{#each ../this.categories}} 
@@ -115,20 +120,6 @@
   			</div>
 			
 	</div>
-			
-	
-	</div>
-	<script>
-  $("#fuMain").fileinput();
-</script>
+</div>
 
-		
-	<script>
-            CKEDITOR.replace( 'chi_tiet_bd');
-    </script>
 
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-</body>
-</html>

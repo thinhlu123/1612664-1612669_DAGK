@@ -9,9 +9,12 @@ var groupCategoryModel = require('./models/groupcategory.model');
 var categoryModel = require('./models/category.model');
 
 var bodyparser = require('body-parser');
+
 require('./middlewares/view-engine')(app);
 require('./middlewares/session')(app);
 require('./middlewares/passport')(app);
+require('./middlewares/upload')(app);
+
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({extended:false}));
  
@@ -23,8 +26,6 @@ app.use('/auth', require('./router/auth/auth.router'));
 app.use('/editor', require('./router/editor/editor.router'));
 app.use('/post', require('./router/post/post.router'));
 app.use(require('./middlewares/auth-local.mdw'));
-
-
 
 app.set('view engine', 'hbs');
 
