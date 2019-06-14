@@ -1,6 +1,7 @@
 var express = require('express')
 var bcrypt = require('bcrypt');
 var moment = require('moment');
+var passport = require('passport');
 var authController = require('../../controller/auth/auth.controller');
 var accountModel = require('../../models/account.model');
 var router = express.Router();
@@ -44,8 +45,33 @@ router.post('/sign-up', (req,res,next) => {
     })
 });
 
-router.get('/login', (req,res,next) => {
-    res.end('LOGIN');
-});
+router.get('/login', (req, res, next) => {
+  res.render('layouts/main', { layout: false });
+})
+
+router.post('/login', (req, res, next) => {
+  passport.authenticate('local', (err, user, info) => {
+    if (err)
+      return next(err);
+
+    if (!user) {
+      return res.render('layouts/main', {
+        layout: false,
+        err_message: info.message
+      })
+    }
+
+    req.logIn(user, err => {
+      if (err)
+        return next(err);
+
+      return res.redirect('/');
+    });
+  })(req, res, next);
+})
+
+router.get('/login', (req, res, next) => {
+  res.render('layouts/main', { layout: false });
+})
 
 module.exports = router;

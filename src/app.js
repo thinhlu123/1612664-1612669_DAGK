@@ -9,6 +9,7 @@ var groupCategoryModel = require('./models/groupcategory.model');
 var categoryModel = require('./models/category.model');
 
 var bodyparser = require('body-parser');
+<<<<<<< HEAD
 
 require('./middlewares/view-engine')(app);
 require('./middlewares/session')(app);
@@ -16,6 +17,11 @@ require('./middlewares/passport')(app);
 require('./middlewares/upload')(app);
 
 
+=======
+require('./middlewares/view-engine')(app);
+require('./middlewares/session')(app);
+require('./middlewares/passport')(app);
+>>>>>>> e75e29178261bff615a79a1aed081a24e38bf8b3
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({extended:false}));
  
@@ -26,7 +32,13 @@ app.use('/admin', require('./router/admin/admin.router'));
 app.use('/auth', require('./router/auth/auth.router'));
 app.use('/editor', require('./router/editor/editor.router'));
 app.use('/post', require('./router/post/post.router'));
+app.use(require('./middlewares/auth-local.mdw'));
 
+
+<<<<<<< HEAD
+=======
+
+>>>>>>> e75e29178261bff615a79a1aed081a24e38bf8b3
 app.set('view engine', 'hbs');
 
 
