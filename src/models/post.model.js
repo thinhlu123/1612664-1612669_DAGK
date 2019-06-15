@@ -9,8 +9,16 @@ module.exports = {
     return db.load(`select * from post where category = ${category}`);
   },
 
+  page: (limit, offset) => {
+    return db.load(`select * from post limit ${limit} offset ${offset}`);
+  },
+
   pageByCat: (category, limit, offset) => {
     return db.load(`select * from post where category = ${category} limit ${limit} offset ${offset}`);
+  },
+
+  count: () => {
+    return db.load(`select count(*) as total from post`);
   },
 
   countByCat: category => {

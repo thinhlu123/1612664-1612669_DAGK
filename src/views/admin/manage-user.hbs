@@ -51,7 +51,6 @@
     			<thead>
       				<tr>
         				<th scope="col" class="text-center">Username</th>
-        				<th scope="col">Password</th>
 						<th scope="col">Họ tên</th>
 						<th scope="col">Biệt danh</th>
 						<th scope="col">Email</th>
@@ -70,17 +69,16 @@
       			{{#each this.accounts}}
       				<tr>
         				<th scope="row" class="text-center">{{username}}</th>
-        					<td>{{password}}</td>
 							<td>{{fullname}}</td>
 							<td>{{nickname}}</td>
 							<td>{{email}}</td>
-							<td>{{birthday}}</td>
-							<td>{{type}}</td>
-							<td>{{premiumdate}}</td>
+							<td>{{formatDate birthday}}</td>
+							<td>{{atype}}</td>
+							<td>{{formatDate premiumdate}}</td>
         					<td class="text-right">
-          						<a class="btn btn-primary btn-sm" href="/admin/edit-user/{{ID}}" role="button">
-            						<i class="fa fa-pencil" aria-hidden="true"></i>
-          						</a>
+          						<a class="btn btn-outline-danger" href="/admin/delete-user/{{username}}" role="button">
+        							<i class="fa fa-trash-o" aria-hidden="true"></i>
+      							</a>
         					</td>
       				</tr>
       			{{/each}}

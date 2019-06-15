@@ -8,6 +8,7 @@ var accountModel = require("../../models/account.model");
 var tagModel = require("../../models/tag.model");
 var postModel = require("../../models/post.model");
 var categoryModel = require("../../models/category.model");
+var accountTypeModel = require("../../models/accountype.model");
 
 var express = require('express')
 var router = express.Router();
@@ -309,5 +310,41 @@ router.get('/manage-user', (req,res) => {
         console.log(err);
     });
 });
+
+router.get('/add-user', (req, res) => {
+    accountTypeModel.all()
+      .then(rows => {
+        res.render('admin/add-user', {
+          types: rows
+        });
+      }).catch(err => {
+        console.log(err);
+        res.end('error occured.')
+      });
+})
+
+router.post('/add-user', (req, res, next) => {
+    var entity = {
+        username: req.body.username,
+        password: req.body.password,
+        type: req.body.IDType,
+    }
+    console.log(entity);
+    accountModel.add(entity).then(username => {
+        console.log(username);
+        res.render('admin/add-user');
+    }).catch(err => {
+        console.log(err);
+        res.end('error occured.')
+    });
+})
+
+router.get('/delete-user/:username', (req, res) => {
+    accountModel.delete(req.params.username).then(n => {
+      res.redirect('/admin/manage-user');
+    }).catch(err => {
+      res.end('error occured.')
+    });
+})
 
 module.exports = router;

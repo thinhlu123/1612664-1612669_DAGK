@@ -1,0 +1,78 @@
+
+{{#section 'css'}}
+	<title>Thêm tài khoản</title>
+	<link rel="stylesheet" type="text/css" href="/css/main.css">
+	<link rel="stylesheet" type="text/css" href="/css/add-post.css">
+{{/section}}
+		<header id="header">
+ 			<div id="container">
+	
+				<nav class="navbar navbar-expand-lg">
+		  
+		  			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+		    			<span class="navbar-toggler-icon"></span>
+		  			</button>
+					<div id="papername">dogenews</div>
+		  			<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+		  				&nbsp &nbsp &nbsp &nbsp
+		    			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+		      				<li class="nav-item active"><a class="nav-link" href="#"><h2>Post</h2> <span class="sr-only">(current)</span></a></li>
+
+		    			</ul>
+					    <form class="form-inline my-2 my-lg-0">
+					      	<input class="form-control mr-sm-2" type="search" placeholder="Search">
+					      	<button id="btnSearch" type="submit">Search &nbsp</button>
+
+		            	</form>
+		            	<div>
+		            		<a href="#" data-toggle="dropdown"><i class="fa fa-user-circle" style="font-size:36px"></i></a>
+		            		<ul class="dropdown-menu dropdown-menu-right" role="menu">
+		            			<div class="col-lg-12"> 
+		                			<form class="px-4 py-3">
+		    							<!-- Thông tin người dùng
+		    							-->
+			  						</form>
+			  						<div class="dropdown-divider"></div>
+		  							
+		            			</div>
+		            		</ul>		
+	            		</div>
+	            		
+	            	</div>
+	        	</nav>
+	    	</div>
+ 		</header>
+
+			<div style="margin-top: 100px;">
+		<div id="container" align="center">
+			
+
+
+
+<form method="POST" action="" id="frmAddCategory">
+      <div class="form-group">
+        <label for="txtUsername">Username</label>
+        <input type="text" class="form-control" id="txtUsername" name="username" autofocus placeholder="Enter username...">
+        <label for="txtPassword">Password</label>
+        <input type="password" class="form-control" id="txtPassword" name="password" autofocus placeholder="Enter password...">
+        <label>Chức vụ</label>
+        <select name="IDType">
+          {{#each this.types}}
+          <option value="{{ID}}">{{accounttype}}</option>
+      
+          {{/each}}
+
+        </select>
+        
+      </div>
+      <a class="btn btn-primary" href="/admin/manage-user" role="button">
+        <i class="fa fa-backward" aria-hidden="true"></i>
+        List
+      </a>
+      <button type="submit" class="btn btn-success">
+        <i class="fa fa-check" aria-hidden="true"></i>
+        Save
+      </button>
+</form>
+		</div>
+    </div>

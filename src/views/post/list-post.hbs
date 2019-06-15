@@ -1,0 +1,53 @@
+<div id="container">
+<section id="bai-dang">
+	{{#each this.posts}}
+				<div id="row">
+					<img src="{{avatar}}" class="img-title">
+					<div id="text">
+						<a href="#" id="bai-dang-text">{{title}}</a>
+						<div id="date">{{formatDate date}}
+							{{#each ../this.categories}} 
+								{{#ifEquals ../category ID}}
+									<a href="#" id="tag">{{category}}</a>  
+								{{/ifEquals}}				 
+							{{/each}}				
+						</div>
+						<p>{{summary}}</p>
+					</div>
+				</div>
+	{{/each}}
+	<br>
+	<div class="text center">
+	<nav aria-label="...">
+  <ul class="pagination">
+	
+	  <li class="page-item disabled">
+      			<a class="page-link" href="#" tabindex="-1">Previous</a>
+    	</li>
+		
+	{{#each this.pages}}
+		{{#if active}}
+		<li class="page-item active">
+      		<a class="page-link" href="javascript:;">{{value}} <span class="sr-only">(current)</span></a>
+   		</li> 
+		{{else}}	
+    	<li class="page-item">
+			<a class="page-link" href="?page={{value}}">{{value}}</a>
+		</li>
+		{{/if}}		
+	{{/each}}
+	{{#if last}}
+    <li class="page-item disabled">
+      <a class="page-link" href="#" tabindex="-1">Next</a>
+    </li>
+	{{else}}
+	<li class="page-item">
+      <a class="page-link" href="#">Next</a>
+    </li>
+	{{/if}}
+
+  </ul>
+</nav>
+</div>
+</section>
+</div>

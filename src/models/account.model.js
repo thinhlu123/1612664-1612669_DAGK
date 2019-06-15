@@ -2,7 +2,7 @@ var db = require('../utils/db');
 
 module.exports = {
   all: () => {
-    return db.load('select * from account');
+    return db.load('select *, t.accounttype as atype from account a, acctype t where a.type = t.ID');
   },
 
   singleByUserName: username => {
@@ -19,7 +19,7 @@ module.exports = {
     return db.update('account', 'username', entity, username);
   },
 
-  delete: id => {
+  delete: username => {
     return db.delete('account', 'username', username);
   }
 };

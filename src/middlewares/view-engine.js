@@ -1,6 +1,7 @@
 var exphbs  = require('express-handlebars');
 const express_handlebars_sections = require('express-handlebars-sections');
 var numeral = require('numeral');
+var moment = require('moment');
 
 module.exports = function(app) {
 
