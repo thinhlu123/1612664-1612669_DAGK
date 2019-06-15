@@ -29,6 +29,14 @@ module.exports = {
     return db.load(`select tagname from post p, tagpost tp, tag t where tp.IDPost = ${tID} and tp.IDTag = t.ID `);
   },
 
+  getTopDate: ()=>{
+    return db.load(`select top(10) * from post order by date`);
+  },
+
+  getTopView:()=>{
+    return db.load(`select top(10) * from post order by views`);
+  },
+
   single: id => {
     return db.load(`select * from post where ID = ${id}`);
   },

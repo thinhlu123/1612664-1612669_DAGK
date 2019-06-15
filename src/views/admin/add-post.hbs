@@ -2,11 +2,18 @@
 	<link rel="stylesheet" type="text/css" href="main.css">
 	<link rel="stylesheet" type="text/css" href="add-post.css">
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.3/css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />
-	<script src="/ckeditor/ckeditor.js"></script>
+	<script src="https://cdn.tiny.cloud/1/lzclwpq5mtqpehgoc4q7xetz3u5aih8qwtaehs1minf4c06q/tinymce/5/tinymce.min.js"></script>
 {{/section}}
 {{#section 'js'}}
 	<script>
-		CKEDITOR.replace('chi_tiet_bd');
+		tinymce.init({
+   			selector: '#chi_tiet_bd',
+   			plugins: 'a11ychecker advcode casechange formatpainter linkchecker lists checklist media mediaembed pageembed permanentpen powerpaste tinycomments tinydrive tinymcespellchecker',
+   			toolbar: 'a11ycheck addcomment showcomments casechange checklist code formatpainter insertfile pageembed permanentpen',
+   			toolbar_drawer: 'floating',
+   			tinycomments_mode: 'embedded',
+   			tinycomments_author: 'Author name'
+		});
 	</script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.3/js/fileinput.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.3/themes/fa/theme.min.js"></script>
@@ -16,7 +23,7 @@
       theme: 'fa',
       dropZoneEnabled: false,
       allowedFileExtensions: ['png', 'jpg', 'gif'],
-      uploadUrl: '/upload',
+      uploadUrl: '/uploadImage',
       uploadAsync: true,
 	  showRemove:false
     }).on('fileuploaded', function(event, data) {

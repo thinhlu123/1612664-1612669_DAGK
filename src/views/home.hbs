@@ -3,6 +3,13 @@
 			<div id="bai-moi">
 				<div class="mycol-3">
 					<ul>
+						{{#each this.date}}
+							<li id="row"><img src="{{avatar}}" class="img-noi-bat">
+							<a href="home/{{ID}}" id="left-title">
+								{{title}}
+							</a></li>
+							<div class="dropdown-divider" style="border-width: 3px; border-color: gray;"></div>
+						{{/each}}
 						<li id="row"><img src="/image/newest1.jpg" class="img-noi-bat">
 							<a href="baidang/vn-khieu-nai.html" id="left-title">
 								Việt Nam khiếu nại vì bị xếp vào nhóm ‘đội sổ’ ở SEA Games

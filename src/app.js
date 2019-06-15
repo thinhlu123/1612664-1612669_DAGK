@@ -26,6 +26,7 @@ app.use('/admin', require('./router/admin/admin.router'));
 app.use('/auth', require('./router/auth/auth.router'));
 app.use('/editor', require('./router/editor/editor.router'));
 app.use('/post', require('./router/post/post.router'));
+app.use('/home', require('./router/home.router'));
 app.use(require('./middlewares/auth-local.mdw'));
 
 app.set('view engine', 'hbs');
