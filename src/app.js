@@ -17,6 +17,7 @@ require('./middlewares/upload')(app);
 
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({extended:false}));
+
  
 app.use(express.static(__dirname + '/public'));
 app.use(morgan('dev'));

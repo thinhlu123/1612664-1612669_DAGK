@@ -1,16 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
+
+{{#section 'css'}}
 	<title>Quản lý người dùng</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-	<link href='https://fonts.googleapis.com/css?family=Krona One' rel='stylesheet'>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="/css/admin_quanly.css">
-</head>
-<body>
-	<div>
+{{/section}}
 		<header id="header">
  			<div id="container">
 	
@@ -51,41 +43,51 @@
 	    	</div>
  		</header>
 		
-		<div id="container">
-			<div id="title-admin">
-				<h2>Quản lý người dùng</h2>
-			</div>
-        	<table id="prds" border="0" cellpadding="0" cellspacing="0" width="100%">
-            	<tr id="prd-bar">
-                    <td width="10%">Username</td>
-					<td width="10%">Password</td>
-					<td width="10%">Họ tên</td>
-					<td width="10%">Biệt danh</td>
-					<td width="15%">Email</td>
-					<td width="15%">Ngày sinh</td>
-					<td width="10%">Chức vụ</td>
-					<td width="10%">Hạn Premium</td>
-                </tr>
-				{{#each this.accounts}}
-					<tr>
-						<td width="10%">{{username}}</td>
-						<td width="10%">{{password}}</td>
-						<td width="10%">{{fullname}}</td>
-						<td width="10%">{{nickname}}</td>
-						<td width="15%">{{email}}</td>
-						<td width="15%">{{birthday}}</td>
-						<td width="10%">{{type}}</td>
-						<td width="10%">{{premiumdate}}</td>
-					</tr>
-				{{/each}}
-                   
-            </table>
+		<div id="container" class="card shadow">
+			<h4 class="card-header">
+				Quản lý người dùng
+      		</h4>
+			<table class="table table-hover">
+    			<thead>
+      				<tr>
+        				<th scope="col" class="text-center">Username</th>
+        				<th scope="col">Password</th>
+						<th scope="col">Họ tên</th>
+						<th scope="col">Biệt danh</th>
+						<th scope="col">Email</th>
+						<th scope="col">Ngày sinh</th>
+						<th scope="col">Chức vụ</th>
+						<th scope="col">Hạn Premium</th>
+        				<th scope="col" class="text-right">
+          					<a class="btn btn-outline-success" href="/admin/add-user" role="button">
+            					<i class="fa fa-plus" aria-hidden="true"></i>
+            					Add User
+          					</a>
+        				</th>
+      				</tr>
+    			</thead>
+    			<tbody>
+      			{{#each this.accounts}}
+      				<tr>
+        				<th scope="row" class="text-center">{{username}}</th>
+        					<td>{{password}}</td>
+							<td>{{fullname}}</td>
+							<td>{{nickname}}</td>
+							<td>{{email}}</td>
+							<td>{{birthday}}</td>
+							<td>{{type}}</td>
+							<td>{{premiumdate}}</td>
+        					<td class="text-right">
+          						<a class="btn btn-primary btn-sm" href="/admin/edit-user/{{ID}}" role="button">
+            						<i class="fa fa-pencil" aria-hidden="true"></i>
+          						</a>
+        					</td>
+      				</tr>
+      			{{/each}}
+    			</tbody>
+  			</table>
+
+        	
 		</div>
 
 	</div>
-
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-</body>
-</html>

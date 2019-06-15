@@ -1,4 +1,3 @@
-
 {{#section 'css'}}
 	<link rel="stylesheet" type="text/css" href="main.css">
 	<link rel="stylesheet" type="text/css" href="add-post.css">
@@ -18,9 +17,21 @@
       dropZoneEnabled: false,
       allowedFileExtensions: ['png', 'jpg', 'gif'],
       uploadUrl: '/upload',
-      uploadAsync: false,
+      uploadAsync: true,
+	  showRemove:false
+    }).on('fileuploaded', function(event, data) {
+		console.log(data.response.fileName);
+        $('#postForm').submit(function(){ //listen for submit event
+    		
+        	$('<input >').attr('type', 'hidden')
+            	.attr('name', 'nameFile')
+            	.attr('value', data.response.fileName)
+            .appendTo('#postForm');
+    	});
+    	return true;
     });
   })
+  
 </script>
 {{/section}}
 <div>
@@ -64,12 +75,12 @@
  		</header>
 
     <div id="container" class="card shadow">
-			<h4 class="card-header">
-        Add Post
-      </h4>
-			<br>
-			<div class="card-body">
-				<form method="POST" action="">
+		<h4 class="card-header">
+        	Add Post
+      	</h4>
+		<br>
+		<div class="card-body">
+			<form method="POST" action="" name="postForm" id="postForm">
         	<table id="add-prd" border="0" cellpadding="0" cellspacing="0" width="70%">
             	<tr>
                 	<td><label>Tên bài viết</label><br /><input type="text" name="title" autofocus /></td>
@@ -111,13 +122,13 @@
                 </tr>
                 <tr>
                 	<td><button type="submit" class="btn-success submitButton">
-        						<i class="fa fa-check" aria-hidden="true"></i>
-       							 Save
-      						</button> <input type="reset" name="reset" value="Làm mới" /></td>
+        					<i class="fa fa-check" aria-hidden="true"></i>
+       						Save
+      					</button> <input type="reset" name="reset" value="Làm mới" /></td>
                 </tr>
             </table>
-            </form>
-  			</div>
+        	</form>
+  		</div>
 			
 	</div>
 </div>

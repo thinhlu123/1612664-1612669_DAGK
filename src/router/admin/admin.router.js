@@ -16,7 +16,6 @@ var categoryModel = require('../../models/category.model');
 var groupCategoryModel = require('../../models/groupcategory.model');
 
 
-
 router.get('/add-category', (req, res) => {
     groupCategoryModel.all()
       .then(rows => {
@@ -161,7 +160,7 @@ router.get('/manage-post', (req,res) => {
         console.log(err);
     });
 });
-router.get('/add-post', (req,res,next)=>{
+router.get('/add-post', (req, res, next)=>{
     Promise.all([groupCategoryModel.all(), categoryModel.loadAll()]).then(([groups, categories]) => {
         res.render('admin/add-post',{
            groups: groups,
@@ -180,14 +179,14 @@ router.post('/add-post', (req, res) =>{
     var yyyy = today.getFullYear();
 
     today = yyyy + '/' + mm + '/' + dd;
-
-    var catModel = categoryModel.single(req.body.IDCat).then(n =>{
+    console.log(req.body.nameFile);
+    categoryModel.single(req.body.IDCat).then(n =>{
         
         var entity = {
             group: n[0].IDGroup,
             category: parseInt(req.body.IDCat),
             title: req.body.title,
-            avatar: "",
+            avatar: "./public/image/" + req.body.nameFile,
             date: today,
             author: "thinhlu123",
             content: req.body.chi_tiet_bd,
