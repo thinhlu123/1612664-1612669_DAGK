@@ -108,7 +108,7 @@
                     <label>Danh mục</label><br />
                         <select class="selectpicker" name="IDCat">
                           {{#each this.groups}}
-	                          <optgroup label="{{group}}">
+	                          <optgroup label="{{groupname}}">
 	                            {{#each ../this.categories}} 
 		                            {{#ifEquals ../ID IDGroup}}
 			                            <option value="{{ID}}">{{category}}</option>											  

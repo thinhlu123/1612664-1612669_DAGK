@@ -34,11 +34,19 @@ module.exports = {
   },
 
   getTopView:()=>{
-    return db.load(`select * from post order by views DESC limit 10`);
+    return db.load(`select p.ID, p.title, p.avatar, p.author, p.date, p.content, p.views, p.summary, gc.groupname from post p, groupcategory gc where p.groupname = gc.ID order by views DESC limit 10`);
   },
 
   getTopViewWeek:()=>{
-    return db.load('select * from post where date >= DATE_ADD(CURRENT_DATE(), INTERVAL -7 DAY) ORDER BY views desc limit 3');
+    return db.load('select p.ID, p.title, p.avatar, p.author, p.date, p.content, p.views, p.summary, gc.groupname from post p, groupcategory gc where p.groupname = gc.ID and date >= DATE_ADD(CURRENT_DATE(), INTERVAL -7 DAY) ORDER BY views desc limit 3');
+  },
+
+  get5Post: catID =>{
+    return db.load(`select * from post where category=${catID} limit 6`)
+  },
+
+  getPostByCate: ()=>{
+    return db.load(`select c.ID as IDCate, p.ID, p.title, p.avatar, c.groupname from post p, groupcategory c,(SELECT ID, groupname, date FROM post WHERE (groupname, date) IN (SELECT groupname, date FROM post where status = 1 GROUP BY date DESC) group by groupname) as t where p.ID=t.ID and p.groupname=c.ID ORDER BY c.ID`)
   },
 
   single: id => {

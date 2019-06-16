@@ -2,9 +2,21 @@ var express = require('express');
 var postController = require('../../controller/post/post.controller');
 var postModel = require('../../models/post.model');
 var categoryModel = require('../../models/category.model');
+var tagModel = require('../../models/tag.model');
 
 var router = express.Router();
-router.get('/post-detail', postController.postDetail);
+router.get('/post-detail/:id', (req, res) =>{
+  var id = req.params.id;
+  Promise.all([postModel.single(id), tagModel.getTagByPost(id)]).then(([row, tags])=>{
+    postModel.get5Post(row[0].category).then(post_5 => {
+      res.render('post/post-detail',{
+        post: row[0],
+        post_5: post_5,
+        tags: tags
+      })
+    })
+  })
+});
 
 router.get('/list-post', (req, res) => {
     var page = req.query.page || 1;

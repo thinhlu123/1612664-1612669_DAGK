@@ -2,7 +2,11 @@ var db = require('../utils/db');
 
 module.exports = {
   all: () => {
-    return db.load('select * from tag');
+    return db.load(`select * from tag`);
+  },
+
+  getTagByPost: postID =>{
+    return db.load(`select tagname from tag t, tagpost tp where tp.IDPost = ${postID} and tp.IDTag = t.ID`)
   },
 
   single: id => {
