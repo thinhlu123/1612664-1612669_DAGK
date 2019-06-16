@@ -1,5 +1,6 @@
 var express = require('express')
 var router = express.Router();
+var moment = require('moment');
 
 var categoryModel = require('../../models/category.model');
 var groupCategoryModel = require('../../models/groupcategory.model');
@@ -300,26 +301,26 @@ router.post('/update-tag', (req, res) => {
       res.end('error occured.')
     });
   })
-router.get('/manage-user', (req,res) => {
-    var p = accountModel.all();
-    p.then(rows => {
-        res.render('admin/manage-user', {
-            accounts: rows
+  router.get('/manage-user', (req,res) => {
+    Promise.all([accountModel.all(), categoryModel.loadAll()]).then(([accounts, categories]) => {
+        res.render('admin/manage-user',{
+           accounts: accounts,
+           categories: categories
         })
-    }).catch(err => {
+      }).catch(err => {
         console.log(err);
-    });
+      });
 });
 
 router.get('/add-user', (req, res) => {
-    accountTypeModel.all()
-      .then(rows => {
-        res.render('admin/add-user', {
-          types: rows
-        });
+    Promise.all([accountTypeModel.all(), groupCategoryModel.all(), categoryModel.loadAll()]).then(([types, groups, categories]) => {
+        res.render('admin/add-user',{
+           types: types,
+           groups, groups,
+           categories: categories
+        })
       }).catch(err => {
         console.log(err);
-        res.end('error occured.')
       });
 })
 
@@ -328,6 +329,7 @@ router.post('/add-user', (req, res, next) => {
         username: req.body.username,
         password: req.body.password,
         type: req.body.IDType,
+        category: req.body.IDCat,
     }
     console.log(entity);
     accountModel.add(entity).then(username => {
@@ -346,5 +348,57 @@ router.get('/delete-user/:username', (req, res) => {
       res.end('error occured.')
     });
 })
+
+router.get('/manage-editor/:username', (req, res) => {
+    var username = req.params.username;
+
+    Promise.all([accountModel.singleByUserName(username), groupCategoryModel.all(), categoryModel.loadAll()]).then(([user, groups, categories]) => {
+        res.render('admin/manage-editor',{
+           user: user[0],
+           groups: groups,
+           categories: categories
+        })
+      }).catch(err => {
+        console.log(err);
+      });
+})
+
+router.post('/update-editor', (req, res) => {  
+    var entity = {
+        username: req.body.username,
+        category: req.body.IDCat,
+    }
+    accountModel.update(entity).then(n => {
+      res.redirect('/admin/manage-user');
+    }).catch(err => {
+      console.log(err);
+      res.end('error occured.')
+    });
+  })
+
+  router.get('/add-premium/:username', (req, res) => {
+    var username = req.params.username;
+
+    Promise.all([accountModel.singleByUserName(username)]).then(([user]) => {
+        res.render('admin/add-premium',{
+           user: user[0],
+        })
+      }).catch(err => {
+        console.log(err);
+      });
+})
+
+router.post('/add-premium', (req, res) => {
+    var entity = {
+        username: req.body.username,
+        premiumdate: req.body.premiumdate,
+    }
+    accountModel.update(entity).then(n => {
+      res.redirect('/admin/manage-user');
+    }).catch(err => {
+      console.log(err);
+      res.end('error occured.')
+    });
+  })
 
 module.exports = router;

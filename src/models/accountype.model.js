@@ -2,7 +2,7 @@ var db = require('../utils/db');
 
 module.exports = {
   all: () => {
-    return db.load(`select * from acctype where ID = 3 or ID = 4`);
+    return db.load(`select * from acctype where ID = 4 or ID = 3 order by id desc`);
   },
 
   single: id => {

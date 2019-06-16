@@ -19,33 +19,95 @@ router.get('/post-detail/:id', (req, res) =>{
 });
 
 router.get('/list-post', (req, res) => {
-    var page = req.query.page || 1;
-    if (page < 1)
-        page = 1;
-    var limit = 6;
-    var offset = (page - 1)* limit;
-    
-    
+  var page = req.query.page || 1;
+  if (page < 1)
+      page = 1;
+  var limit = 6;
+  var offset = (page - 1)* limit;
+  
+  
 
-    Promise.all([postModel.page(limit, offset),postModel.count(), categoryModel.loadAll()]).then(([posts, count, categories]) => {
-        var total = count[0].total;
-        var nPages = Math.floor(total / limit);
-        if (total % limit > 0) nPages++;
-        var pages = [];
-        for (i = 1; i <= nPages; i++)
-        {
-            var obj = {value: i, active: i === +page};
-            pages.push(obj);
-        }
-      res.render('post/list-post',{
-         posts: posts,
-         categories: categories,
-         pages
-      })
-    }).catch(err => {
-      console.log(err);
-      res.end('error occured');
-    });
+  Promise.all([postModel.page(limit, offset),postModel.count(), categoryModel.loadAll()]).then(([posts, count, categories]) => {
+      var total = count[0].total;
+      var nPages = Math.floor(total / limit);
+      if (total % limit > 0) nPages++;
+      var pages = [];
+      for (i = 1; i <= nPages; i++)
+      {
+          var obj = {value: i, active: i === +page};
+          pages.push(obj);
+      }
+    res.render('post/list-post',{
+       posts: posts,
+       categories: categories,
+       pages
+    })
+  }).catch(err => {
+    console.log(err);
+    res.end('error occured');
   });
+});
+
+router.get('/list-post/category/:category', (req, res) => {
+  var category = req.params.category;
+  var page = req.query.page || 1;
+  if (page < 1)
+      page = 1;
+  var limit = 6;
+  var offset = (page - 1)* limit;
+  
+  
+
+  Promise.all([postModel.pageByCat(category, limit, offset),postModel.countByCat(category), categoryModel.loadAll()]).then(([posts, count, categories]) => {
+      var total = count[0].total;
+      var nPages = Math.floor(total / limit);
+      if (total % limit > 0) nPages++;
+      var pages = [];
+      for (i = 1; i <= nPages; i++)
+      {
+          var obj = {value: i, active: i === +page};
+          pages.push(obj);
+      }
+    res.render('post/list-post',{
+       posts: posts,
+       categories: categories,
+       pages
+    })
+  }).catch(err => {
+    console.log(err);
+    res.end('error occured');
+  });
+});
+
+router.get('/list-post/tag/:tag', (req, res) => {
+  var tag = req.params.tag;
+  var page = req.query.page || 1;
+  if (page < 1)
+      page = 1;
+  var limit = 6;
+  var offset = (page - 1)* limit;
+  
+  
+
+  Promise.all([postModel.pageByTag(tag, limit, offset),postModel.countByTag(tag), categoryModel.loadAll()]).then(([posts, count, categories]) => {
+      var total = count[0].total;
+      var nPages = Math.floor(total / limit);
+      if (total % limit > 0) nPages++;
+      var pages = [];
+      for (i = 1; i <= nPages; i++)
+      {
+          var obj = {value: i, active: i === +page};
+          pages.push(obj);
+      }
+    res.render('post/list-post',{
+       posts: posts,
+       categories: categories,
+       pages
+    })
+  }).catch(err => {
+    console.log(err);
+    res.end('error occured');
+  });
+});
 
 module.exports = router;

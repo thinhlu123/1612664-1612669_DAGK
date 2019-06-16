@@ -2,7 +2,7 @@ var db = require('../utils/db');
 
 module.exports = {
   all: () => {
-    return db.load('select *, t.accounttype as atype from account a, acctype t where a.type = t.ID');
+    return db.load('select *, t.accounttype as atype from account a, acctype t where a.type = t.ID and a.username <> "admin"');
   },
 
   singleByUserName: username => {
@@ -14,9 +14,7 @@ module.exports = {
   },
 
   update: entity => {
-    var username = entity.username;
-    delete entity.username;
-    return db.update('account', 'username', entity, username);
+    return db.update('account', 'username', entity);
   },
 
   delete: username => {

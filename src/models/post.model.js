@@ -17,12 +17,20 @@ module.exports = {
     return db.load(`select * from post where category = ${category} limit ${limit} offset ${offset}`);
   },
 
+  pageByTag: (tag, limit, offset) => {
+    return db.load(`select p.* from post p, tag t, tagpost tp where t.ID = ${tag} and t.ID = tp.IDTag and p.ID = tp.IDPost limit ${limit} offset ${offset}`);
+  },
+
   count: () => {
     return db.load(`select count(*) as total from post`);
   },
 
   countByCat: category => {
     return db.load(`select count(*) as total from post where category = ${category}`);
+  },
+
+  countByTag: tag => {
+    return db.load(`select count(*) as total from post p, tagpost tp where tp.IDTag = ${tag} and p.ID = tp.IDPost`);
   },
 
   getAllTag: tID => {

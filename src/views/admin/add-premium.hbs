@@ -49,32 +49,12 @@
 
 
 
-<form method="POST" action="" id="frmAddCategory">
+<form method="POST" action="/admin/add-premium" id="frmManageEditor">
       <div class="form-group">
         <label for="txtUsername">Username</label>
-        <input type="text" class="form-control" id="txtUsername" name="username" autofocus placeholder="Enter username...">
-        <label for="txtPassword">Password</label>
-        <input type="password" class="form-control" id="txtPassword" name="password" autofocus placeholder="Enter password...">
-        <label>Chức vụ</label>
-        <select name="IDType" onchange="typeChanged(this)">
-          {{#each this.types}}
-          	<option value="{{ID}}">{{accounttype}}</option>
-          {{/each}}
-        </select>
-		<br>
-			<label id="lblCat" type="hide">Danh mục</label>
-            <select class="selectpicker" id="IDCat" name="IDCat" type="hide">
-                          {{#each this.groups}}
-	                          <optgroup label="{{groupname}}">
-	                            {{#each ../this.categories}} 
-		                            {{#ifEquals ../ID IDGroup}}
-			                            <option value="{{ID}}">{{category}}</option>											  
-		                            {{/ifEquals}}
-                            	{{/each}}
-                              </optgroup>
-                            {{/each}}
-                          </select>
-        
+        <input type="text" class="form-control disabled" id="txtUsername" name="username" readonly value="{{this.user.username}}">
+			<label>Premium Date</label>
+            <input type="date" id="txtPremiumDate" name="premiumdate" value="{{this.user.premiumdate}}">
       </div>
       <a class="btn btn-primary" href="/admin/manage-user" role="button">
         <i class="fa fa-backward" aria-hidden="true"></i>
@@ -82,22 +62,8 @@
       </a>
       <button type="submit" class="btn btn-success">
         <i class="fa fa-check" aria-hidden="true"></i>
-        Save
+        Update
       </button>
 </form>
 		</div>
     </div>
-<script>
-	function typeChanged(obj)
-{
-    var value = obj.value;
-    if (value == 4){
-		$('#lblCat').show();
-        $('#IDCat').show();
-    }
-    else {
-		$('#lblCat').hide();
-		$('#IDCat').hide();
-	}
-}
-</script>

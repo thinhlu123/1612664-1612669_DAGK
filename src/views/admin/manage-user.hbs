@@ -57,6 +57,7 @@
 						<th scope="col">Ngày sinh</th>
 						<th scope="col">Chức vụ</th>
 						<th scope="col">Hạn Premium</th>
+						<th scope="col">Chuyên mục</th>
         				<th scope="col" class="text-right">
           					<a class="btn btn-outline-success" href="/admin/add-user" role="button">
             					<i class="fa fa-plus" aria-hidden="true"></i>
@@ -75,7 +76,24 @@
 							<td>{{formatDate birthday}}</td>
 							<td>{{atype}}</td>
 							<td>{{formatDate premiumdate}}</td>
-        					<td class="text-right">
+							<td>
+								{{#each ../this.categories}}
+									{{#ifEquals ../category ID}}
+										{{category}}
+									{{/ifEquals}}
+								{{/each}}
+							</td>
+        					<td class="text-right" scope="row">
+								{{#ifEquals atype "editor"}}
+								<a class="btn btn-outline-primary" href="/admin/manage-editor/{{username}}" role="button">
+            						<i class="fa fa-pencil" aria-hidden="true"></i>
+          						</a>
+								{{/ifEquals}}
+								{{#ifEquals atype "user"}}
+								<a class="btn btn-outline-primary" href="/admin/add-premium/{{username}}" role="button">
+            						<i class="fa fa-calendar" aria-hidden="true"></i>
+          						</a>
+								{{/ifEquals}}
           						<a class="btn btn-outline-danger" href="/admin/delete-user/{{username}}" role="button">
         							<i class="fa fa-trash-o" aria-hidden="true"></i>
       							</a>
