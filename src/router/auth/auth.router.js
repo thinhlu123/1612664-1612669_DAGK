@@ -74,4 +74,30 @@ router.get('/login', (req, res, next) => {
   res.render('layouts/main', { layout: false });
 })
 
+router.get('/edit-information/:username', (req,res) => {
+  var username = req.params.username;
+  accountModel.singleByUserName(username).then(rows => {
+    res.render('auth/edit-information', {
+      user: rows[0],
+    })
+  }).catch(err => {
+    console.log(err);
+  })
+})
+
+router.post('/edit-information', (req,res) => {
+  var entity = {
+    username: req.body.username,
+    fullname: req.body.name,
+    nickname: req.body.nickname,
+    email: req.body.email,
+    birthday: req.body.dob,
+  }
+  accountModel.update(entity).then(n => {
+    res.redirect('/');
+  }).catch(err => {
+    console.log(err);
+  })
+})
+
 module.exports = router;
