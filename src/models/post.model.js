@@ -30,11 +30,15 @@ module.exports = {
   },
 
   getTopDate: ()=>{
-    return db.load(`select top(10) * from post order by date`);
+    return db.load(`select * from post ORDER BY UNIX_TIMESTAMP(date) DESC limit 10`);
   },
 
   getTopView:()=>{
-    return db.load(`select top(10) * from post order by views`);
+    return db.load(`select * from post order by views DESC limit 10`);
+  },
+
+  getTopViewWeek:()=>{
+    return db.load('select * from post where date >= DATE_ADD(CURRENT_DATE(), INTERVAL -7 DAY) ORDER BY views desc limit 3');
   },
 
   single: id => {

@@ -12,6 +12,23 @@ app.engine('hbs', exphbs({
       ifEquals: function(arg1, arg2, options) {
         return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
       },
+      slice: function(context, block) {
+
+        var ret = "",
+          offset = parseInt(block.hash.offset) || 0,
+          limit = parseInt(block.hash.limit) || 5,
+          i = (offset < context.length) ? offset : 0,
+          j = ((limit + offset) < context.length) ? (limit + offset) : context.length;
+        
+           
+        for(i,j; i<j; i++) {        
+          ret += block.fn(context[i]);
+        }
+        
+      return ret;
+    }
+      ,
+
       formatDate: function(date) {
         return moment(date).format('MM-DD-YYYY');
       },

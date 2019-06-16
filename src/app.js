@@ -26,23 +26,10 @@ app.use('/admin', require('./router/admin/admin.router'));
 app.use('/auth', require('./router/auth/auth.router'));
 app.use('/editor', require('./router/editor/editor.router'));
 app.use('/post', require('./router/post/post.router'));
-app.use('/home', require('./router/home.router'));
+app.use('', require('./router/home.router'));
 app.use(require('./middlewares/auth-local.mdw'));
 
 app.set('view engine', 'hbs');
-
-
-app.get('/', (req, res) => {
-  Promise.all([groupCategoryModel.get6(), groupCategoryModel.all(), categoryModel.loadAll()]).then(([get6, groups, categories]) => {
-    res.render('home',{
-       get6: get6,
-       groups: groups,
-       categories: categories
-    })
-  }).catch(err => {
-    console.log(err);
-  });
-});
 
 app.use((req, res, next) => {
     res.render('404', { layout: false });

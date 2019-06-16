@@ -3,121 +3,55 @@
 			<div id="bai-moi">
 				<div class="mycol-3">
 					<ul>
-						{{#each this.date}}
-							<li id="row"><img src="{{avatar}}" class="img-noi-bat">
-							<a href="home/{{ID}}" id="left-title">
+						{{#slice this.views offset="0" limit="6"}}
+							
+								<li id="row"><img src="{{avatar}}" class="img-noi-bat">
+								<a href="home/{{ID}}" id="left-title">
 								{{title}}
-							</a></li>
-							<div class="dropdown-divider" style="border-width: 3px; border-color: gray;"></div>
-						{{/each}}
-						<li id="row"><img src="/image/newest1.jpg" class="img-noi-bat">
-							<a href="baidang/vn-khieu-nai.html" id="left-title">
-								Việt Nam khiếu nại vì bị xếp vào nhóm ‘đội sổ’ ở SEA Games
-							</a></li>
-							<div class="dropdown-divider" style="border-width: 3px; border-color: gray;"></div>
-						<li id="row"><img src="/image/newest2.jpg" class="img-noi-bat">
-							<a href="baidang/quai-vat-the-hinh.html" id="left-title">
-								'Quái vật thể hình' Hàn Quốc xuất hiện tại Việt Nam						
-							</a></li>
-							<div class="dropdown-divider" style="border-width: 3px; border-color: gray;"></div>
-						<li id="row"><img src="/image/newest3.jpg" class="img-noi-bat">
-							<a href="baidang/startup.html" id="left-title">
-								Bao nhiêu startup đã nhận được tiền từ Shark Tank?							
-							</a></li>
-							<div class="dropdown-divider" style="border-width: 3px; border-color: gray;"></div>
-						<li id="row"><img src="/image/newest4.jpg" class="img-noi-bat">
-							<a href="baidang/nha-tho-duc-ba.html" id="left-title">
-								Góp gần 1 tỷ USD cho Nhà thờ Đức Bà, các đại gia đối mặt chỉ trích						
-							</a></li>
-							<div class="dropdown-divider" style="border-width: 3px; border-color: gray;"></div>
-						<li id="row"><img src="/image/newest5.jpg" class="img-noi-bat">
-							<a href="baidang/ronaldo.html" id="left-title">
-								Ronaldo muốn sớm 'đánh bài chuồn' khỏi Juventus</a></li>
-							<div class="dropdown-divider" style="border-width: 3px; border-color: gray;"></div>
-						<li id="row"><img src="/image/newest6.jpg" class="img-noi-bat">
-							<a href="baidang/do-hung-dung.html" id="left-title">
-								Cầu thủ Đỗ Hùng Dũng tung ảnh cưới lãng mạn, thông báo ngày kết hôn						
-							</a></li>
+								</a></li>
+								<div class="dropdown-divider" style="border-width: 3px; border-color: gray;"></div>
+						{{/slice}}
 					</ul>
 				</div>
 				<div class="mycol-6">
-					<img src="/image/newest7.jpg" class="img-noi-bat-mid">
-							<div id="text">
-							<a href="baidang/chanh-van-phong.html" id="row-mid-title">Chánh văn phòng Sở GD&ĐT Sơn La: 'Tôi không biết danh sách nào cả'</a>
+					{{#slice this.views offset="6" limit="1"}}
+						<img src="{{avatar}}" class="img-noi-bat-mid">
+						<div id="text">
+							<a href="home/{{ID}}" id="row-mid-title">{{title}}</a>
 							<div style="display: inline-block;">
-								<div id="date">18/04/2019<a href="#" id="tag">TUYỂN SINH 2019</a></div>
+								<div id="date">{{date}}<a href="#" id="tag">TUYỂN SINH 2019</a></div>
 							</div>
 							<p>Chánh văn phòng Sở GD&ĐT Sơn La nói ông chỉ đọc thông tin về danh sách phụ huynh liên quan nâng điểm cho con trên báo chí, chứ không được nhận danh sách nào cả.</p>
-							</div>
+						</div>
+					{{/slice}}
+					
 				</div>
 				<div class="mycol-4 right">
 					<ul>
-						<li id="right-column"><img src="/image/newest8.jpg" class="img-noi-bat-right">
-						<a href="baidang/mung-lanh-dao.html" id="right-title">
-							Tổng bí thư, Chủ tịch nước gửi điện mừng lãnh đạo Triều Tiên							
-						</a></li>
-						<li id="right-column"><img src="/image/newest9.jpg" class="img-noi-bat-right">
-						<a href="baidang/giai-trinh.html" id="right-title">
-							2 bộ Giáo dục, Công an giải trình kín về gian lận điểm thi						
-						</a></li>
-						<li id="right-column"><img src="/image/newest10.jpg" class="img-noi-bat-right">
-						<a href="baidang/thi-tran-kim-cuong.html" id="right-title">
-							Thị trấn ‘dát’ 72.000 tấn kim cương ở Đức							
-						</a></li>
+						{{#slice this.views offset="7" limit="3"}}
+							<li id="right-column"><img src="{{avatar}}" class="img-noi-bat-right">
+								<a href="home/{{ID}}" id="right-title">
+									{{title}}							
+								</a></li>
+						{{/slice}}
 					</ul>
 				</div>
 			</div>
 
 			<section id="bai-dang">
 				<label class="mark">/</label><h4>TIN MỚI</h4>
-				<div id="row">
-					<img src="/image/hung-sam-so.jpg" class="img-title">
-					<div id="text">
-						<a href="baidang/hung-sam-so.html" id="bai-dang-text">‘Hùng sàm sỡ trong thang máy’ bị dân chung cư Hà Nội họp khẩn</a>
-						<div id="date">18/04/2019<a href="#" id="tag">Thời sự</a></div>
-						<p>Cư dân một chung cư ở quận Thanh Xuân (Hà Nội) hoang mang khi gần đây họ thường xuyên nhìn thấy Đỗ Mạnh Hùng, người sàm sỡ nữ sinh trong thang máy xuất hiện ở nơi họ sinh sống.</p>
+				{{#each this.dates}}
+					<div id="row">
+					<img src="{{avatar}}" class="img-title">
+						<div id="text">
+							<a href="home/{{ID}}" id="bai-dang-text">{{title}}</a>
+							<div id="date">{{date}}<a href="#" id="tag">Thời sự</a></div>
+							<p>Cư dân một chung cư ở quận Thanh Xuân (Hà Nội) hoang mang khi gần đây họ thường xuyên nhìn thấy Đỗ Mạnh Hùng, người sàm sỡ nữ sinh trong thang máy xuất hiện ở nơi họ sinh sống.</p>
+						</div>
 					</div>
-				</div>
-				<div id="row">
-					<img src="/image/70thanh-nien-hon-chien.jpg" class="img-title">
-					<div id="text">
-						<a href="baidang/70-thanh-nien-hon-chien.html" id="bai-dang-text">Gần 70 thanh niên hỗn chiến tranh giành 'nhân viên phục vụ'</a>
-						<div id="date">18/04/2019<a href="#" id="tag">Thời sự</a></div>
-						<p>Vì tranh giành tiếp viên quán karaoke mà 2 nhóm thanh niên hỗn chiến khiến nhiều người bị thương.</p>
-					</div>
-				</div>
-				<div id="row">
-					<img src="/image/viettel.jpg" class="img-title">
-					<div id="text">
-						<a href="baidang/viettel.html" id="bai-dang-text">Công ty con ‘nhà Viettel’ quyết chi hơn 41 tỷ đồng mua văn phòng mới</a>
-						<div id="date">18/04/2019<a href="#" id="tag">Tài chính</a></div>
-						<p>Tại đại hội đồng cổ đông (ĐHĐCĐ), lãnh đạo Công ty Cổ phần Tư vấn Thiết kế Viettel tiết lộ công ty sẽ đầu tư trụ sở văn phòng...</p>
-					</div>
-				</div>
-				<div id="row">
-					<img src="/image/bai1.jpg" class="img-title">
-					<div id="text">
-						<a href="baidang/csgt-bi-tai-xe-can.html" id="bai-dang-text">Đại úy CSGT bị tài xế xe bán tải ép ngã đã qua đời</a>
-						<div id="date">18/04/2019<a href="#" id="tag">Thời sự</a></div>
-						<p>Một trong hai cảnh sát giao thông đã tử vong sau khi bị tài xế xe bán tải Huỳnh Văn Chủng ép ngã. Gia đình tài xế vừa xuất trình sổ điều trị tâm thần ngoại trú của người này.</p>
-					</div>
-				</div>
-				<div id="row">
-					<img src="/image/bai2.jpg" class="img-title">
-					<div id="text">
-						<a href="baidang/thu-mon-barca-phat-hien-manh-giay.html" id="bai-dang-text">Thủ môn Barca phát hiện mảnh giấy bí mật Solskjaer gửi cho Rashford</a>
-						<div id="date">18/04/2019<a href="#" id="tag">Cúp Châu âu</a></div>
-						<p>Mảnh giấy ghi thông điệp bí mật HLV Solskjaer gửi cho cậu học trò người Anh bị thủ môn Ter Stegen phát hiện và giở ra đọc ngay khi trận đấu đang diễn ra.</p>
-					</div>
-				</div>
-				<div id="row">
-					<img src="/image/bai3.jpg" class="img-title">
-					<div id="text">
-						<a href="baidang/thi-the-nguoi-phu-nu-loa-the.html" id="bai-dang-text">Thi thể người phụ nữ lõa thể tại nhà riêng</a>
-						<div id="date">18/04/2019<a href="#" id="tag">Thời sự</a></div>
-						<p>Nhiều lần điện thoại cho mẹ không được, nam thanh niên nhờ bạn đến nhà kiểm tra giùm thì người này phát hiện bà Thủy đã chết.</p>
-					</div>
-				</div>
+				{{/each}}
+				
+				
 				<br>
 				<div class="center">
 					<div class="pagination">
@@ -142,7 +76,21 @@
    			 			<li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
   					</ol>
   					<div class="carousel-inner">
-    					<div class="carousel-item active">
+						{{#slice this.viewWeeks offset="0" limit="1"}}
+							<div class="carousel-item active">
+      						<img src="{{avatar}}" class="d-block">
+    							<h5><a href="home/{{ID}}">{{title}}</a></h5>
+    							<p>Theo số liệu mới nhất từ CIPA (Hiệp hội các sản phẩm máy ảnh và hình ảnh), doanh số máy ảnh kỹ thuật số...</p>
+    						</div>
+						{{/slice}}
+						{{#slice this.viewWeeks offset="1" limit="2"}}
+							<div class="carousel-item">
+      						<img src="{{avatar}}" class="d-block">
+    							<h5><a href="home/{{ID}}">{{title}}</a></h5>
+    							<p>Theo số liệu mới nhất từ CIPA (Hiệp hội các sản phẩm máy ảnh và hình ảnh), doanh số máy ảnh kỹ thuật số...</p>
+    						</div>
+						{{/slice}}
+    					<!--<div class="carousel-item active">
       						<img src="/image/hack.jpg" class="d-block" >
     							<h5><a href="baidang/hack-tuoi-tho.html">Con người có thể "hack" tuổi thọ để trở thành bất tử hay không?</a></h5>
     							<p>Khi giới công nghệ mới chỉ vừa tiếp cận khái niệm 8K không lâu thì Sony đã lại khiến chúng ta phải ngỡ...</p>
@@ -156,7 +104,7 @@
       						<img src="/image/xiaomi.jpg" class="d-block">
       						<h5><a href="baidang/xiaomi-may-giat.html">Xiaomi trì hoãn phát hành máy giặt readmi 1A</a></h5>
     						<p>Xiaomi chưa nói rõ bao giờ thì Redmi 1A sẽ được phát hành chính thức.</p>
-    					</div>
+    					</div>-->
   					</div>
   					<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
     					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
