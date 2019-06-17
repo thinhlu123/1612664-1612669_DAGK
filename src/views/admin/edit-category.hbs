@@ -44,7 +44,7 @@
  		</header>
 
 			<div style="margin-top: 100px;">
-		<div class="card shadow">
+		<div class="card shadow" id="container">
   <h4 class="card-header">
     Edit Category
   </h4>
@@ -68,7 +68,11 @@
         <label for="txtCatGroup">Group</label>
         <select id="cbCatGroup" name="CatGroup">
             {{#each this.groupCategories}}     
-                <option value="{{ID}}">{{groupname}}</option>
+                {{#ifEquals ../this.category.IDGroup ID}}
+                  <option value="{{ID}}" selected>{{groupname}}</option>
+                {{else}}
+                  <option value="{{ID}}">{{groupname}}</option>
+                {{/ifEquals}}
             {{/each}}
         </select>
       </div>

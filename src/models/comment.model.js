@@ -5,12 +5,8 @@ module.exports = {
     return db.load('select * from comment');
   },
 
-  allByPost: pID => {
-    return db.load(`select * from comment where IDPost = ${pID}`);
-  },
-
-  pageByPost: (pID, limit, offset) => {
-    return db.load(`select * from comment where IDPost = ${pID} limit ${limit} offset ${offset}`);
+  getAllComment: pID => {
+    return db.load(`select * from comment where IDPost = ${pID} and IDParent = -1 `);
   },
 
   single: id => {

@@ -1,3 +1,50 @@
+{{#section 'css'}}
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<style>
+    .pb-cmnt-container {
+        font-family: Lato;
+		padding: 20px;
+    }
+
+    .pb-cmnt-textarea {
+        resize: none;
+		padding: 20px;
+        height: 130px;
+        width: 100%;
+        border: 1px solid #F2F2F2;
+    }
+	</style>
+{{/section}}
+{{#section 'js'}}
+<script>
+	const $form = $('#commentForm')
+
+	$form.on('submit', submitHandler)
+
+	function submitHandler (e) {
+  		e.preventDefault();
+		
+		let IDPost = {{this.post.ID}};
+		let comment = $('#comment').val();
+
+  		$.ajax({
+    		url: 'comment/',
+        	data: JSON.stringify({"comment": comment, "IDPost": IDPost }),
+        	processData: false,
+        	type: 'POST',
+        	contentType: 'application/json',
+        	success: function (data) {
+        		alert(data);
+        	}
+  		}).done(response => {
+    		console.log(response)
+  		})
+	}
+</script>
+
+{{/section}}
+
+
 <div id="container">
 			<div class="bai-viet ml-3">
 				<div id="bai-dang-text">{{this.post.title}}</div>
@@ -10,12 +57,8 @@
 				{{/each}}
 				<div class="dropdown-divider" style="border-width: 3px; border-color: gray;"></div>
 			</div>
-		</div>
-		<form action="xiaomi-may-giat_submit" method="get" accept-charset="utf-8">
-			
-		</form>
-
-		<div id="container">
+</div>
+<div id="container">
 			
 			<label class="mark">/</label><a href="#" title="MOBILE" class="chuyen-muc-title">Cùng chuyên mục</a>
 			<section id="chuyen-muc">
@@ -35,4 +78,54 @@
 				</div>
 				{{/slice}}
 			</section>
-		</div>
+</div>
+
+<div id="container">
+	<label class="mark">/</label><a href="#" class="chuyen-muc-title">Comment</a>
+	
+		<div class="card">
+	    <div class="card-body">
+			{{#each this.pComment}}
+				<div class="row">
+        	    	<div class="col-md-2">
+        	        	<img src="https://image.ibb.co/jw55Ex/def_face.jpg" class="img img-rounded img-fluid"/>
+        	    	</div>
+        	    	<div class="col-md-10">
+						<p><a class="float-left" href="https://maniruzzaman-akash.blogspot.com/p/contact.html"><strong>{{user}}</strong></a></p>
+        	       	<div class="clearfix"></div>
+        	        	<p>{{comment}}</p>
+        	        	<p>
+        	        	    <a class="float-right btn btn-outline-primary ml-2"> <i class="fa fa-reply"></i> Reply</a>
+        	       		</p>
+        	    	</div>
+	        	</div>
+				{{#each ../this.comment}}
+					{{#ifEquals ../IDComment IDParent}}
+						<div class="card card-inner">
+            	    		<div class="card-body">
+            	        		<div class="row">
+                    	    		<div class="col-md-2">
+                    	        		<img src="https://image.ibb.co/jw55Ex/def_face.jpg" class="img img-rounded img-fluid"/>
+                    	    		</div>
+                    	   			 <div class="col-md-10">
+                    	        		<p><a href="https://maniruzzaman-akash.blogspot.com/p/contact.html"><strong>{{user}}</strong></a></p>
+                    	        		<p>{{comment}}</p>
+                    	    		</div>
+            	        		</div>
+            	    		</div>
+	            		</div>
+					{{/ifEquals}}
+				{{/each}}
+
+			{{/each}}
+	        	<form id="commentForm" name="commentForm">
+					<div class="pb-cmnt-container">
+    					<div class="row">
+        					<textarea placeholder="Write your comment here!" class="pb-cmnt-textarea" name="comment" id="comment"></textarea>
+							<button class="btn btn-primary pull-right" type="submit" id="submit">Share</button>
+    					</div>
+					</div>
+				</form>
+	        	
+	    </div>
+	</div>	

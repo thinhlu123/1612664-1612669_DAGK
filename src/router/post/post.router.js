@@ -3,20 +3,26 @@ var postController = require('../../controller/post/post.controller');
 var postModel = require('../../models/post.model');
 var categoryModel = require('../../models/category.model');
 var tagModel = require('../../models/tag.model');
+var commentModel = require('../../models/comment.model');
 
 var router = express.Router();
 router.get('/post-detail/:id', (req, res) =>{
   var id = req.params.id;
-  Promise.all([postModel.single(id), tagModel.getTagByPost(id)]).then(([row, tags])=>{
+  Promise.all([postModel.single(id), tagModel.getTagByPost(id), commentModel.getAllComment(id), commentModel.all()]).then(([row, tags, pComment, comment])=>{
     postModel.get5Post(row[0].category).then(post_5 => {
+      
       res.render('post/post-detail',{
         post: row[0],
         post_5: post_5,
-        tags: tags
+        tags: tags,
+        pComment: pComment,
+        comment: comment
       })
     })
   })
 });
+
+
 
 router.get('/list-post', (req, res) => {
   var page = req.query.page || 1;
