@@ -6,7 +6,7 @@ module.exports = {
   },
 
   getTagByPost: postID =>{
-    return db.load(`select tagname from tag t, tagpost tp where tp.IDPost = ${postID} and tp.IDTag = t.ID`)
+    return db.load(`select tagname, ID from tag t, tagpost tp where tp.IDPost = ${postID} and tp.IDTag = t.ID`)
   },
 
   single: id => {
@@ -23,5 +23,8 @@ module.exports = {
 
   delete: id => {
     return db.delete('tag', 'ID', id);
+  },
+  deleteTagInPost: id  => {
+    return db.delete('tagpost', 'IDTag', id);
   }
 };
