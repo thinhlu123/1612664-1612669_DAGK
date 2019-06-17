@@ -11,16 +11,15 @@ var commentModel = require('./models/comment.model');
 
 var bodyparser = require('body-parser');
 
+app.use(bodyparser.json());
+app.use(bodyparser.urlencoded({extended:false}));
+
 require('./middlewares/view-engine')(app);
 require('./middlewares/session')(app);
 require('./middlewares/passport')(app);
 require('./middlewares/upload')(app);
-//require('./middlewares/comment')(app);
+require('./middlewares/comment')(app); 
 
-app.use(bodyparser.json());
-app.use(bodyparser.urlencoded({extended:false}));
-
- 
 app.use(express.static(__dirname + '/public'));
 app.use(morgan('dev'));
 app.use('/admin', require('./router/admin/admin.router'));
@@ -33,31 +32,6 @@ app.use(require('./middlewares/auth-local.mdw'));
 
 app.set('view engine', 'hbs');
 
-app.post('/post/post-detail/comment/', (req, res)=>{
-  
-  var today = new Date();
-    var dd = String(today.getDate()).padStart(2, '0');
-    var mm = String(today.getMonth() + 1).padStart(2, '0');
-    var yyyy = today.getFullYear();
-
-    today = yyyy + '/' + mm + '/' + dd;
-  var comment = {
-    IDPost: req.body.IDPost,
-    user: "thinhlu123",
-    date: today,
-    comment: req.body.comment,
-    IDParent: -1
-  };
-  
-  commentModel.add(comment).then(id => {
-    console.log('co vao');
-      res.json({success: 'on roi'});
-  }).catch(err => {
-    console.log('loi');
-      res.end('error occured');
-  })
-  
-})
 
 app.use((req, res, next) => {
     res.render('404', { layout: false });

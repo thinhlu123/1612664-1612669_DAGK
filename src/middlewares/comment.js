@@ -16,9 +16,8 @@ module.exports = function (app) {
           comment: req.body.comment,
           IDParent: -1
         };
-        console.log('co vao');
         commentModel.add(comment).then(id => {
-            res.json({success: 'on roi'});
+            res.json(JSON.stringify(comment));
         }).catch(err => {
             res.end('error occured');
         })
