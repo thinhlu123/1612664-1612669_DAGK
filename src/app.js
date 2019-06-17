@@ -8,6 +8,7 @@ var app = express();
 var groupCategoryModel = require('./models/groupcategory.model');
 var categoryModel = require('./models/category.model');
 var commentModel = require('./models/comment.model');
+var postModel = require('./models/post.model');
 
 var bodyparser = require('body-parser');
 

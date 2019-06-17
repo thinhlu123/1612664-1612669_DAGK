@@ -2,7 +2,8 @@
  		<div id="container">
  			<div id="e-qlbv"><h2>Quản lý bài viết</h2></div>
       <br>
-	  {{#each this.posts}}
+		  {{#each this.posts}}
+		  <form action="" name="editorForm" method="GET">
  				<table id="e-table">
  					<tr>
               <td width="5%">
@@ -11,61 +12,18 @@
               <td width="60%">
                 <div id="e-text">
                   <div>
-                    <a id="e-title" href="#">{{title}}</a>
+                    <a id="e-title" href="/post/post-detail/{{ID}}">{{title}}</a>
                   </div>
                   <div id="e-info">
                     by {{authorname}}
                   </div>
-                  <div id="e-info">
-                  {{formatDate date}}
-                  </div>
                 </div>
                 <div class="text-center">
-                  <button type="button" id="e-button" data-toggle="modal" data-target="#myModalAgree">Agree</button>
-                  <button type="button" id="e-button" data-toggle="modal" data-target="#myModalDisagree">Disagree</button>
+					<a id="e-button" href="/editor/editor/approval/{{ID}}" role="button">&nbspApprove&nbsp</a>
                 </div>
               </td>
           </tr>
         </table>
+		</form>
 		{{/each}}
-        <!-- Modal -->
-        <div class="modal fade" id="myModalDisagree" role="dialog">
-          <div class="modal-dialog">
-        <!-- Modal content-->
-            <div class="modal-content">
-              <div class="modal-header">
-                <h4 class="modal-title">Disagree</h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-              </div>
-              <div class="modal-body">
-                <textarea placeholder="Nhập lý do từ chối..." style="width: 100%;"></textarea>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default">Send</button>
-              </div>
-            </div> 
-          </div>
-        </div>
-
-        <!-- Modal -->
-        <div class="modal fade" id="myModalAgree" role="dialog">
-          <div class="modal-dialog">
-        <!-- Modal content-->
-            <div class="modal-content">
-              <div class="modal-header">
-                <h4 class="modal-title">Agree</h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-              </div>
-              <div class="modal-body">
-                <div> Chuyên mục: <input type="text" value="Category" style="width: 100%;"></div> <br>
-                <div> Thẻ tag: <input type="text" value="tag1 tag2 tag3" style="width: 100%;"></div> <br>
-                <div> Thời điểm xuất bản: <input type="text" placeholder="Nhập thời điểm xuất bản..." style="width: 100%;"></div>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default">Send</button>
-              </div>
-            </div> 
-          </div>
-        </div>
- 		</div>
 	</div>
