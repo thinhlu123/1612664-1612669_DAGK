@@ -34,16 +34,17 @@ router.get('/editor/approval/:id', (req,res) => {
 });
 
 router.post('/editor/agree', (req,res) => {
-    var entity1 = {
+    var entity = {
         ID: req.body.txtID,
         category: req.body.IDCat,
         date: req.body.date,
         status: 1,
     }
-    var entity2 = {
-        IDPost: req.body.txtID,
-
-    }
+    postModel.update(entity).then(n => {
+        res.redirect('/editor/editor');
+    }).catch(err => {
+        console.log(err);
+    })
 });
 
 router.post('/editor/disagree', (req,res) => {
