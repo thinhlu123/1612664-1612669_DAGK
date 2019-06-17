@@ -10,7 +10,7 @@ module.exports = {
   },
 
   checkExist: tag =>{
-    return db.load(`select exists(SELECT 1 from tag where tagname = '${tag}') as check`)
+    return db.load(`SELECT EXISTS(SELECT 1 FROM tag WHERE tagname = N'${tag}') AS mycheck`)
   },
 
   findTag: tag =>{
@@ -18,7 +18,7 @@ module.exports = {
   },
 
   addTagPost: (tID, pID) =>{
-    return db.load(`insert into tagpost values(${pID}, ${pID})`)
+    return db.load(`insert into tagpost values(${pID}, ${tID})`)
   },
 
   single: id => {

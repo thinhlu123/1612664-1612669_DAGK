@@ -181,7 +181,8 @@ router.post('/add-post', (req, res) =>{
     var yyyy = today.getFullYear();
 
     today = yyyy + '/' + mm + '/' + dd;
-    console.log(req.body.tags);
+    var arrTag = req.body.tags.split(",");
+    console.log(arrTag);
     categoryModel.single(req.body.IDCat).then(n =>{
         
         var entity = {
@@ -197,22 +198,35 @@ router.post('/add-post', (req, res) =>{
             reason: ""
         }
 
-        postModel.add(entity).then(id => {
-            req.body.tags.forEach(element => {
+        postModel.add(entity).then(pid => {
+ 
+            arrTag.forEach(element => {
+                console.log(element);
                 tagModel.checkExist(element).then(checkTag=>{
-                    if(checkTag[0].check == 1){
+                    console.log(checkTag[0].mycheck)
+                    if(checkTag[0].mycheck === 1){
                         tagModel.findTag(element).then(idtag =>{
-                            tagModel.addTagPost(idtag[0].ID, id);
+                            tagModel.addTagPost(idtag[0].ID, pid).then().catch(err=>{
+                                console.log(err);
+                            });
+                        }).catch(err=>{
+                            console.log(err);
                         })
                     }
                     else{
                         tagModel.add({tagname: element}).then(idtag =>{
-                            tagModel.addTagPost(idtag, id);
+                            tagModel.addTagPost(idtag, pid).then().catch(err=>{
+                                console.log(err);
+                            });
+                        }).catch(err=>{
+                            console.log(err);
                         })
                     }
+                }).catch(err=>{
+                    console.log(err);
                 })
             });
-
+            
 
 
             res.render('admin/add-post');
