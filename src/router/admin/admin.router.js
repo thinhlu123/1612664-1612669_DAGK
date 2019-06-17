@@ -181,11 +181,11 @@ router.post('/add-post', (req, res) =>{
     var yyyy = today.getFullYear();
 
     today = yyyy + '/' + mm + '/' + dd;
-    console.log(req.body.nameFile);
+    console.log(req.body.tags);
     categoryModel.single(req.body.IDCat).then(n =>{
         
         var entity = {
-            group: n[0].IDGroup,
+            groupname: n[0].IDGroup,
             category: parseInt(req.body.IDCat),
             title: req.body.title,
             avatar: "./public/image/" + req.body.nameFile,
@@ -198,6 +198,23 @@ router.post('/add-post', (req, res) =>{
         }
 
         postModel.add(entity).then(id => {
+            req.body.tags.forEach(element => {
+                tagModel.checkExist(element).then(checkTag=>{
+                    if(checkTag[0].check == 1){
+                        tagModel.findTag(element).then(idtag =>{
+                            tagModel.addTagPost(idtag[0].ID, id);
+                        })
+                    }
+                    else{
+                        tagModel.add({tagname: element}).then(idtag =>{
+                            tagModel.addTagPost(idtag, id);
+                        })
+                    }
+                })
+            });
+
+
+
             res.render('admin/add-post');
         }).catch(err => {
             console.log(err);

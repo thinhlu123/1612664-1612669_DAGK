@@ -293,12 +293,12 @@ box-sizing: border-box;
   font-size: 12px;
   color: gray;
 }
-#tag {
+#mytag {
   margin-left: 5px;
   font-size: 12px;
   color: black;
 }
-#tag:hover {
+#mytag:hover {
   text-decoration: none;
 }
 #right-title {

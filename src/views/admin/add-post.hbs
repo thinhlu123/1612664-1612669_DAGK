@@ -2,6 +2,8 @@
 	<link rel="stylesheet" type="text/css" href="main.css">
 	<link rel="stylesheet" type="text/css" href="add-post.css">
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.3/css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap.min.css">
 	<script src="https://cdn.tiny.cloud/1/lzclwpq5mtqpehgoc4q7xetz3u5aih8qwtaehs1minf4c06q/tinymce/5/tinymce.min.js"></script>
 {{/section}}
 {{#section 'js'}}
@@ -15,6 +17,7 @@
    			tinycomments_author: 'Author name'
 		});
 	</script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.3/js/fileinput.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.3/themes/fa/theme.min.js"></script>
 <script>
@@ -40,6 +43,8 @@
   })
   
 </script>
+
+
 {{/section}}
 <div>
 		<header id="header">
@@ -125,7 +130,8 @@
                 	<td><label>Chi tiết bài đăng</label><br /><textarea cols="60" rows="12" name="chi_tiet_bd" id="chi_tiet_bd"></textarea></td>
                 </tr>
                 <tr>
-                	<td><label>Tags:<input type="text" name="tags"></label> </td>
+                	<td><label>Tags</label><input type="text" data-role="tagsinput" placeholder="Add tags" name="tags"/> </td>
+
                 </tr>
                 <tr>
                 	<td><button type="submit" class="btn-success submitButton">
