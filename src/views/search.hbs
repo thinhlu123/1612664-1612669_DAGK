@@ -1,0 +1,50 @@
+
+{{#section 'js'}}
+    <script>
+        $(document).ready(function(e){
+            $('.search-panel .dropdown-menu').find('a').click(function(e) {
+		        e.preventDefault();
+		        var param = $(this).attr("href").replace("#","");
+		        var concept = $(this).text();
+		        $('#search_concept').text(concept);
+		        $('#search_param').val(param);
+	        });
+        });
+    </script>
+{{/section}}
+
+<div id="container" style="margin-top: 100px">
+    <div class="row">
+        <form id="searchForm" action='/search' method="POST">
+            <div class="col-xs-8 col-xs-offset-2">
+		    <div class="input-group">
+                <div class="input-group-btn search-panel">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                    	<span id="search_concept">Filter by</span> <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                      <li><a href="#title">Title</a></li>
+                      <li><a href="#content">Content</a></li>
+                      <li><a href="#summary">Summary</a></li>
+                    </ul>
+                </div>
+                <input type="hidden" name="search_param" value="all" id="search_param">         
+                <input type="text" class="form-control" name="txtSearch" placeholder="Search term...">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+                </span>
+            </div>
+        </div>
+        </form> 
+    </div>
+    {{#each this.row}}
+    <div id="row">
+		<img src="{{avatar}}" class="img-title">
+			<div id="text">
+				<a href="post/post-detail/{{ID}}" id="bai-dang-text">{{title}}</a>
+				<div id="date">{{date}}<a href="#" id="tag">Thời sự</a></div>
+				{{summary}}
+			</div>
+		</div>
+    {{/each}}
+</div>

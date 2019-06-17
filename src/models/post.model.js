@@ -57,6 +57,10 @@ module.exports = {
     return db.load(`select c.ID as IDCate, p.ID, p.title, p.avatar, c.groupname from post p, groupcategory c,(SELECT ID, groupname, date FROM post WHERE (groupname, date) IN (SELECT groupname, date FROM post where status = 1 GROUP BY date DESC) group by groupname) as t where p.ID=t.ID and p.groupname=c.ID ORDER BY c.ID`)
   },
 
+  searchByType: (txtSearch, type) =>{
+    return db.load(`select * from post where MATCH(${type}) against('${txtSearch}') `)
+  },
+
   single: id => {
     return db.load(`select * from post where ID = ${id}`);
   },
