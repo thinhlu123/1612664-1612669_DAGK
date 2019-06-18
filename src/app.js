@@ -18,10 +18,11 @@ app.use(bodyparser.urlencoded({extended:false}));
 require('./middlewares/view-engine')(app);
 require('./middlewares/session')(app);
 require('./middlewares/passport')(app);
+require('./middlewares/passport-facebook')(app);
 require('./middlewares/upload')(app);
 require('./middlewares/comment')(app); 
 require('./middlewares/search')(app);
-
+app.use(require('./middlewares/auth-local.mdw'));
 app.use(express.static(__dirname + '/public'));
 app.use(morgan('dev'));
 app.use('/admin', require('./router/admin/admin.router'));
@@ -30,7 +31,8 @@ app.use('/auth', require('./router/auth/auth.router'));
 app.use('/editor', require('./router/editor/editor.router'));
 app.use('/post', require('./router/post/post.router'));
 app.use('', require('./router/home.router'));
-app.use(require('./middlewares/auth-local.mdw'));
+app.use('/page', require('./router/page/page.router'));
+
 
 app.set('view engine', 'hbs');
 

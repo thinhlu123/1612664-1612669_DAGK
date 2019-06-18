@@ -2,7 +2,7 @@ var express = require('express')
 var bcrypt = require('bcrypt');
 var moment = require('moment');
 var passport = require('passport');
-var authController = require('../../controller/auth/auth.controller');
+
 var accountModel = require('../../models/account.model');
 var router = express.Router();
 
@@ -98,6 +98,18 @@ router.post('/edit-information', (req,res) => {
   }).catch(err => {
     console.log(err);
   })
+})
+
+router.get('/fb',passport.authenticate('facebook', {scope: ['email']}));
+router.get('/fb/cb',passport.authenticate('facebook', {
+    failureRedirect: 'back',
+    successRedirect: '/'
+  })
+);
+
+router.post('/logout', (req,res) => {
+  req.logOut();
+  res.redirect('/');
 })
 
 module.exports = router;

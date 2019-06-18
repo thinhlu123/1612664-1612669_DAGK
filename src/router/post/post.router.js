@@ -1,5 +1,4 @@
 var express = require('express');
-var postController = require('../../controller/post/post.controller');
 var postModel = require('../../models/post.model');
 var categoryModel = require('../../models/category.model');
 var tagModel = require('../../models/tag.model');
@@ -45,8 +44,9 @@ router.get('/list-post', (req, res) => {
       }
     res.render('post/list-post',{
        posts: posts,
+       total: count[0].total,
        categories: categories,
-       pages
+       pages: pages
     })
   }).catch(err => {
     console.log(err);
@@ -116,4 +116,16 @@ router.get('/list-post/tag/:tag', (req, res) => {
   });
 });
 
+router.get('/list-post/page/:page', (req,res) => {
+  var page = req.params.page;
+  var limit = 6;
+  var offset = (page - 1)* limit;
+    postModel.page(limit, offset).then(posts => {
+      res.render('page/page-posts', {
+        posts
+      })
+    }).catch(err => {
+      console.log(err);
+    })
+})
 module.exports = router;

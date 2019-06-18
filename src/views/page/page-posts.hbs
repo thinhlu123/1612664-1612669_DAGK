@@ -1,0 +1,16 @@
+	{{#each this.posts}}
+				<div id="row">
+					<img src="{{avatar}}" class="img-title">
+					<div id="text">
+						<a href="#" id="bai-dang-text">{{title}}</a>
+						<div id="date">{{formatDate date}}
+							{{#each ../this.categories}} 
+								{{#ifEquals ../category ID}}
+									<a href="#" id="mytag">{{category}}</a>  
+								{{/ifEquals}}				 
+							{{/each}}				
+						</div>
+						<p>{{summary}}</p>
+					</div>
+				</div>
+	{{/each}}

@@ -1,7 +1,7 @@
 <div id="container">
 <section id="bai-dang">
 	{{#each this.posts}}
-				<div id="row">
+	<div id="row">
 					<img src="{{avatar}}" class="img-title">
 					<div id="text">
 						<a href="#" id="bai-dang-text">{{title}}</a>
@@ -16,23 +16,44 @@
 					</div>
 				</div>
 	{{/each}}
-	<br>
-	<div class="text center">
-	<nav aria-label="...">
-  <ul class="pagination">  
-	{{#each this.pages}}
-		{{#if active}}
-		<li class="page-item active">
-      		<a class="page-link" href="javascript:;">{{value}} <span class="sr-only">(current)</span></a>
-   		</li>  
-		{{else}}	
-    	<li class="page-item">
-			<a class="page-link" href="?page={{value}}">{{value}}</a>
-		</li>
-		{{/if}}	
-	{{/each}}
-  </ul>
-</nav>
-</div>
+
+
+	
 </section>
+	<div class="text center">
+		<button id="btnLoadMore">LOAD MORE</button>	
+	</div>
+<script>
+	let soTrang = 1;
+	let current = parseInt({{posts.length}});
+	let temp = parseInt({{posts.length}});
+	let total = parseInt({{total}});
+
+	$(document).ready(function(){
+
+		$(document).on("click","#btnLoadMore",function(){
+				soTrang += 1;
+				$.ajax({
+					async: false,
+					type: 'GET',
+					url: "./list-post/page/"+soTrang,
+					success: function(res){
+						$('#bai-dang').append(res);
+						
+					},
+					error: function(xhr,ajaxOption,thrownError){
+						alert("Fail");
+					}
+				})
+				current += temp;
+			if(current >= total)
+				{
+					$('#btnLoadMore').css("visibility","hidden")
+				}
+			})
+				
+	})
+	
+</script>
+
 </div>

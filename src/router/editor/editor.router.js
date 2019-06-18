@@ -1,6 +1,5 @@
 var express = require('express');
 var router = express.Router();
-var editorController = require('../../controller/editor/editor.controller');
 var editorModel = require('../../models/editor.model');
 var postModel = require('../../models/post.model');
 var groupCategoryModel = require('../../models/groupcategory.model');
