@@ -45,35 +45,6 @@ router.post('/sign-up', (req,res,next) => {
     })
 });
 
-router.get('/login', (req, res, next) => {
-  res.render('layouts/main', { layout: false });
-})
-
-router.post('/login', (req, res, next) => {
-  passport.authenticate('local', (err, user, info) => {
-    if (err)
-      return next(err);
-
-    if (!user) {
-      return res.render('layouts/main', {
-        layout: false,
-        err_message: info.message
-      })
-    }
-
-    req.logIn(user, err => {
-      if (err)
-        return next(err);
-
-      return res.redirect('/');
-    });
-  })(req, res, next);
-})
-
-router.get('/login', (req, res, next) => {
-  res.render('layouts/main', { layout: false });
-})
-
 router.get('/edit-information/:username', (req,res) => {
   var username = req.params.username;
   accountModel.singleByUserName(username).then(rows => {

@@ -13,8 +13,7 @@ module.exports = function (app) {
           IDPost: req.body.IDPost,
           user: "thinhlu123",
           date: today,
-          comment: req.body.comment,
-          IDParent: -1
+          comment: req.body.comment
         };
         commentModel.add(comment).then(id => {
             res.json(JSON.stringify(comment));

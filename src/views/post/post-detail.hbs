@@ -17,13 +17,14 @@
 {{/section}}
 {{#section 'js'}}
 <script>
+	
 	const $form = $('#commentForm')
 
 	$form.on('submit', submitHandler)
 
 	function submitHandler (e) {
   		e.preventDefault();
-		
+
 		let IDPost = {{this.post.ID}};
 		let comment = $('#comment').val();
 
@@ -40,7 +41,7 @@
 			  
 			  var data = JSON.parse(response);
 
-			var content = $('<div class="row"><div class="col-md-2"><img src="https://image.ibb.co/jw55Ex/def_face.jpg" class="img img-rounded img-fluid"/></div><div class="col-md-10"><p><a class="float-left" href="https://maniruzzaman-akash.blogspot.com/p/contact.html"><strong>'+data.user+'</strong></a></p><div class="clearfix"></div><p>'+data.comment+'</p><p><a class="float-right btn btn-outline-primary ml-2"> <i class="fa fa-reply"></i> Reply</a></p></div>');
+			var content = $('<div class="row"><div class="col-md-2"><img src="https://image.ibb.co/jw55Ex/def_face.jpg" class="img img-rounded img-fluid"/></div><div class="col-md-10"><p><a class="float-left" href="https://maniruzzaman-akash.blogspot.com/p/contact.html"><strong>'+data.user+'</strong></a></p><div class="clearfix"></div><p>'+data.comment+'</p></div>');
 			$('#parentAdd').append(content);
 
 			$('#comment').val('');	
@@ -51,6 +52,14 @@
 	
 </script>
 
+<script>
+	$(document).ready(function() {
+    $("#btnLogin").click(function(){
+        alert("You must login to comment.");
+		$('#comment').val('');	
+    }); 
+});
+</script>
 {{/section}}
 
 
@@ -106,29 +115,9 @@
 						<p><a class="float-left" href="https://maniruzzaman-akash.blogspot.com/p/contact.html"><strong>{{user}}</strong></a></p>
         	       	<div class="clearfix"></div>
         	        	<p>{{comment}}</p>
-        	        	<p>
-        	        	    <a class="float-right btn btn-outline-primary ml-2"> <i class="fa fa-reply"></i> Reply</a>
-        	       		</p>
         	    	</div>
 	        	</div>
-				{{#each ../this.comment}}
-					{{#ifEquals ../IDComment IDParent}}
-						<div class="card card-inner">
-            	    		<div class="card-body">
-            	        		<div class="row">
-                    	    		<div class="col-md-2">
-                    	        		<img src="https://image.ibb.co/jw55Ex/def_face.jpg" class="img img-rounded img-fluid"/>
-                    	    		</div>
-                    	   			 <div class="col-md-10">
-                    	        		<p><a href="https://maniruzzaman-akash.blogspot.com/p/contact.html"><strong>{{user}}</strong></a></p>
-                    	        		<p>{{comment}}</p>
-                    	    		</div>
-            	        		</div>
-            	    		</div>
-	            		</div>
-						<div id="childAdd" name="childAdd"></div>
-					{{/ifEquals}}
-				{{/each}}
+				
 
 			{{/each}}
 				<div id="parentAdd" name="parentAdd"></div>
@@ -136,7 +125,11 @@
 					<div class="pb-cmnt-container">
     					<div class="row">
         					<textarea placeholder="Write your comment here!" class="pb-cmnt-textarea" name="comment" id="comment"></textarea>
+							{{#if isAuthenticated}}
 							<button class="btn btn-primary pull-right" type="submit" id="submit">Share</button>
+							{{else}}
+							<button class="btn btn-primary pull-right" type="button" id="btnLogin">Share</button>
+							{{/if}}
     					</div>
 					</div>
 				</form>

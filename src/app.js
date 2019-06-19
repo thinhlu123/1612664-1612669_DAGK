@@ -1,13 +1,13 @@
 var express = require('express');
-var router = express.Router();
+
 
 var morgan = require('morgan');
-var moment = require('moment');
 
+var passport = require('passport');
 var app = express();
 var groupCategoryModel = require('./models/groupcategory.model');
 var categoryModel = require('./models/category.model');
-var commentModel = require('./models/comment.model');
+
 var postModel = require('./models/post.model');
 
 var bodyparser = require('body-parser');
@@ -36,6 +36,43 @@ app.use('/page', require('./router/page/page.router'));
 
 app.set('view engine', 'hbs');
 
+app.post('/login', (req, res, next) => {
+  passport.authenticate('local', (err, user, info) => {
+    if (err)
+      return next(err);
+
+    if (!user) {
+      return res.render('layouts/main', {
+        layout: false,
+        err_message: info.message
+      })
+    }
+
+    req.logIn(user, err => {
+      if (err)
+        return next(err);
+
+      return res.redirect('/');
+    });
+  })(req, res, next);
+})
+
+app.get('/', (req, res) => {
+  Promise.all([groupCategoryModel.get6(), groupCategoryModel.all(), categoryModel.loadAll(), postModel.getTopDate(), postModel.getTopView(), postModel.getTopViewWeek(), postModel.getPostByCate()])
+  .then(([get6, groups, categories, dates, views, viewWeeks, postCates]) => {
+    res.render('home',{
+       get6: get6,
+       groups: groups,
+       categories: categories,
+       dates: dates,
+       views: views,
+       viewWeeks: viewWeeks,
+       postCates: postCates
+    })
+  }).catch(err => {
+    console.log(err);
+  });
+});
 
 app.use((req, res, next) => {
     res.render('404', { layout: false });
