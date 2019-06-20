@@ -1,5 +1,5 @@
-<div id="container">
-<section id="bai-dang">
+<div class="container">
+<section id="bai-dang" style="margin-top: 100px;">
 	{{#each this.posts}}
 	<div id="row">
 					<img src="{{avatar}}" class="img-title">
@@ -20,8 +20,8 @@
 
 	
 </section>
-	<div class="text center">
-		<button id="btnLoadMore">LOAD MORE</button>	
+	<div class="text-center">
+		<button id="btnLoadMore" class="btn btn-light mb-2">LOAD MORE</button>	
 	</div>
 <script>
 	let soTrang = 1;
@@ -29,14 +29,42 @@
 	let temp = parseInt({{posts.length}});
 	let total = parseInt({{total}});
 
-	$(document).ready(function(){
+	var getUrlParameter = function checkUrlParameter(sParam) {
+    	var sPageURL = window.location.pathname,
+        	sURLVariables = sPageURL.split('/'),
+        	i;
+		console.log(sPageURL);
+    	for (i = 0; i < sURLVariables.length; i++) {
+        	console.log(sURLVariables[i]);
+        	if (sURLVariables[i] === sParam) {
 
+           	 return true;
+        	}
+    	}
+	};
+
+	$(document).ready(function(){
+		if(current >= total)
+				{
+					$('#btnLoadMore').attr("hidden", true);
+				}
 		$(document).on("click","#btnLoadMore",function(){
 				soTrang += 1;
+				var urlAjax = "./list-post/page/"+soTrang
+				console.log(urlAjax);
+				if(getUrlParameter('category')){
+					urlAjax = "./" + {{cate}} + "/page/"  +soTrang;
+				}
+				else if(getUrlParameter('tag')){
+					urlAjax="./"+ {{tag}} + "/page/"  +soTrang;
+				}
+				else if(getUrlParameter('groupcategory')){
+					urlAjax="./" + {{groupcate}} + "/page/"  +soTrang;
+				}
 				$.ajax({
 					async: false,
 					type: 'GET',
-					url: "./list-post/page/"+soTrang,
+					url: urlAjax,
 					success: function(res){
 						$('#bai-dang').append(res);
 						
@@ -48,7 +76,7 @@
 				current += temp;
 			if(current >= total)
 				{
-					$('#btnLoadMore').css("visibility","hidden")
+					$('#btnLoadMore').attr("hidden", true);
 				}
 			})
 				

@@ -13,6 +13,10 @@ module.exports = {
     return db.load(`select * from post limit ${limit} offset ${offset}`);
   },
 
+  pageByGroupCat: (groupcategory, limit, offset) => {
+    return db.load(`select * from post where groupname = ${groupcategory} limit ${limit} offset ${offset}`);
+  },
+
   pageByCat: (category, limit, offset) => {
     return db.load(`select * from post where category = ${category} limit ${limit} offset ${offset}`);
   },
@@ -23,6 +27,10 @@ module.exports = {
 
   count: () => {
     return db.load(`select count(*) as total from post`);
+  },
+
+  countByGroupCat: groupcategory => {
+    return db.load(`select count(*) as total from post where groupname = ${groupcategory}`);
   },
 
   countByCat: category => {

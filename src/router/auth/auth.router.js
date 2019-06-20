@@ -27,8 +27,8 @@ router.post('/sign-up', (req,res,next) => {
     var dob = moment(req.body.dob, 'DD-MM-YYYY').format('YYYY-MM-DD');
     var today = new Date();
     premiumdate = today.setDate(today.getDate() + 7);
-    var type = 1;
-    var category = 0;
+    var type = 2;
+    var category = null;
     var entity = {
         username: req.body.username,
         password: hash,
@@ -42,6 +42,8 @@ router.post('/sign-up', (req,res,next) => {
     }
     accountModel.add(entity).then(id => {
         res.redirect('/auth/login');
+    }).catch(err => {
+      console.log(err);
     })
 });
 

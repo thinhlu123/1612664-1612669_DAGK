@@ -17,13 +17,13 @@ module.exports = function(app) {
         (accessToken, refreshToken, profile, done) => {
             console.log(profile);
 
-            userModel.singleByUserName(profile._json.id).then(user => {
+            userModel.singleByIDFacebook(profile._json.id).then(user => {
                 if(user.length > 0){
                     return done(null,user);
                 }
                 else{
                     var entity = {
-                        ID: profile._json.id,
+                        idfacebook: profile._json.id,
                         fullname: profile._json.name,
                         email: profile._json.email,
                         type: 2,

@@ -9,6 +9,11 @@ module.exports = {
     return db.load(`select * from account where username = '${username}'`);
   },
 
+  singleByIDFacebook: id => {
+    return db.load(`select * from account where idfacebook = ${id}`);
+  },
+
+
   findByID: id => {
     return db.load(`select * from account where ID = ${id}`);
   },
@@ -21,7 +26,7 @@ module.exports = {
     return db.update('account', 'ID', entity);
   },
 
-  delete: username => {
-    return db.delete('account', 'ID', username);
+  delete: id => {
+    return db.delete('account', 'ID', id);
   }
 };

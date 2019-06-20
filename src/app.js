@@ -23,6 +23,7 @@ require('./middlewares/upload')(app);
 require('./middlewares/comment')(app); 
 require('./middlewares/search')(app);
 app.use(require('./middlewares/auth-local.mdw'));
+app.use(require('./middlewares/local.mdw'));
 app.use(express.static(__dirname + '/public'));
 app.use(morgan('dev'));
 app.use('/admin', require('./router/admin/admin.router'));

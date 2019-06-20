@@ -19,7 +19,7 @@
 						<div id="text">
 							<a href="post/post-detail/{{ID}}" id="row-mid-title">{{title}}</a>
 							<div style="display: inline-block;">
-								<div id="date">{{date}}<a href="#" id="mytag">{{groupname}}</a></div>
+								<div id="date">{{formatDate date}}<a href="../../../post/list-post/groupcategory/{{ID}}" id="mytag">{{groupname}}</a></div>
 							</div>
 							{{summary}}
 						</div>
@@ -45,7 +45,7 @@
 					<img src="{{avatar}}" class="img-title">
 						<div id="text">
 							<a href="post/post-detail/{{ID}}" id="bai-dang-text">{{title}}</a>
-							<div id="date">{{date}}<a href="#" id="mytag">Thời sự</a></div>
+							<div id="date">{{formatDate date}}<a href="../../../post/list-post/category/{{ID}}" id="mytag">{{#each ../this.categories}} {{#ifEquals ../category ID}} {{category}} {{/ifEquals}} {{/each}}</a></div>
 								{{summary}}
 						</div>
 					</div>
@@ -54,16 +54,7 @@
 				
 				<br>
 				<div class="center">
-					<div class="pagination">
-  						<a href="#">&laquo;</a>
-  						<a href="#" class="active">1</a>
-  						<a href="#">2</a>
-  						<a href="#">3</a>
-  						<a href="#">4</a>
-  						<a href="#">5</a>
-  						<a href="#">6</a>
-  						<a href="#">&raquo;</a>
-					</div>
+  					<a href="post/list-post" style="color: #7c0000;">Xem thêm</a>
 				</div>
 			</section>
 

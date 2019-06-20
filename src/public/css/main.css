@@ -154,6 +154,7 @@ box-sizing: border-box;
   border-bottom-width: 150%;
 }
 #papername:hover {
+  text-decoration: none;
   cursor: pointer;
 }
 
