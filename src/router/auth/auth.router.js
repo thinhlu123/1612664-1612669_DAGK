@@ -42,7 +42,7 @@ router.post('/sign-up', (req,res,next) => {
         idfacebook: null
     }
     accountModel.add(entity).then(id => {
-        res.redirect('/auth/login');
+        res.redirect('/');
     }).catch(err => {
       console.log(err);
     })
