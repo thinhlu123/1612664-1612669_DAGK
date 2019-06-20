@@ -65,7 +65,7 @@ router.post('/add-category', (req, res, next) => {
     console.log(entity);
     categoryModel.add(entity).then(id => {
         console.log(id);
-        res.render('admin/add-category');
+        res.render('admin/manage-category');
     }).catch(err => {
         console.log(err);
         res.end('error occured.')
@@ -124,7 +124,7 @@ router.post('/add-groupcategory', (req,res,next) => {
         group: req.body.group
     }
     groupCategoryModel.add(entity).then(id => {
-        res.render('admin/add-groupcategory');
+        res.render('admin/manage-groupcategory');
     }).catch(err => {
         res.end('error occured');
     })
@@ -229,7 +229,7 @@ router.post('/add-post', (req, res) =>{
             
 
 
-            res.render('admin/add-post');
+            res.render('admin/manage-post');
         }).catch(err => {
             console.log(err);
         })
@@ -434,7 +434,7 @@ router.post('/add-premium', (req, res) => {
 
 
   router.get('/wait-post', (req, res) => {
-    postModel.allWithStatus(0).then(posts => {
+    postModel.allWithStatus0().then(posts => {
         res.render('admin/wait-post',{
            posts: posts,
         })

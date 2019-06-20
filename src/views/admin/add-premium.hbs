@@ -28,17 +28,19 @@
 		            		<a href="#" data-toggle="dropdown"><i class="fa fa-user-circle" style="font-size:36px"></i></a>
 		            		<ul class="dropdown-menu dropdown-menu-right" role="menu">
 		            			<div class="col-lg-12"> 
-		                			 {{#ifEquals authUser.type 1}}
-							<a class="dropdown-item" href="/admin/manage-user">Admin</a>
+		                			{{#ifEquals authUser.type 1}}
+							<a class="dropdown-item" href="/admin/manage-user">Quản lý thông tin</a>
 							{{/ifEquals}}
 							{{#ifEquals authUser.type 2}}
-							<a class="dropdown-item" href="/auth/edit-information">User</a>
+							<a class="dropdown-item" href="/auth/edit-information/{{authUser.ID}}">Cập nhật thông tin</a>
 							{{/ifEquals}}
 							{{#ifEquals authUser.type 3}}
-							<a class="dropdown-item" href="/admin/manage-user">Writer</a>
+							<a class="dropdown-item" href="/auth/edit-information/{{authUser.ID}}">Cập nhật thông tin</a>
+							<a class="dropdown-item" href="/admin/add-post">Đăng bài mới</a>
 							{{/ifEquals}}
 							{{#ifEquals authUser.type 4}}
-							<a class="dropdown-item" href="/editor/editor">Editor</a>
+							<a class="dropdown-item" href="/auth/edit-information/{{authUser.ID}}">Cập nhật thông tin</a>
+							<a class="dropdown-item" href="/editor/editor">Duyệt bài viết</a>
 							{{/ifEquals}}
 							<a class="dropdown-item" href="javascript: $('#frmLogOut').submit();">Log out</a>
 		            			</div>
@@ -50,30 +52,35 @@
 	    	</div>
  		</header>
 
-			<div style="margin-top: 100px;">
-		<div id="container" align="center">
-			
+
+<div id="container" style="margin-top: 100px;">
+	<div class="card shadow">
+  		<h4 class="card-header">
+    		Add Group
+  		</h4>
+  		<div class="card-body">
+
+    		<form method="POST" action="/admin/add-premium" id="frmManageEditor">
+      			<div class="form-group">
+        			<label for="txtUsername">Username</label>
+        			<input type="text" class="form-control disabled" id="txtUsername" name="username" readonly value="{{this.user.username}}">
+					<label>Premium Date</label>
+            		<input type="date" id="txtPremiumDate" name="premiumdate" value="{{this.user.premiumdate}}">
+      			</div>
+      			<a class="btn btn-primary" href="/admin/manage-user" role="button">
+        			<i class="fa fa-backward" aria-hidden="true"></i>
+        				List
+      			</a>
+      			<button type="submit" class="btn btn-success">
+        			<i class="fa fa-check" aria-hidden="true"></i>
+        				Update
+      			</button>
+    		</form>
+  		</div>
+	</div>
+</div>
 
 
-
-<form method="POST" action="/admin/add-premium" id="frmManageEditor">
-      <div class="form-group">
-        <label for="txtUsername">Username</label>
-        <input type="text" class="form-control disabled" id="txtUsername" name="username" readonly value="{{this.user.username}}">
-			<label>Premium Date</label>
-            <input type="date" id="txtPremiumDate" name="premiumdate" value="{{this.user.premiumdate}}">
-      </div>
-      <a class="btn btn-primary" href="/admin/manage-user" role="button">
-        <i class="fa fa-backward" aria-hidden="true"></i>
-        List
-      </a>
-      <button type="submit" class="btn btn-success">
-        <i class="fa fa-check" aria-hidden="true"></i>
-        Update
-      </button>
-</form>
-		</div>
-    </div>
 
 {{else}}
   {{#section 'js'}}
