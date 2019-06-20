@@ -38,7 +38,8 @@ router.post('/sign-up', (req,res,next) => {
         birthday: dob,
         type: type,
         premiumdate: premiumdate,
-        category: category
+        category: category,
+        idfacebook: null
     }
     accountModel.add(entity).then(id => {
         res.redirect('/auth/login');

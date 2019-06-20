@@ -2,7 +2,7 @@ var db = require('../utils/db');
 
 module.exports = {
   all: () => {
-    return db.load('select *, t.accounttype as atype from account a, acctype t where a.type = t.ID and a.username <> "admin"');
+    return db.load('select *, t.accounttype as atype, a.ID as IDAccount from account a, acctype t where a.type = t.ID and a.username <> "admin"');
   },
 
   singleByUserName: username => {

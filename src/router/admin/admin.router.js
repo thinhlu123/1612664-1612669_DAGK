@@ -372,8 +372,9 @@ router.post('/add-user', (req, res, next) => {
     });
 })
 
-router.get('/delete-user/:username', (req, res) => {
-    accountModel.delete(req.params.username).then(n => {
+router.get('/delete-user/:id', (req, res) => {
+    console.log(req.params.id);
+    accountModel.delete(parseInt(req.params.id)).then(n => {
       res.redirect('/admin/manage-user');
     }).catch(err => {
       res.end('error occured.')
