@@ -153,14 +153,14 @@ router.get('/edit-groupcategory/:id', (req, res) => {
 })
 
 router.get('/manage-post', (req,res) => {
-    var p = postModel.allWithStatus(1);
-    p.then(rows => {
-        res.render('admin/manage-post', {
-            posts: rows
+    Promise.all([postModel.all(), categoryModel.loadAll()]).then(([rows, categories]) => {
+        res.render('admin/manage-post',{
+           posts: rows,
+           categories: categories
         })
-    }).catch(err => {
+      }).catch(err => {
         console.log(err);
-    });
+      });
 });
 router.get('/add-post', (req, res, next)=>{
     Promise.all([groupCategoryModel.all(), categoryModel.loadAll()]).then(([groups, categories]) => {
@@ -373,7 +373,6 @@ router.post('/add-user', (req, res, next) => {
 })
 
 router.get('/delete-user/:id', (req, res) => {
-    console.log(req.params.id);
     accountModel.delete(parseInt(req.params.id)).then(n => {
       res.redirect('/admin/manage-user');
     }).catch(err => {
@@ -432,5 +431,29 @@ router.post('/add-premium', (req, res) => {
       res.end('error occured.')
     });
   })
+
+
+  router.get('/wait-post', (req, res) => {
+    postModel.allWithStatus(0).then(posts => {
+        res.render('admin/wait-post',{
+           posts: posts,
+        })
+      }).catch(err => {
+        console.log(err);
+      });
+})
+
+router.get('/wait-post/public/:id', (req, res) => {
+    var entity = {
+        ID: req.params.id,
+        status: 1,
+    }
+    postModel.update(entity).then(n => {
+      res.redirect('/admin/wait-post');
+    }).catch(err => {
+      res.end('error occured.')
+    });
+})
+
 
 module.exports = router;

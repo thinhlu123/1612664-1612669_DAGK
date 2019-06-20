@@ -85,6 +85,6 @@ module.exports = {
     return db.delete('post', 'ID', id);
   },
   allWithStatus: status => {
-    return db.load(`select * from post where status = ${status}`);
+    return db.load(`select *, a.fullname as authorname from post p, account a where status = ${status} and p.author = a.ID`);
   }
 };

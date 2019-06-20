@@ -1,6 +1,6 @@
 {{#ifEquals authUser.type 1}}
 {{#section 'css'}}
-	<title>Thêm bài viết</title>
+	<title>Sửa Group</title>
 	<link rel="stylesheet" type="text/css" href="/css/main.css">
 	<link rel="stylesheet" type="text/css" href="/css/add-post.css">
 {{/section}}
@@ -16,7 +16,7 @@
 		  			<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
 		  				&nbsp &nbsp &nbsp &nbsp
 		    			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-		      				<li class="nav-item active"><a class="nav-link" href="#"><h2>Post</h2> <span class="sr-only">(current)</span></a></li>
+		      				<li class="nav-item active"><a class="nav-link" href="#"><h2>Group</h2> <span class="sr-only">(current)</span></a></li>
 
 		    			</ul>
 					    <form class="form-inline my-2 my-lg-0">
@@ -29,16 +29,18 @@
 		            		<ul class="dropdown-menu dropdown-menu-right" role="menu">
 		            			<div class="col-lg-12"> 
 		                		 {{#ifEquals authUser.type 1}}
-							<a class="dropdown-item" href="/admin/manage-user">Admin</a>
+							<a class="dropdown-item" href="/admin/manage-user">Quản lý thông tin</a>
 							{{/ifEquals}}
 							{{#ifEquals authUser.type 2}}
-							<a class="dropdown-item" href="/auth/edit-information">User</a>
+							<a class="dropdown-item" href="/auth/edit-information/{{authUser.ID}}">Cập nhật thông tin</a>
 							{{/ifEquals}}
 							{{#ifEquals authUser.type 3}}
-							<a class="dropdown-item" href="/admin/manage-user">Writer</a>
+							<a class="dropdown-item" href="/auth/edit-information/{{authUser.ID}}">Cập nhật thông tin</a>
+							<a class="dropdown-item" href="/admin/add-post">Đăng bài mới</a>
 							{{/ifEquals}}
 							{{#ifEquals authUser.type 4}}
-							<a class="dropdown-item" href="/editor/editor">Editor</a>
+							<a class="dropdown-item" href="/auth/edit-information/{{authUser.ID}}">Cập nhật thông tin</a>
+							<a class="dropdown-item" href="/editor/editor">Duyệt bài viết</a>
 							{{/ifEquals}}
 							<a class="dropdown-item" href="javascript: $('#frmLogOut').submit();">Log out</a>
 		            			</div>
@@ -62,16 +64,16 @@
     </div>
     {{else}}
     <form method="POST" action="/admin/update-groupcategory">
-      <div class="form-group">
-        <label for="txtGroupID">#</label>
+      <div class="form-group col-lg-5">
+        <label for="txtGroupID" style="font-weight: bold">#</label>
         <input readonly type="text" class="form-control" id="txtGroupID" name="GroupID" value="{{this.group.ID}}">
       </div>
-      <div class="form-group">
-        <label for="txtGroupName">Group</label>
+      <div class="form-group col-lg-5">
+        <label for="txtGroupName" style="font-weight: bold">Group</label>
         <input type="text" class="form-control" id="txtGroupName" name="GroupName" autofocus
           placeholder="Enter group name" value="{{this.group.groupname}}">
       </div>
-      <a class="btn btn-primary" href="/admin/manage-groupcategory" role="button">
+      <a class="btn btn-outline-primary" href="/admin/manage-groupcategory" role="button" style="margin-left: 120px;">
         <i class="fa fa-backward" aria-hidden="true"></i>
         List
       </a>
@@ -79,7 +81,7 @@
         <i class="fa fa-trash-o" aria-hidden="true"></i>
         Delete
       </button>
-      <button type="submit" class="btn btn-success">
+      <button type="submit" class="btn btn-outline-success">
         <i class="fa fa-check" aria-hidden="true"></i>
         Save
       </button>

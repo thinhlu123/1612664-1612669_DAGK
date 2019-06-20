@@ -48,9 +48,9 @@ router.post('/sign-up', (req,res,next) => {
     })
 });
 
-router.get('/edit-information/:username', (req,res) => {
-  var username = req.params.username;
-  accountModel.singleByUserName(username).then(rows => {
+router.get('/edit-information/:id', (req,res) => {
+  var id = req.params.id;
+  accountModel.findByID(id).then(rows => {
     res.render('auth/edit-information', {
       user: rows[0],
     })
@@ -61,6 +61,7 @@ router.get('/edit-information/:username', (req,res) => {
 
 router.post('/edit-information', (req,res) => {
   var entity = {
+    ID: req.body.ID,
     username: req.body.username,
     fullname: req.body.name,
     nickname: req.body.nickname,
