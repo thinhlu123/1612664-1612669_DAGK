@@ -444,9 +444,11 @@ router.post('/add-premium', (req, res) => {
 })
 
 router.get('/wait-post/public/:id', (req, res) => {
+    var today = new Date();
     var entity = {
         ID: req.params.id,
         status: 1,
+        date: today
     }
     postModel.update(entity).then(n => {
       res.redirect('/admin/wait-post');

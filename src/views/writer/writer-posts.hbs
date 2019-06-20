@@ -1,0 +1,63 @@
+<div class="container">
+<section id="bai-dang" style="margin-top: 100px;">
+    <label class="mark">/</label><h4>BÀI ĐĂNG CHƯA DUYỆT</h4>
+	{{#each this.approvalposts}}
+	<div id="row">
+					<img src="{{avatar}}" class="img-title">
+					<div id="text">
+						<a href="#" id="bai-dang-text">{{title}}</a>
+						<div id="date">{{formatDate date}}
+							{{#each ../this.categories}} 
+								{{#ifEquals ../category ID}}
+									<a href="#" id="mytag">{{category}}</a>  
+								{{/ifEquals}}				 
+							{{/each}}				
+						</div>
+						<p>{{summary}}</p>
+					</div>
+				</div>
+	{{/each}}
+
+
+    <label class="mark">/</label><h4>BÀI ĐĂNG BỊ TỪ CHỐI</h4>
+	{{#each this.disagreeposts}}
+	<div id="row">
+					<img src="{{avatar}}" class="img-title">
+					<div id="text">
+						<a href="#" id="bai-dang-text">{{title}}</a>
+						<div id="date">{{formatDate date}}
+							{{#each ../this.categories}} 
+								{{#ifEquals ../category ID}}
+									<a href="#" id="mytag">{{category}}</a>  
+								{{/ifEquals}}				 
+							{{/each}}				
+						</div>
+						<p>{{reason}}</p>
+					</div>
+				</div>
+	{{/each}}
+
+
+    <label class="mark">/</label><h4>BÀI ĐĂNG ĐÃ ĐỒNG Ý</h4>
+	{{#each this.agreeposts}}
+	<div id="row">
+					<img src="{{avatar}}" class="img-title">
+					<div id="text">
+						<a href="#" id="bai-dang-text">{{title}}</a>
+						<div id="date">{{formatDate date}}
+							{{#each ../this.categories}} 
+								{{#ifEquals ../category ID}}
+									<a href="#" id="mytag">{{category}}</a>  
+								{{/ifEquals}}				 
+							{{/each}}				
+						</div>
+						<p>{{summary}}</p>
+					</div>
+				</div>
+	{{/each}}
+
+
+	
+</section>
+
+</div>

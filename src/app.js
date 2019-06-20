@@ -33,6 +33,7 @@ app.use('/editor', require('./router/editor/editor.router'));
 app.use('/post', require('./router/post/post.router'));
 app.use('', require('./router/home.router'));
 app.use('/page', require('./router/page/page.router'));
+app.use('/writer', require('./router/writer/writer.router'));
 
 
 app.set('view engine', 'hbs');

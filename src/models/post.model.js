@@ -87,7 +87,13 @@ module.exports = {
   allWithStatus: status => {
     return db.load(`select * from post p where status = ${status}`);
   },
-  allWithStatus0: () => {
-    return db.load(`select *, a.fullname as authorname from post p, account a where status = 0 and p.author = a.ID`);
+  allWithStatus0ByID: id  => {
+    return db.load(`select p.*, a.fullname as authorname from post p, account a where status = 0 and p.author = a.ID and p.author = ${id}`);
+  },
+  allWithStatus1ByID: id  => {
+    return db.load(`select p.*, a.fullname as authorname from post p, account a where status = 1 and p.author = a.ID and p.author = ${id}`);
+  },
+  allWithStatus2ByID: id => {
+    return db.load(`select p.*, a.fullname as authorname from post p, account a where status = 2 and p.author = a.ID and p.author = ${id}`);
   }
 };
