@@ -1,4 +1,4 @@
-
+{{#ifEquals authUser.type 1}}
 {{#section 'css'}}
 	<title>Thêm tài khoản</title>
 	<link rel="stylesheet" type="text/css" href="/css/main.css">
@@ -16,8 +16,11 @@
 		  			<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
 		  				&nbsp &nbsp &nbsp &nbsp
 		    			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-		      				<li class="nav-item active"><a class="nav-link" href="#"><h2>Post</h2> <span class="sr-only">(current)</span></a></li>
-
+		      				<li class="nav-item active"><a class="nav-link" href="/admin/manage-post">Bài đăng <span class="sr-only">(current)</span></a></li>
+                 			<li class="nav-item"><a class="nav-link" href="/admin/manage-user">Tài khoản</a></li>
+                  			<li class="nav-item"><a class="nav-link" href="/admin/manage-category">Category</a></li>
+							<li class="nav-item"><a class="nav-link" href="/admin/manage-groupcategory">Group Category</a></li>
+                  			<li class="nav-item"><a class="nav-link" href="/admin/manage-tag">Tag</a></li> 
 		    			</ul>
 					    <form class="form-inline my-2 my-lg-0">
 					      	<input class="form-control mr-sm-2" type="search" placeholder="Search">
@@ -28,11 +31,22 @@
 		            		<a href="#" data-toggle="dropdown"><i class="fa fa-user-circle" style="font-size:36px"></i></a>
 		            		<ul class="dropdown-menu dropdown-menu-right" role="menu">
 		            			<div class="col-lg-12"> 
-		                			<form class="px-4 py-3">
-		    							<!-- Thông tin người dùng
-		    							-->
-			  						</form>
-			  						<div class="dropdown-divider"></div>
+		                			<form action="/auth/logout" id="frmLogOut" method="POST"></form>
+		    							{{#ifEquals authUser.type 1}}
+							<a class="dropdown-item" href="/admin/manage-user">Admin</a>
+							{{/ifEquals}}
+							{{#ifEquals authUser.type 2}}
+							<a class="dropdown-item" href="/auth/edit-information">User</a>
+							{{/ifEquals}}
+							{{#ifEquals authUser.type 3}}
+							<a class="dropdown-item" href="/admin/manage-user">Writer</a>
+							{{/ifEquals}}
+							{{#ifEquals authUser.type 4}}
+							<a class="dropdown-item" href="/editor/editor">Editor</a>
+							{{/ifEquals}}
+							<a class="dropdown-item" href="javascript: $('#frmLogOut').submit();">Log out</a>
+			  						
+			  						
 		  							
 		            			</div>
 		            		</ul>		
@@ -78,3 +92,14 @@
 </form>
 		</div>
     </div>
+
+{{else}}
+  {{#section 'js'}}
+  <script>
+    window.location.href="/404";
+
+  </script>
+    
+  {{/section}}
+
+{{/ifEquals}}

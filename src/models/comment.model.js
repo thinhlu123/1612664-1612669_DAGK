@@ -6,7 +6,7 @@ module.exports = {
   },
 
   getAllComment: pID => {
-    return db.load(`select * from comment where IDPost = ${pID}`);
+    return db.load(`select cmt.IDComment, cmt.IDPost, cmt.date, cmt.content, acc.username from comment cmt, account acc where cmt.user=acc.ID and IDPost = ${pID}`);
   },
 
   single: id => {

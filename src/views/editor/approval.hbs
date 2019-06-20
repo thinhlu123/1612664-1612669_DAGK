@@ -1,4 +1,4 @@
-
+{{#ifEquals authUser.type 4}}
 {{#section 'css'}}
 	<title>Phê duyệt</title>
 	<link rel="stylesheet" type="text/css" href="/css/main.css">
@@ -133,3 +133,14 @@
     }
 </script>
 {{/section}}
+
+{{else}}
+  {{#section 'js'}}
+  <script>
+    window.location.href="/404";
+
+  </script>
+    
+  {{/section}}
+
+{{/ifEquals}}

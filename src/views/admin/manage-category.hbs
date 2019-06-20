@@ -3,7 +3,7 @@
 	<title>Quản lý category</title>
 	<link rel="stylesheet" type="text/css" href="/css/admin_quanly.css">
 {{/section}}
-    
+    {{#ifEquals authUser.type 1}}
 		<header id="header">
       <div id="container">
   
@@ -16,26 +16,38 @@
           <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
               &nbsp &nbsp &nbsp &nbsp
               <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                  <li class="nav-item active"><a class="nav-link" href="admin_quanly_baiviet.html">Bài đăng <span class="sr-only">(current)</span></a></li>
-                  <li class="nav-item"><a class="nav-link" href="admin_quanly_nguoidung.html">Tài khoản</a></li>
-                  <li class="nav-item"><a class="nav-link" href="admin_quanly_category.html">Category</a></li>
-                  <li class="nav-item"><a class="nav-link" href="admin_quanly_tag.html">Tag</a></li>       
+                  <li class="nav-item active"><a class="nav-link" href="/admin/manage-post">Bài đăng</span></a></li>
+                  <li class="nav-item"><a class="nav-link" href="/admin/manage-user">Tài khoản</a></li>
+                  <li class="nav-item"><a class="nav-link" href="/admin/manage-category">Category <span class="sr-only">(current)</a></li>
+                  <li class="nav-item"><a class="nav-link" href="/admin/manage-groupcategory">Group Category</a></li>
+                  <li class="nav-item"><a class="nav-link" href="/admin/manage-tag">Tag</a></li>       
                 </ul>
               </div>
                   <div>
                     <a href="#" data-toggle="dropdown"><i class="fa fa-user-circle" style="font-size:36px"></i></a>
                     <ul class="dropdown-menu dropdown-menu-right" role="menu">
                       <div class="col-lg-12"> 
-                          <form class="px-4 py-3">
+                          <form action="/auth/logout" id="frmLogOut" method="POST"></form>
                       <!-- Thông tin người dùng
                       -->
-                      <div>
-                        Chức vụ: admin
-                      </div>
+                        {{#ifEquals authUser.type 1}}
+							<a class="dropdown-item" href="/admin/manage-user">Admin</a>
+							{{/ifEquals}}
+							{{#ifEquals authUser.type 2}}
+							<a class="dropdown-item" href="/auth/edit-information">User</a>
+							{{/ifEquals}}
+							{{#ifEquals authUser.type 3}}
+							<a class="dropdown-item" href="/admin/manage-user">Writer</a>
+							{{/ifEquals}}
+							{{#ifEquals authUser.type 4}}
+							<a class="dropdown-item" href="/editor/editor">Editor</a>
+							{{/ifEquals}}
+							<a class="dropdown-item" href="javascript: $('#frmLogOut').submit();">Log out</a>
+                     
                       
-                    <a href="#">Đăng xuất</a>
-                    </form>
-                    <div class="dropdown-divider"></div>
+                    
+                    
+                    
                     
                       </div>
                     </ul>   
@@ -50,7 +62,6 @@
       </h4>
 			<br>
 		
-      <p id="add-prd"><a href="add-post.html"><span>Thêm Catalog</span></a></p>
       <table class="table table-hover">
     <thead>
       <tr>
@@ -98,3 +109,14 @@
 });
 	</script>
 {{/section}}
+
+{{else}}
+  {{#section 'js'}}
+  <script>
+    window.location.href="/404";
+
+  </script>
+    
+  {{/section}}
+
+{{/ifEquals}}

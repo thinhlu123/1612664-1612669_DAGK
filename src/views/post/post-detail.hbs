@@ -13,6 +13,9 @@
         width: 100%;
         border: 1px solid #F2F2F2;
     }
+	.card-inner{
+    	margin-left: 4rem;
+	}
 	</style>
 {{/section}}
 {{#section 'js'}}
@@ -30,7 +33,7 @@
 
   		$.ajax({
     		url: 'comment/',
-        	data: JSON.stringify({"comment": comment, "IDPost": IDPost }),
+        	data: JSON.stringify({"comment": comment, "IDPost": IDPost, "user": {{authUser.ID}}, "username": '{{authUser.username}}' }),
         	processData: false,
         	type: 'POST',
         	contentType: 'application/json',
@@ -39,9 +42,9 @@
         	}
   		}).done(response => {
 			  
-			  var data = JSON.parse(response);
+			var data = JSON.parse(response);
 
-			var content = $('<div class="row"><div class="col-md-2"><img src="https://image.ibb.co/jw55Ex/def_face.jpg" class="img img-rounded img-fluid"/></div><div class="col-md-10"><p><a class="float-left" href="https://maniruzzaman-akash.blogspot.com/p/contact.html"><strong>'+data.user+'</strong></a></p><div class="clearfix"></div><p>'+data.comment+'</p></div>');
+			var content = $('<div class="row"><div class="col-md-2"><img src="https://image.ibb.co/jw55Ex/def_face.jpg" class="img img-rounded img-fluid"/><p class="text-secondary text-center">'+data.date+'</p></div><div class="col-md-10"><p><a class="float-left" href="https://maniruzzaman-akash.blogspot.com/p/contact.html"><strong>'+data.user+'</strong></a></p><div class="clearfix"></div><p>'+data.content+'</p></div>');
 			$('#parentAdd').append(content);
 
 			$('#comment').val('');	
@@ -110,11 +113,12 @@
 				<div class="row">
         	    	<div class="col-md-2">
         	        	<img src="https://image.ibb.co/jw55Ex/def_face.jpg" class="img img-rounded img-fluid"/>
+						<p class="text-secondary text-center">{{date}}</p>
         	    	</div>
         	    	<div class="col-md-10">
-						<p><a class="float-left" href="https://maniruzzaman-akash.blogspot.com/p/contact.html"><strong>{{user}}</strong></a></p>
+						<p><a class="float-left" href="https://maniruzzaman-akash.blogspot.com/p/contact.html"><strong>{{username}}</strong></a></p>
         	       	<div class="clearfix"></div>
-        	        	<p>{{comment}}</p>
+        	        	<p>{{content}}</p>
         	    	</div>
 	        	</div>
 				

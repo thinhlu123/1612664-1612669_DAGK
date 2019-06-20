@@ -11,14 +11,21 @@ module.exports = function (app) {
           today = yyyy + '/' + mm + '/' + dd;
         var comment = {
           IDPost: req.body.IDPost,
-          user: "thinhlu123",
+          user: req.body.user,
           date: today,
-          comment: req.body.comment
+          content: req.body.comment
         };
+        console.log(comment);
         commentModel.add(comment).then(id => {
-            res.json(JSON.stringify(comment));
+          
+          var rJson = {
+            user: req.body.username,
+            date: today,
+            content: req.body.comment
+          }
+            res.json(JSON.stringify(rJson));
         }).catch(err => {
-            res.end('error occured');
+            console.log(err);
         })
         
       })
