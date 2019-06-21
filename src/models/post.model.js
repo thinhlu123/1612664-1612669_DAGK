@@ -46,15 +46,15 @@ module.exports = {
   },
 
   getTopDate: ()=>{
-    return db.load(`select * from post ORDER BY UNIX_TIMESTAMP(date) DESC limit 10`);
+    return db.load(`select * from post where status = 1 ORDER BY UNIX_TIMESTAMP(date) DESC limit 10`);
   },
 
   getTopView:()=>{
-    return db.load(`select p.ID, p.title, p.avatar, p.author, p.date, p.content, p.views, p.summary, gc.groupname from post p, groupcategory gc where p.groupname = gc.ID order by views DESC limit 10`);
+    return db.load(`select p.ID, p.title, p.avatar, p.author, p.date, p.content, p.views, p.summary, gc.groupname from post p, groupcategory gc where p.status = 1 and p.groupname = gc.ID order by views DESC limit 10`);
   },
 
   getTopViewWeek:()=>{
-    return db.load('select p.ID, p.title, p.avatar, p.author, p.date, p.content, p.views, p.summary, gc.groupname from post p, groupcategory gc where p.groupname = gc.ID and date >= DATE_ADD(CURRENT_DATE(), INTERVAL -7 DAY) ORDER BY views desc limit 3');
+    return db.load('select p.ID, p.title, p.avatar, p.author, p.date, p.content, p.views, p.summary, gc.groupname from post p, groupcategory gc where p.status=1 and p.groupname = gc.ID and date >= DATE_ADD(CURRENT_DATE(), INTERVAL -7 DAY) ORDER BY views desc limit 3');
   },
 
   get5Post: catID =>{
@@ -62,11 +62,11 @@ module.exports = {
   },
 
   getPostByCate: ()=>{
-    return db.load(`select c.ID as IDCate, p.ID, p.title, p.avatar, c.groupname from post p, groupcategory c,(SELECT ID, groupname, date FROM post WHERE (groupname, date) IN (SELECT groupname, date FROM post where status = 1 GROUP BY date DESC) group by groupname) as t where p.ID=t.ID and p.groupname=c.ID ORDER BY c.ID`)
+    return db.load(`select c.ID as IDCate, p.ID, p.title, p.avatar, c.groupname from post p, groupcategory c,(SELECT ID, groupname, date FROM post WHERE (groupname, date) IN (SELECT groupname, date FROM post where status = 1 GROUP BY date DESC) group by groupname) as t where p.status=1 and p.ID=t.ID and p.groupname=c.ID ORDER BY c.ID`)
   },
 
   searchByType: (txtSearch, type) =>{
-    return db.load(`select * from post where MATCH(${type}) against('${txtSearch}') `)
+    return db.load(`select * from post where status=1 and MATCH(${type}) against('${txtSearch}') `)
   },
 
   single: id => {
@@ -88,7 +88,7 @@ module.exports = {
     return db.load(`select * from post p where status = ${status}`);
   },
   allWithStatus0ByID: id  => {
-    return db.load(`select p.*, a.fullname as authorname from post p, account a where status = 0 and p.author = ${id} and p.author = a.ID`);
+    return db.load(`select p.*, a.fullname as authorname from post p, account a where p.status = 0 and p.author = ${id} and p.author = a.ID`);
   },
   allWithStatus1ByID: id  => {
     return db.load(`select p.*, a.fullname as authorname from post p, account a where status = 1 and p.author = ${id} and p.author = a.ID`);
