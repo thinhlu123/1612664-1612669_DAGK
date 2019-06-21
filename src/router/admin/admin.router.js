@@ -1,6 +1,6 @@
 var express = require('express')
 var router = express.Router();
-var moment = require('moment');
+var bcrypt = require('bcrypt');
 
 var categoryModel = require('../../models/category.model');
 var groupCategoryModel = require('../../models/groupcategory.model');
@@ -191,7 +191,7 @@ router.post('/add-post', (req, res) =>{
             title: req.body.title,
             avatar: "./public/image/" + req.body.nameFile,
             date: today,
-            author: "thinhlu123",
+            author: req.body.authorID,
             content: req.body.chi_tiet_bd,
             status: 0,
             views: 0,
@@ -356,9 +356,11 @@ router.get('/add-user', (req, res) => {
 })
 
 router.post('/add-user', (req, res, next) => {
+    var saltRounds = 10;
+    var hash = bcrypt.hashSync(req.body.password, saltRounds);
     var entity = {
         username: req.body.username,
-        password: req.body.password,
+        password: hash,
         type: req.body.IDType,
         category: req.body.IDCat,
     }
@@ -433,7 +435,7 @@ router.post('/add-premium', (req, res) => {
   })
 
 
-  router.get('/wait-post', (req, res) => {
+router.get('/wait-post', (req, res) => {
     postModel.allWithStatus0().then(posts => {
         res.render('admin/wait-post',{
            posts: posts,
@@ -444,15 +446,16 @@ router.post('/add-premium', (req, res) => {
 })
 
 router.get('/wait-post/public/:id', (req, res) => {
-    var today = new Date();
     var entity = {
-        ID: req.params.id,
-        status: 1,
-        date: today
+        ID: parseInt(req.params.id),
+        status: 1
     }
+    console.log(entity);
     postModel.update(entity).then(n => {
+ 
       res.redirect('/admin/wait-post');
     }).catch(err => {
+        console.log(err);
       res.end('error occured.')
     });
 })

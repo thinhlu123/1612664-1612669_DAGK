@@ -3,7 +3,7 @@ module.exports = (req, res, next) => {
       res.locals.isAuthenticated = true;
       res.locals.authUser = req.user;
     }
-  
+
     next();
   }
   

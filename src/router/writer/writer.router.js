@@ -41,7 +41,7 @@ router.post('/add-post', (req, res) =>{
             views: 0,
             reason: ""
         }
-
+        console.log(entity);
         postModel.add(entity).then(pid => {
  
             arrTag.forEach(element => {
@@ -84,7 +84,7 @@ router.post('/add-post', (req, res) =>{
 })
 
 
-router.get('/writer-posts/:id', (req, res, next)=>{
+router.get('/writer-posts/:id', (req, res)=>{
     var authorID = req.params.id;
     Promise.all([postModel.allWithStatus0ByID(authorID), postModel.allWithStatus1ByID(authorID), postModel.allWithStatus2ByID(authorID)]).then(([approvalposts, agreeposts, disagreeposts]) => {
         res.render('writer/writer-posts',{
@@ -95,6 +95,18 @@ router.get('/writer-posts/:id', (req, res, next)=>{
       }).catch(err => {
         console.log(err);
       });
+})
+
+router.get('/edit-post/:pid', (req, res) => {
+    var id = req.params.pid;
+    Promise.all([postModel.single(id), tagModel.getTagByPost(id)]).then(([post, tags]) =>{
+        res.render('writer/add-post', {
+            post: post,
+            tags: tags
+        })
+    }).catch(err =>{
+        console.log(err);
+    })
 })
 
 module.exports = router;

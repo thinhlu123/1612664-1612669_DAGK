@@ -19,6 +19,7 @@
 	</style>
 {{/section}}
 {{#section 'js'}}
+
 	<script>
 		tinymce.init({
    			selector: '#chi_tiet_bd',
@@ -32,6 +33,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.3/js/fileinput.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.3/themes/fa/theme.min.js"></script>
+
 <script>
   $(function () {
     $('#fuMain').fileinput({
@@ -150,7 +152,7 @@
 				</div>
 				<div class="form-group">
 					<label for="tags" style="font-weight: bold">Tags</label>
-					<input type="text" data-role="tagsinput"  class="form-control" placeholder="Add tags" name="tags" id="tags"/>
+					<input type="text" data-role="tagsinput"  class="form-control" placeholder="Add tags" name="tags" id="tags" value="{{this.tags}}"/>
 				</div>
       			<a class="btn btn-outline-primary" href="/admin/manage-post" role="button" style="margin-left: 120px;">
         			<i class="fa fa-backward" aria-hidden="true"></i>
@@ -160,16 +162,12 @@
         			<i class="fa fa-check" aria-hidden="true"></i>
         				Save
       				</button>
+					<input name="authorID" value="{{authUser.ID}}" type="hidden"/>
     		</form>
   		</div>
 	</div>
 </div>
-<script>
-		$('<input >').attr('type', 'hidden')
-            	.attr('name', 'authorID')
-            	.attr('value', authUser.ID)
-            .appendTo('#postForm');
-</script>
+
 
 {{else}}
   {{#section 'js'}}

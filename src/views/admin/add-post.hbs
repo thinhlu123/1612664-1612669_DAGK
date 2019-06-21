@@ -19,6 +19,7 @@
 	</style>
 {{/section}}
 {{#section 'js'}}
+
 	<script>
 		tinymce.init({
    			selector: '#chi_tiet_bd',
@@ -32,6 +33,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.3/js/fileinput.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.3/themes/fa/theme.min.js"></script>
+
 <script>
   $(function () {
     $('#fuMain').fileinput({
@@ -58,7 +60,6 @@
   })
   
 </script>
-
 
 {{/section}}
 <div>
@@ -160,16 +161,13 @@
         			<i class="fa fa-check" aria-hidden="true"></i>
         				Save
       				</button>
+
+				<input name="authorID" value="{{authUser.ID}}" type="hidden"/>
     		</form>
   		</div>
 	</div>
 </div>
-<script>
-		$('<input >').attr('type', 'hidden')
-            	.attr('name', 'authorID')
-            	.attr('value', authUser.ID)
-            .appendTo('#postForm');
-</script>
+
 
 {{else}}
   {{#section 'js'}}
