@@ -182,14 +182,15 @@ router.post('/add-post', (req, res) =>{
 
     today = yyyy + '/' + mm + '/' + dd;
     var arrTag = req.body.tags.split(",");
-    console.log(arrTag);
     categoryModel.single(req.body.IDCat).then(n =>{
-        
+        var premium=0;
+        if(req.body.premium)premium=1
         var entity = {
+            ispremium: premium,
             groupname: n[0].IDGroup,
             category: parseInt(req.body.IDCat),
             title: req.body.title,
-            avatar: "./public/image/" + req.body.nameFile,
+            avatar: "/image/" + req.body.nameFile,
             date: today,
             author: req.body.authorID,
             content: req.body.chi_tiet_bd,

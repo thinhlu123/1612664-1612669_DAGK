@@ -1,29 +1,5 @@
-<div class="container">
-<section id="bai-dang" style="margin-top: 100px;">
-	{{#each this.posts}}
-	<div id="row">
-					<img src="{{avatar}}" class="img-title">
-					<div id="text">
-						<a href="#" id="bai-dang-text">{{title}}</a>
-						<div id="date">{{formatDate date}}
-							{{#each ../this.categories}} 
-								{{#ifEquals ../category ID}}
-									<a href="#" id="mytag">{{category}}</a>  
-								{{/ifEquals}}				 
-							{{/each}}				
-						</div>
-						<p>{{summary}}</p>
-					</div>
-				</div>
-	{{/each}}
-
-
-	
-</section>
-	<div class="text-center">
-		<button id="btnLoadMore" class="btn btn-light mb-2">LOAD MORE</button>	
-	</div>
-<script>
+{{#section 'js'}}
+	<script>
 	let soTrang = 1;
 	let current = parseInt({{posts.length}});
 	let temp = parseInt({{posts.length}});
@@ -83,5 +59,34 @@
 	})
 	
 </script>
+{{/section}}
+
+<div class="container">
+<section id="bai-dang" style="margin-top: 100px;">
+	
+	{{#each this.posts}}
+	<div id="row">
+					<img src="{{avatar}}" class="img-title">
+					<div id="text">
+						<a href="/post/post-detail/{{ID}}" id="bai-dang-text">{{title}}</a>
+						<div id="date">{{formatDate date}}
+							{{#each ../this.categories}} 
+								{{#ifEquals ../category ID}}
+									<a href="/post/list-post/groupcategory/{{../groupname}}" id="mytag">{{category}}</a>  
+								{{/ifEquals}}				 
+							{{/each}}				
+						</div>
+						<p>{{summary}}</p>
+					</div>
+				</div>
+	{{/each}}
+
+
+	
+</section>
+	<div class="text-center">
+		<button id="btnLoadMore" class="btn btn-light mb-2">LOAD MORE</button>	
+	</div>
+
 
 </div>

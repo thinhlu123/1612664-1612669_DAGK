@@ -66,15 +66,15 @@
 {{/section}}
 
 
-<div id="container">
+<div id="container" style="margin-top:100px;">
 			<div class="bai-viet ml-3">
 				<div id="bai-dang-text">{{this.post.title}}</div>
-				<div id="date">{{this.post.date}}<a href="#" id="tag">Thế giới</a></div>
+				<div id="date">{{this.post.date}}<a href="/post/list-post/groupcategory/{{this.post.groupname}}" id="tag">Thế giới</a></div>
 				<div class="dropdown-divider" style="border-width: 3px; border-color: gray;"></div>
 				{{{this.post.content}}}
 				<div style="font-weight: bold">Tags</div>
 				{{#each this.tags}}
-					<a href="#" id="the-tag">{{tagname}}</a>
+					<a href="/post/list-post/tag/{{ID}}" id="the-tag">{{tagname}}</a>
 				{{/each}}
 				<div class="dropdown-divider" style="border-width: 3px; border-color: gray;"></div>
 			</div>
