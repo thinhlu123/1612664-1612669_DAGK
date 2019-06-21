@@ -21,13 +21,24 @@
 {{#section 'js'}}
 
 	<script>
+
 		tinymce.init({
    			selector: '#chi_tiet_bd',
-   			plugins: 'a11ychecker advcode casechange formatpainter linkchecker lists checklist media mediaembed pageembed permanentpen powerpaste tinycomments tinydrive tinymcespellchecker',
+   			plugins: 'a11ychecker image advcode casechange formatpainter linkchecker lists checklist media mediaembed pageembed permanentpen powerpaste tinycomments tinydrive tinymcespellchecker',
    			toolbar: 'a11ycheck addcomment showcomments casechange checklist code formatpainter insertfile pageembed permanentpen',
    			toolbar_drawer: 'floating',
    			tinycomments_mode: 'embedded',
-   			tinycomments_author: 'Author name'
+   			tinycomments_author: 'Author name',
+			   image_uploadtab: false,
+			   element_format :"html",
+			   setup: function(editor) {
+    			editor.on('init', function() {
+      
+
+       			$(tinymce.get('chi_tiet_bd').getBody()).html('{{{this.postDetail.content}}}');
+  
+    			});
+  			}
 		});
 	</script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.min.js"></script>
@@ -57,6 +68,7 @@
     	});
     	return true;
     });
+	
   })
   
 </script>
@@ -91,14 +103,15 @@
 							<a class="dropdown-item" href="/admin/manage-user">Quản lý thông tin</a>
 							{{/ifEquals}}
 							{{#ifEquals authUser.type 2}}
-							<a class="dropdown-item" href="/auth/edit-information/{{authUser.ID}}">Cập nhật thông tin</a>
+							<a class="dropdown-item" href="/auth/edit-information/{{authUser.ID}}">Cập nhật thông tin cá nhân</a>
 							{{/ifEquals}}
 							{{#ifEquals authUser.type 3}}
-							<a class="dropdown-item" href="/auth/edit-information/{{authUser.ID}}">Cập nhật thông tin</a>
-							<a class="dropdown-item" href="/admin/add-post">Đăng bài mới</a>
+							<a class="dropdown-item" href="/auth/edit-information/{{authUser.ID}}">Cập nhật thông tin cá nhân</a>
+							<a class="dropdown-item" href="/writer/add-post">Đăng bài mới</a>
+							<a class="dropdown-item" href="/writer/writer-posts/{{authUser.ID}}">Xem bài viết của tôi</a>
 							{{/ifEquals}}
 							{{#ifEquals authUser.type 4}}
-							<a class="dropdown-item" href="/auth/edit-information/{{authUser.ID}}">Cập nhật thông tin</a>
+							<a class="dropdown-item" href="/auth/edit-information/{{authUser.ID}}">Cập nhật thông tin cá nhân</a>
 							<a class="dropdown-item" href="/editor/editor">Duyệt bài viết</a>
 							{{/ifEquals}}
 							<a class="dropdown-item" href="javascript: $('#frmLogOut').submit();">Log out</a>

@@ -6,9 +6,8 @@ var groupCategoryModel = require('../../models/groupcategory.model');
 var categoryModel = require('../../models/category.model');
 var tagModel = require('../../models/tag.model');
 
-router.get('/editor', (req,res) => {
-    var p = editorModel.all();
-    p.then(rows => {
+router.get('/editor/:id', (req,res) => {
+    editorModel.all(req.params.id).then(rows => {
         res.render('editor/editor', {
             posts: rows
         })
@@ -40,7 +39,7 @@ router.post('/editor/agree', (req,res) => {
         status: 1,
     }
     postModel.update(entity).then(n => {
-        res.redirect('/editor/editor');
+        res.redirect('/editor/editor/' + req.body.cateid);
     }).catch(err => {
         console.log(err);
     })
@@ -53,7 +52,7 @@ router.post('/editor/disagree', (req,res) => {
         reason: req.body.txtReason,
     }
     postModel.update(entity).then(n => {
-        res.redirect('/editor/editor');
+        res.redirect('/editor/editor/' + req.body.cateid);
     }).catch(err => {
         console.log(err);
     })

@@ -26,7 +26,7 @@ router.post('/sign-up', (req,res,next) => {
     var hash = bcrypt.hashSync(req.body.password, saltRounds);
     var dob = moment(req.body.dob, 'DD-MM-YYYY').format('YYYY-MM-DD');
     var today = new Date();
-    premiumdate = today.setDate(today.getDate() + 7);
+    premiumdate = null;
     var type = 2;
     var category = null;
     var entity = {
@@ -37,8 +37,8 @@ router.post('/sign-up', (req,res,next) => {
         email: req.body.email,
         birthday: dob,
         type: type,
-        premiumdate: premiumdate,
-        category: category,
+        premiumdate: null,
+        category: null,
         idfacebook: null
     }
     accountModel.add(entity).then(id => {

@@ -1,8 +1,8 @@
 var db = require('../utils/db');
 
 module.exports = {
-  all: () => {
-    return db.load('select *, a.fullname as authorname from post p, account a where status = 0 and p.author = a.username');
+  all: id => {
+    return db.load(`select p.*, a.fullname as authorname from post p, account a where p.status = 0 and p.author = a.ID and p.category = 5`)
   },
 
   single: id => {

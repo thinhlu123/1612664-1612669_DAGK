@@ -31,15 +31,16 @@
 							<a class="dropdown-item" href="/admin/manage-user">Quản lý thông tin</a>
 							{{/ifEquals}}
 							{{#ifEquals authUser.type 2}}
-							<a class="dropdown-item" href="/auth/edit-information/{{authUser.ID}}">Cập nhật thông tin</a>
+							<a class="dropdown-item" href="/auth/edit-information/{{authUser.ID}}">Cập nhật thông tin cá nhân</a>
 							{{/ifEquals}}
 							{{#ifEquals authUser.type 3}}
-							<a class="dropdown-item" href="/auth/edit-information/{{authUser.ID}}">Cập nhật thông tin</a>
-							<a class="dropdown-item" href="/admin/add-post">Đăng bài mới</a>
+							<a class="dropdown-item" href="/auth/edit-information/{{authUser.ID}}">Cập nhật thông tin cá nhân</a>
+							<a class="dropdown-item" href="/writer/add-post">Đăng bài mới</a>
+							<a class="dropdown-item" href="/writer/writer-posts/{{authUser.ID}}">Xem bài viết của tôi</a>
 							{{/ifEquals}}
 							{{#ifEquals authUser.type 4}}
-							<a class="dropdown-item" href="/auth/edit-information/{{authUser.ID}}">Cập nhật thông tin</a>
-							<a class="dropdown-item" href="/editor/editor">Duyệt bài viết</a>
+							<a class="dropdown-item" href="/auth/edit-information/{{authUser.ID}}">Cập nhật thông tin cá nhân</a>
+							<a class="dropdown-item" href="/editor/editor/{{authUser.category}}">Duyệt bài viết</a>
 							{{/ifEquals}}
 							<a class="dropdown-item" href="javascript: $('#frmLogOut').submit();">Log out</a>
 			  						
@@ -62,6 +63,7 @@
 
 <form method="POST" action="/admin/update-editor" id="frmManageEditor">
       <div class="form-group col-lg-5">
+		  <input type="text" name="iduser" hidden value="{{this.user.ID}}">
         <label for="txtUsername" style="font-weight: bold">Username</label>
         <input type="text" class="form-control disabled" id="txtUsername" name="username" readonly value="{{this.user.username}}">
 		<br>
@@ -71,7 +73,11 @@
 	                          <optgroup label="{{groupname}}">
 	                            {{#each ../this.categories}} 
 		                            {{#ifEquals ../ID IDGroup}}
-			                            <option value="{{ID}}">{{category}}</option>											  
+										{{#ifEquals ../../this.user.category ID}}
+										<option value="{{ID}}" selected>{{category}}</option>
+										{{else}}
+			                            <option value="{{ID}}">{{category}}</option>
+										{{/ifEquals}}											  
 		                            {{/ifEquals}}
                             	{{/each}}
                               </optgroup>

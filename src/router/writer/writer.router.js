@@ -101,9 +101,8 @@ router.get('/edit-post/:id', (req, res) => {
     var id = req.params.id;
 
     Promise.all([postModel.single(id), tagModel.getTagByPost(id), groupCategoryModel.all(), categoryModel.loadAll()]).then(([postDetail, tags, groups, categories]) =>{
-
         res.render('writer/edit-post', {
-            postDetail: postDetail,
+            postDetail: postDetail[0],
             tags: tags,
             groups: groups,
             categories: categories

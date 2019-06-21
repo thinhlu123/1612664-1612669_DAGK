@@ -65,7 +65,7 @@ router.post('/add-category', (req, res, next) => {
     console.log(entity);
     categoryModel.add(entity).then(id => {
         console.log(id);
-        res.render('admin/manage-category');
+        res.redirect('/admin/manage-category');
     }).catch(err => {
         console.log(err);
         res.end('error occured.')
@@ -119,12 +119,12 @@ router.get('/manage-groupcategory', (req,res) => {
 router.get('/add-groupcategory', (req,res) => {
     res.render('admin/add-groupcategory')
 });
-router.post('/add-groupcategory', (req,res,next) => {
+router.post('/add-groupcategory', (req,res) => {
     var entity = {
-        group: req.body.group
+        groupname: req.body.group
     }
     groupCategoryModel.add(entity).then(id => {
-        res.render('admin/manage-groupcategory');
+        res.redirect('/admin/manage-groupcategory');
     }).catch(err => {
         res.end('error occured');
     })
@@ -229,7 +229,7 @@ router.post('/add-post', (req, res) =>{
             
 
 
-            res.render('admin/manage-post');
+            res.redirect('/admin/manage-post');
         }).catch(err => {
             console.log(err);
         })
@@ -242,7 +242,7 @@ router.post('/add-post', (req, res) =>{
 router.post('/update-groupcategory', (req, res) => {  
     var entity = {
         ID: req.body.GroupID,
-        group: req.body.GroupName
+        groupname: req.body.GroupName
     }
     groupCategoryModel.update(entity).then(n => {
       res.redirect('/admin/manage-groupcategory');
@@ -304,7 +304,7 @@ router.post('/add-tag', (req, res, next) => {
     console.log(entity);
     tagModel.add(entity).then(id => {
         console.log(id);
-        res.render('admin/add-tag');
+        res.redirect('/admin/add-tag');
     }).catch(err => {
         console.log(err);
         res.end('error occured.')
@@ -325,8 +325,12 @@ router.post('/update-tag', (req, res) => {
   })
 
   router.post('/delete-tag', (req, res) => {
-    tagModel.delete(req.body.TagID).then(n => {
-      res.redirect('/admin/manage-tag');
+    tagModel.deleteTagInPost(req.body.TagID).then(n => {
+        tagModel.delete(req.body.TagID).then(m => {
+            res.redirect('/admin/manage-tag');
+        }).catch(err => {
+            res.end('error occured');
+        })    
     }).catch(err => {
       console.log(err);
       res.end('error occured.')
@@ -358,16 +362,21 @@ router.get('/add-user', (req, res) => {
 router.post('/add-user', (req, res, next) => {
     var saltRounds = 10;
     var hash = bcrypt.hashSync(req.body.password, saltRounds);
+    var category = req.body.IDCat;
+    if (req.body.IDType == 3)
+    {
+        category = null;
+    }
     var entity = {
         username: req.body.username,
         password: hash,
         type: req.body.IDType,
-        category: req.body.IDCat,
+        category: category,
     }
     console.log(entity);
     accountModel.add(entity).then(username => {
         console.log(username);
-        res.render('admin/add-user');
+        res.redirect('/admin/manage-user');
     }).catch(err => {
         console.log(err);
         res.end('error occured.')
@@ -382,10 +391,10 @@ router.get('/delete-user/:id', (req, res) => {
     });
 })
 
-router.get('/manage-editor/:username', (req, res) => {
-    var username = req.params.username;
+router.get('/manage-editor/:id', (req, res) => {
+    var id = req.params.id;
 
-    Promise.all([accountModel.singleByUserName(username), groupCategoryModel.all(), categoryModel.loadAll()]).then(([user, groups, categories]) => {
+    Promise.all([accountModel.findByID(id), groupCategoryModel.all(), categoryModel.loadAll()]).then(([user, groups, categories]) => {
         res.render('admin/manage-editor',{
            user: user[0],
            groups: groups,
@@ -398,7 +407,7 @@ router.get('/manage-editor/:username', (req, res) => {
 
 router.post('/update-editor', (req, res) => {  
     var entity = {
-        username: req.body.username,
+        ID: req.body.iduser,
         category: req.body.IDCat,
     }
     accountModel.update(entity).then(n => {
@@ -409,10 +418,10 @@ router.post('/update-editor', (req, res) => {
     });
   })
 
-  router.get('/add-premium/:username', (req, res) => {
-    var username = req.params.username;
+  router.get('/add-premium/:id', (req, res) => {
+    var id = req.params.id;
 
-    Promise.all([accountModel.singleByUserName(username)]).then(([user]) => {
+    Promise.all([accountModel.findByID(id)]).then(([user]) => {
         res.render('admin/add-premium',{
            user: user[0],
         })
@@ -423,7 +432,7 @@ router.post('/update-editor', (req, res) => {
 
 router.post('/add-premium', (req, res) => {
     var entity = {
-        username: req.body.username,
+        ID: req.body.iduser,
         premiumdate: req.body.premiumdate,
     }
     accountModel.update(entity).then(n => {
@@ -436,7 +445,7 @@ router.post('/add-premium', (req, res) => {
 
 
 router.get('/wait-post', (req, res) => {
-    postModel.allWithStatus0().then(posts => {
+    postModel.allWithStatus0ByAdmin().then(posts => {
         res.render('admin/wait-post',{
            posts: posts,
         })

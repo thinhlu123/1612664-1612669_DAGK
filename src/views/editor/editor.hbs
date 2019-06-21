@@ -1,4 +1,4 @@
-{{#ifEqual authUser.type 4}}
+{{#ifEquals authUser.type 4}}
 
 	{{#section 'css'}}
 	<title>Quản lý bài viết</title>
@@ -8,6 +8,7 @@
  		<div id="container">
  			<div id="e-qlbv"><h2>Quản lý bài viết</h2></div>
       <br>
+      <input type="text" hidden value="{{authUser.category}}">
 		  {{#each this.posts}}
 		  <form action="" name="editorForm" method="GET">
  				<table id="e-table">

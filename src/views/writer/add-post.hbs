@@ -23,11 +23,12 @@
 	<script>
 		tinymce.init({
    			selector: '#chi_tiet_bd',
-   			plugins: 'a11ychecker advcode casechange formatpainter linkchecker lists checklist media mediaembed pageembed permanentpen powerpaste tinycomments tinydrive tinymcespellchecker',
+   			plugins: 'a11ychecker image advcode casechange formatpainter linkchecker lists checklist media mediaembed pageembed permanentpen powerpaste tinycomments tinydrive tinymcespellchecker',
    			toolbar: 'a11ycheck addcomment showcomments casechange checklist code formatpainter insertfile pageembed permanentpen',
    			toolbar_drawer: 'floating',
    			tinycomments_mode: 'embedded',
    			tinycomments_author: 'Author name'
+			   image_uploadtab: false,
 		});
 	</script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.min.js"></script>
@@ -167,7 +168,11 @@
   		</div>
 	</div>
 </div>
-
+{{#each this.tags}}
+	<script>
+		document.getElementById("tags").value += '{{tagname}},'
+	</script>
+{{/each}}
 
 {{else}}
   {{#section 'js'}}

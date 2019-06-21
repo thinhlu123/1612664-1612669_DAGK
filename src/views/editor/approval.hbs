@@ -5,48 +5,10 @@
 	<link rel="stylesheet" type="text/css" href="/css/add-post.css">
     <link rel="stylesheet" type="text/css" href="/css/post.css">
 {{/section}}
-		<header id="header">
- 			<div id="container">
-	
-				<nav class="navbar navbar-expand-lg">
-		  
-		  			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-		    			<span class="navbar-toggler-icon"></span>
-		  			</button>
-					<div id="papername">dogenews</div>
-		  			<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-		  				&nbsp &nbsp &nbsp &nbsp
-		    			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-		      				<li class="nav-item active"><a class="nav-link" href="#"><h2>Post</h2> <span class="sr-only">(current)</span></a></li>
-
-		    			</ul>
-					    <form class="form-inline my-2 my-lg-0">
-					      	<input class="form-control mr-sm-2" type="search" placeholder="Search">
-					      	<button id="btnSearch" type="submit">Search &nbsp</button>
-
-		            	</form>
-		            	<div>
-		            		<a href="#" data-toggle="dropdown"><i class="fa fa-user-circle" style="font-size:36px"></i></a>
-		            		<ul class="dropdown-menu dropdown-menu-right" role="menu">
-		            			<div class="col-lg-12"> 
-		                			<form class="px-4 py-3">
-		    							<!-- Thông tin người dùng
-		    							-->
-			  						</form>
-			  						<div class="dropdown-divider"></div>
-		  							
-		            			</div>
-		            		</ul>		
-	            		</div>
-	            		
-	            	</div>
-	        	</nav>
-	    	</div>
- 		</header>
 
 			<div style="margin-top: 100px;">
-		        <div id="container" align="center">
-                    <label>Duyệt</label>
+		        
+                    <label style="font-weight: bold" class="ml-3">Duyệt:</label>
                     <select id="txtApproval" onchange="selectedChange(this)">
           	            <option value="1" selected>Đồng ý</option>
                         <option value="2">Từ chối</option>
@@ -54,12 +16,13 @@
         
 
 <form method="POST" action="/editor/editor/agree" id="frmAgree">
+<input type="text" hidden value="{{authUser.category}}" name="cateid">
       <div class="form-group">
           <input type="text" id="txtID" name="txtID" value="{{this.post.ID}}" hidden>
-        <label for="txtTitle">Title</label>
+        <label for="txtTitle" style="font-weight: bold" class="ml-3">Title</label>
         <input type="text" class="form-control" id="txtTitle" name="title" readonly value="{{this.post.title}}">
 		<br>
-			<label id="lblCat" type="hide">Danh mục</label>
+			<label id="lblCat" type="hide" style="font-weight: bold"  class="ml-3">Danh mục</label>
             <select class="selectpicker" id="IDCat" name="IDCat" type="hide">
                           {{#each this.groups}}
 	                          <optgroup label="{{groupname}}">
@@ -75,42 +38,44 @@
                               </optgroup>
                             {{/each}}
             </select>
-            <label for="txtDate">Thời điểm xuất bản</label>
-            <input type="date" class="form-control" id="txtDate" name="date" autofocus>
-            <label for="txtTags">Nhãn tag</label>
+            <br>
+            <label for="txtDate" style="font-weight: bold"  class="ml-3">Thời điểm xuất bản</label>
+            <input type="date" class="form-control col-lg-5 ml-3" id="txtDate" name="date" autofocus>
+            <br>
+            <label for="txtTags" style="font-weight: bold"  class="ml-3">Nhãn tag</label>
             {{#each this.tags}}
                 <label id="the-tag">{{tagname}}<a href="/editor/delete-tag/{{ID}}&{{../this.post.ID}}" id="the-tag" role="button">x</a></label>
             {{/each}}
       </div>
-      <a class="btn btn-primary" href="/editor/editor" role="button">
+      <a class="btn btn-outline-primary ml-5" href="/editor/editor/{{authUser.category}}" role="button">
         <i class="fa fa-backward" aria-hidden="true"></i>
         List
       </a>
-      <button type="submit" class="btn btn-success">
+      <button type="submit" class="btn btn-outline-success">
         <i class="fa fa-check" aria-hidden="true"></i>
         Send
       </button>
 </form>
 
 <form method="POST" action="/editor/editor/disagree" id="frmDisagree">
+<input type="text" hidden value="{{authUser.category}}" name="cateid">
       <div class="form-group">
         <input type="text" id="txtID" name="txtID" value="{{this.post.ID}}" hidden>
-        <label for="txtTitle">Title</label>
+        <label for="txtTitle" style="font-weight: bold"  class="ml-3">Title</label>
         <input type="text" class="form-control" id="txtTitle" name="title" readonly value="{{this.post.title}}">
 		<br>
-            <label>Lý do</label>
+            <label style="font-weight: bold"  class="ml-3">Lý do</label>
             <textarea id="txtReason" name="txtReason" placeholder="Nhập lý do từ chối..."></textarea>
       </div>
-      <a class="btn btn-primary" href="/editor/editor" role="button">
+      <a class="btn btn-outline-primary ml-5" href="/editor/editor/{{authUser.category}}" role="button">
         <i class="fa fa-backward" aria-hidden="true"></i>
         List
       </a>
-      <button type="submit" class="btn btn-success">
+      <button type="submit" class="btn btn-outline-success">
         <i class="fa fa-check" aria-hidden="true"></i>
         Send
       </button>
 </form>
-		</div>
     </div>
     {{#section 'js'}}
 <script>

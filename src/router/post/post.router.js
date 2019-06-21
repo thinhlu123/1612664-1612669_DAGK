@@ -8,16 +8,23 @@ var router = express.Router();
 router.get('/post-detail/:id', (req, res) =>{
   var id = req.params.id;
   Promise.all([postModel.single(id), tagModel.getTagByPost(id), commentModel.getAllComment(id), commentModel.all()]).then(([row, tags, pComment, comment])=>{
-    postModel.get5Post(row[0].category).then(post_5 => {
+    entity = {
+      ID: id,
+      views: row[0].views + 1
+    }
+    postModel.update(entity).then(id=>{
+      postModel.get5Post(row[0].category).then(post_5 => {
       
-      res.render('post/post-detail',{
-        post: row[0],
-        post_5: post_5,
-        tags: tags,
-        pComment: pComment,
-        comment: comment
+        res.render('post/post-detail',{
+          post: row[0],
+          post_5: post_5,
+          tags: tags,
+          pComment: pComment,
+          comment: comment
+        })
       })
-    })
+    }).catch(err => {console.log(err)})
+    
   })
 });
 

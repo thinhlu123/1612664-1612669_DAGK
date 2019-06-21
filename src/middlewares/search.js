@@ -1,3 +1,4 @@
+
 var postModel = require('../models/post.model');
 
 module.exports = function (app) {
